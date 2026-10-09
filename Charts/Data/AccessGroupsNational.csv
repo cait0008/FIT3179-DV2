@@ -1,0 +1,33 @@
+﻿Dimension,Group,Access score,Difference from national average
+National,National average,76.8,
+Age,18-34,79.8,+3.0
+Age,35-44,80.7,+3.9
+Age,45-54,78.5,+1.7
+Age,55-64,77.2,+0.4
+Age,65-74,73.1,-3.7
+Age,75+,61.1,-15.7
+Gender,Male,77.4,+0.6
+Gender,Female,76.1,-0.7
+Education levels,Did not complete secondary school,65.0,-11.8
+Education levels,Completed secondary school,74.6,-2.2
+Education levels,Certificate / diploma,78.6,+1.8
+Education levels,Bachelor and above,80.3,+3.5
+Education levels,Other,63.2,-13.6
+Employment,Employed,80.5,+3.7
+Employment,Unemployed,73.5,-3.3
+Employment,Not in labour force,71.0,-5.8
+People with disability,People with disability,71.5,-5.3
+People with disability,People without disability,77.8,+1.0
+First Nations,First Nations (national average),64.3,-12.5
+First Nations,First Nations (urban),69.4,-7.4
+First Nations,First Nations (inner regional),66.3,-10.5
+First Nations,First Nations (outer regional),67.1,-9.8
+First Nations,First Nations (remote),55.9,-20.9
+First Nations,First Nations (very remote),37.3,-39.6
+Remoteness,Major Cities of Australia,78.3,+1.5
+Remoteness,Inner Regional Australia,73.4,-3.4
+Remoteness,Outer Regional Australia,72.7,-4.1
+Remoteness,Remote Australia,70.8,-6.0
+Remoteness,Very Remote Australia,57.4,-19.4
+Capital cities,Metro,78.3,+1.5
+Capital cities,Regional,73.8,-3.0

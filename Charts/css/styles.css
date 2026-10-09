@@ -4,10 +4,11 @@
 /* ---------- Theme: Blush & Charcoal ---------- */
 /* All neutrals carry a hint of the magenta's hue so they sit together. */
 :root {
-  --charcoal: #25212E;  /* page background, headings (plum-tinted charcoal) */
+  --page-bg: #25212E;   /* page background (plum charcoal) */
+  --charcoal: #25212E;  /* headings and body text (plum-tinted charcoal) */
   --magenta: #E0248A;   /* accent: section strip, highlights */
   --magenta-dark: #B8186F; /* magenta for small text/links on blush */
-  --pink-light: #F58AC4;   /* title: magenta lightened for the charcoal background */
+  --pink-light: #F58AC4;   /* title: magenta lightened for the dark page background */
   --blush: #F1E4F3;     /* section containers (pastel pink-lilac) */
   --mauve: #A79FB6;     /* mid-tone: text on charcoal, borders */
   --muted: #5F566E;     /* small text on blush */
@@ -27,7 +28,7 @@ body * {
 }
 
 body {
-  background-color: var(--charcoal);
+  background-color: var(--page-bg);
   color: var(--charcoal);
   font-size: 16px;
   line-height: 1.6;
@@ -70,7 +71,7 @@ table {
   padding: 48px 16px;
 }
 
-/* ---------- Title (sits directly on the charcoal background) ---------- */
+/* ---------- Title (sits directly on the page background) ---------- */
 .title-row {
   align-items: center; /* pure-g is a flex row; centre the date against the title */
 }
@@ -159,6 +160,11 @@ h1 {
 /* full-width rows (maps, the barriers heatmap) get more room */
 .pure-u-1:not(.pure-u-md-1-2) > .chart-block .vis-container {
   height: 450px;
+}
+
+/* charts with many rows (e.g. the 31-group dumbbell) */
+.pure-u-1 > .chart-block .vis-container.vis-tall {
+  height: 640px;
 }
 
 .vis-placeholder {

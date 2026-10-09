@@ -5,7 +5,9 @@
 // A spec's own "config" overrides these. Leave "title" out of specs: the HTML <h3> is the title.
 // In each spec, use "width": "container" and "height": "container" to fill the CSS-sized box.
 var chartConfig = {
-  background: null, // transparent, so charts sit on the section colour
+  background: '#FFFFFF', // white card behind every chart (was null = transparent on the section colour)
+  padding: 16,
+  autosize: { type: 'fit', contains: 'padding' }, // keep the padding inside the container, so charts don't overflow
   font: 'Atkinson Hyperlegible Next',
   view: { stroke: null },
   title: { font: 'Oxanium', color: '#25212E' },
@@ -34,7 +36,10 @@ function embedChart(id, spec) {
     return Promise.resolve(null);
   }
 
-  var embed = vegaEmbed('#' + id, spec, { actions: false, config: chartConfig });
+  // wait for the web fonts, otherwise Vega measures labels in a fallback font and long ones get clipped
+  var embed = document.fonts.ready.then(function () {
+    return vegaEmbed('#' + id, spec, { actions: false, config: chartConfig });
+  });
   embed.catch(console.error);
   return embed;
 }

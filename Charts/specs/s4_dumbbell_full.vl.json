@@ -1,0 +1,511 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Access score for each population group compared with the national average (ADII 2025).",
+  "width": "container",
+  "height": "container",
+  "data": {
+    "url": "Charts/Data/AccessGroupsNational.csv"
+  },
+  "transform": [
+    {
+      "calculate": "toNumber(datum['Access score'])",
+      "as": "score"
+    },
+    {
+      "calculate": "datum.Dimension === 'National' ? datum.score : null",
+      "as": "nationalRow"
+    },
+    {
+      "joinaggregate": [
+        {
+          "op": "max",
+          "field": "nationalRow",
+          "as": "national"
+        }
+      ]
+    },
+    {
+      "filter": "datum.Dimension !== 'National'"
+    },
+    {
+      "calculate": "datum.Group === 'Very Remote Australia' ? datum.score : null",
+      "as": "veryRemoteRow"
+    },
+    {
+      "joinaggregate": [
+        {
+          "op": "max",
+          "field": "veryRemoteRow",
+          "as": "veryRemoteAll"
+        }
+      ]
+    },
+    {
+      "window": [
+        {
+          "op": "row_number",
+          "as": "row"
+        }
+      ]
+    },
+    {
+      "joinaggregate": [
+        {
+          "op": "min",
+          "field": "row",
+          "as": "dimStart"
+        }
+      ],
+      "groupby": [
+        "Dimension"
+      ]
+    },
+    {
+      "window": [
+        {
+          "op": "dense_rank",
+          "as": "dimIndex"
+        }
+      ],
+      "sort": [
+        {
+          "field": "dimStart"
+        }
+      ]
+    },
+    {
+      "calculate": "datum.row === datum.dimStart",
+      "as": "isFirstInDim"
+    },
+    {
+      "calculate": "datum.score - datum.national",
+      "as": "gap"
+    },
+    {
+      "calculate": "datum.score < datum.national ? 'Below national average' : 'At or above national average'",
+      "as": "comparison"
+    },
+    {
+      "calculate": "'National average ' + format(datum.national, '.1f')",
+      "as": "nationalLabel"
+    }
+  ],
+  "layer": [
+    {
+      "description": "alternating bands mark each dimension",
+      "mark": {
+        "type": "rect"
+      },
+      "encoding": {
+        "y": {
+          "field": "Group",
+          "type": "nominal",
+          "sort": {
+            "field": "row"
+          },
+          "axis": {
+            "title": null,
+            "ticks": false,
+            "domain": false,
+            "labelLimit": 260,
+            "labelPadding": 8
+          }
+        },
+        "x": {
+          "datum": 0,
+          "scale": {
+            "domain": [
+              0,
+              100
+            ]
+          }
+        },
+        "x2": {
+          "datum": 100
+        },
+        "color": {
+          "condition": {
+            "test": "datum.dimIndex % 2 === 1",
+            "value": "#E6D2EA"
+          },
+          "value": "transparent"
+        }
+      }
+    },
+    {
+      "description": "dimension name at the start of each block",
+      "transform": [
+        {
+          "filter": "datum.isFirstInDim"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 6,
+        "font": "Oxanium",
+        "fontWeight": 600,
+        "fontSize": 11,
+        "color": "#B8186F"
+      },
+      "encoding": {
+        "y": {
+          "field": "Group",
+          "type": "nominal",
+          "sort": {
+            "field": "row"
+          }
+        },
+        "x": {
+          "datum": 0
+        },
+        "text": {
+          "field": "Dimension"
+        }
+      }
+    },
+    {
+      "description": "national average reference line (one row only, so it draws once, full height)",
+      "transform": [
+        {
+          "filter": "datum.row === 1"
+        }
+      ],
+      "mark": {
+        "type": "rule",
+        "strokeDash": [
+          4,
+          3
+        ],
+        "color": "#5F566E"
+      },
+      "encoding": {
+        "x": {
+          "field": "national",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "description": "label above the reference line",
+      "transform": [
+        {
+          "filter": "datum.row === 1"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "fontSize": 11,
+        "color": "#5F566E"
+      },
+      "encoding": {
+        "x": {
+          "field": "national",
+          "type": "quantitative"
+        },
+        "y": {
+          "value": -10
+        },
+        "text": {
+          "field": "nationalLabel"
+        }
+      }
+    },
+    {
+      "description": "line from the national average to the group's score",
+      "mark": {
+        "type": "rule",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "y": {
+          "field": "Group",
+          "type": "nominal",
+          "sort": {
+            "field": "row"
+          }
+        },
+        "x": {
+          "field": "national",
+          "type": "quantitative"
+        },
+        "x2": {
+          "field": "score"
+        },
+        "color": {
+          "field": "comparison",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Below national average",
+              "At or above national average"
+            ],
+            "range": [
+              "#E0248A",
+              "#5F566E"
+            ]
+          },
+          "legend": {
+            "orient": "top",
+            "title": null,
+            "direction": "horizontal",
+            "symbolType": "circle"
+          }
+        }
+      }
+    },
+    {
+      "description": "small marker at the national average end",
+      "mark": {
+        "type": "circle",
+        "size": 30,
+        "color": "#A79FB6",
+        "opacity": 1
+      },
+      "encoding": {
+        "y": {
+          "field": "Group",
+          "type": "nominal",
+          "sort": {
+            "field": "row"
+          }
+        },
+        "x": {
+          "field": "national",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "description": "group's score",
+      "mark": {
+        "type": "circle",
+        "size": 90,
+        "opacity": 1
+      },
+      "encoding": {
+        "y": {
+          "field": "Group",
+          "type": "nominal",
+          "sort": {
+            "field": "row"
+          }
+        },
+        "x": {
+          "field": "score",
+          "type": "quantitative",
+          "axis": {
+            "title": "Access score (out of 100)",
+            "tickCount": 6,
+            "grid": true
+          }
+        },
+        "color": {
+          "field": "comparison",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Below national average",
+              "At or above national average"
+            ],
+            "range": [
+              "#E0248A",
+              "#5F566E"
+            ]
+          },
+          "legend": {
+            "orient": "top",
+            "title": null,
+            "direction": "horizontal",
+            "symbolType": "circle"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Dimension",
+            "type": "nominal"
+          },
+          {
+            "field": "Group",
+            "type": "nominal"
+          },
+          {
+            "field": "score",
+            "type": "quantitative",
+            "title": "Access score",
+            "format": ".1f"
+          },
+          {
+            "field": "gap",
+            "type": "quantitative",
+            "title": "Gap from national average",
+            "format": "+.1f"
+          }
+        ]
+      }
+    },
+    {
+      "description": "annotation 2 (compounding): ring at the score for ALL very remote Australians, on the First Nations (very remote) row",
+      "transform": [
+        {
+          "filter": "datum.Group === 'First Nations (very remote)'"
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "size": 90,
+        "filled": false,
+        "stroke": "#25212E",
+        "strokeWidth": 1.5,
+        "opacity": 1
+      },
+      "encoding": {
+        "y": {
+          "field": "Group",
+          "type": "nominal",
+          "sort": {
+            "field": "row"
+          }
+        },
+        "x": {
+          "field": "veryRemoteAll",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "veryRemoteAll",
+            "type": "quantitative",
+            "title": "Very Remote Australia (all people)",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "description": "annotation 2 (compounding): two lines, centred on the First Nations (very remote) row, left of its dot",
+      "transform": [
+        {
+          "filter": "datum.Group === 'First Nations (very remote)'"
+        },
+        {
+          "calculate": "['First Nations + very remote:', 'a further ' + format(datum.veryRemoteAll - datum.score, '.0f') + ' points lower']",
+          "as": "note"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -10,
+        "baseline": "middle",
+        "lineHeight": 12,
+        "fontSize": 11,
+        "fontStyle": "italic",
+        "color": "#5F566E"
+      },
+      "encoding": {
+        "y": {
+          "field": "Group",
+          "type": "nominal",
+          "sort": {
+            "field": "row"
+          }
+        },
+        "x": {
+          "field": "score",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "note"
+        }
+      }
+    },
+    {
+      "description": "annotation 2 (compounding): label under the ring, in the empty space of the row below",
+      "transform": [
+        {
+          "filter": "datum.Group === 'First Nations (very remote)'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "top",
+        "dy": 8,
+        "fontSize": 10,
+        "fontStyle": "italic",
+        "color": "#5F566E"
+      },
+      "encoding": {
+        "y": {
+          "field": "Group",
+          "type": "nominal",
+          "sort": {
+            "field": "row"
+          }
+        },
+        "x": {
+          "field": "veryRemoteAll",
+          "type": "quantitative"
+        },
+        "text": {
+          "value": "all very remote Australians"
+        }
+      }
+    },
+    {
+      "description": "annotations 3 (age cliff) and 5 (gender parity): one line, left of the dot",
+      "transform": [
+        {
+          "lookup": "Group",
+          "from": {
+            "data": {
+              "values": [
+                {
+                  "Group": "75+",
+                  "note": "Access drops 12 points after age 75"
+                },
+                {
+                  "Group": "Female",
+                  "note": "Only 1.3 points apart: gender isn't where the divide is"
+                }
+              ]
+            },
+            "key": "Group",
+            "fields": [
+              "note"
+            ]
+          }
+        },
+        {
+          "filter": "datum.note != null"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -10,
+        "fontSize": 11,
+        "fontStyle": "italic",
+        "color": "#5F566E",
+        "baseline": "middle"
+      },
+      "encoding": {
+        "y": {
+          "field": "Group",
+          "type": "nominal",
+          "sort": {
+            "field": "row"
+          }
+        },
+        "x": {
+          "field": "score",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "note"
+        }
+      }
+    }
+  ]
+}

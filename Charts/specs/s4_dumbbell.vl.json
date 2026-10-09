@@ -1,0 +1,72 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Base version adapted from the Vega-Lite 'Ranged Dot Plot' example. Full version with bands, labels and annotations: s4_dumbbell_full.vl.json",
+  "width": "container",
+  "height": "container",
+  "data": { "url": "Charts/Data/AccessGroupsNational.csv" },
+  "transform": [
+    { "filter": "datum.Dimension !== 'National'" },
+    { "calculate": "76.8", "as": "national" },
+    { "window": [{ "op": "row_number", "as": "row" }] },
+    { "joinaggregate": [{ "op": "min", "field": "row", "as": "categoryStart" }], "groupby": ["Dimension"] },
+    { "window": [{ "op": "dense_rank", "as": "categoryIndex" }], "sort": [{ "field": "categoryStart" }] }
+  ],
+  "encoding": {
+    "y": { "field": "Group", "type": "nominal", "sort": {"field": "row"}, "title": null, "axis": { "labelLimit": 260 } }
+  },
+  "layer": [
+    {
+      "description": "shaded background on every second category; starts 196px left of the plot so it runs behind the group labels (widest label 186px + 5px tick + 2px padding + 3px margin)",
+      "mark": { "type": "rect" },
+      "encoding": {
+        "x": { "value": -196 },
+        "x2": { "value": "width" },
+        "color": { "condition": { "test": "datum.categoryIndex % 2 === 1", "value": "#EEE2F1" }, "value": "#F7F1F8" }
+      }
+    },
+    {
+      "description": "category name on the first row of each category",
+      "transform": [{ "filter": "datum.row === datum.categoryStart" }],
+      "mark": { "type": "text", "align": "left", "dx": 4, "font": "Oxanium", "fontWeight": 600, "fontSize": 11, "color": "#B8186F" },
+      "encoding": {
+        "x": { "datum": 0 },
+        "text": { "field": "Dimension" }
+      }
+    },
+    {
+      "description": "national average: dashed vertical line",
+      "data": { "values": [{}] },
+      "mark": { "type": "rule", "strokeDash": [4, 3], "color": "#5F566E" },
+      "encoding": {
+        "x": { "datum": 76.8 },
+        "y": { "value": 0 },
+        "y2": { "value": "height" }
+      }
+    },
+    {
+      "description": "national average: label above the line",
+      "data": { "values": [{}] },
+      "mark": { "type": "text", "fontSize": 11, "color": "#5F566E" },
+      "encoding": {
+        "x": { "datum": 76.8 },
+        "y": { "value": -10 },
+        "text": { "value": "National average 76.8" }
+      }
+    },
+    {
+      "mark": "rule",
+      "encoding": {
+        "x": { "field": "national", "type": "quantitative", "scale": { "domain": [0, 100] }, "title": "Access score", "axis": { "tickCount": 10 } },
+        "x2": { "field": "Access score" }
+      }
+    },
+    {
+      "mark": { "type": "circle", "size": 80, "opacity": 1 },
+      "encoding": {
+        "x": { "field": "Access score", "type": "quantitative" },
+        "color": { "condition": { "test": "datum['Access score'] < 76.8", "value": "#E0248A" }, "value": "#5F566E" },
+        "tooltip": [{ "field": "Dimension", "title": "Category" }, { "field": "Group" }, { "field": "Access score" }]
+      }
+    }
+  ]
+}
