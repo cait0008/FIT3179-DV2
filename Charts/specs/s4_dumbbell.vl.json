@@ -5,7 +5,7 @@
   "height": "container",
   "data": { "url": "Charts/Data/AccessGroupsNational.csv" },
   "transform": [
-    { "filter": "datum.Dimension !== 'National'" },
+    { "filter": "datum.Dimension !== 'National' && datum.Dimension !== 'Gender' && datum.Group !== 'Metro' && datum.Group !== 'Regional'" },
     { "calculate": "76.8", "as": "national" },
     { "window": [{ "op": "row_number", "as": "row" }] },
     { "joinaggregate": [{ "op": "min", "field": "row", "as": "categoryStart" }], "groupby": ["Dimension"] },

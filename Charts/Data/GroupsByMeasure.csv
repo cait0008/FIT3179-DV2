@@ -1,0 +1,97 @@
+Dimension,Group,Measure,Score,National
+National,National average,Access,76.8,76.8
+Age,18-34,Access,79.8,76.8
+Age,35-44,Access,80.7,76.8
+Age,45-54,Access,78.5,76.8
+Age,55-64,Access,77.2,76.8
+Age,65-74,Access,73.1,76.8
+Age,75+,Access,61.1,76.8
+Gender,Male,Access,77.4,76.8
+Gender,Female,Access,76.1,76.8
+Education levels,Did not complete secondary school,Access,65.0,76.8
+Education levels,Completed secondary school,Access,74.6,76.8
+Education levels,Certificate / diploma,Access,78.6,76.8
+Education levels,Bachelor and above,Access,80.3,76.8
+Education levels,Other,Access,63.2,76.8
+Employment,Employed,Access,80.5,76.8
+Employment,Unemployed,Access,73.5,76.8
+Employment,Not in labour force,Access,71.0,76.8
+People with disability,People with disability,Access,71.5,76.8
+People with disability,People without disability,Access,77.8,76.8
+First Nations,First Nations (national average),Access,64.3,76.8
+First Nations,First Nations (urban),Access,69.4,76.8
+First Nations,First Nations (inner regional),Access,66.3,76.8
+First Nations,First Nations (outer regional),Access,67.1,76.8
+First Nations,First Nations (remote),Access,55.9,76.8
+First Nations,First Nations (very remote),Access,37.3,76.8
+Remoteness,Major Cities of Australia,Access,78.3,76.8
+Remoteness,Inner Regional Australia,Access,73.4,76.8
+Remoteness,Outer Regional Australia,Access,72.7,76.8
+Remoteness,Remote Australia,Access,70.8,76.8
+Remoteness,Very Remote Australia,Access,57.4,76.8
+Capital cities,Metro,Access,78.3,76.8
+Capital cities,Regional,Access,73.8,76.8
+National,National average,Affordability,70.3,70.3
+Age,18-34,Affordability,74.0,70.3
+Age,35-44,Affordability,79.7,70.3
+Age,45-54,Affordability,75.7,70.3
+Age,55-64,Affordability,67.8,70.3
+Age,65-74,Affordability,57.5,70.3
+Age,75+,Affordability,51.1,70.3
+Gender,Male,Affordability,72.0,70.3
+Gender,Female,Affordability,68.5,70.3
+Education levels,Did not complete secondary school,Affordability,54.6,70.3
+Education levels,Completed secondary school,Affordability,63.4,70.3
+Education levels,Certificate / diploma,Affordability,69.4,70.3
+Education levels,Bachelor and above,Affordability,80.2,70.3
+Education levels,Other,Affordability,59.3,70.3
+Employment,Employed,Affordability,79.3,70.3
+Employment,Unemployed,Affordability,56.6,70.3
+Employment,Not in labour force,Affordability,56.0,70.3
+People with disability,People with disability,Affordability,57.2,70.3
+People with disability,People without disability,Affordability,72.6,70.3
+First Nations,First Nations (national average),Affordability,57.3,70.3
+First Nations,First Nations (urban),Affordability,58.3,70.3
+First Nations,First Nations (inner regional),Affordability,54.9,70.3
+First Nations,First Nations (outer regional),Affordability,58.0,70.3
+First Nations,First Nations (remote),Affordability,54.9,70.3
+First Nations,First Nations (very remote),Affordability,59.2,70.3
+Remoteness,Major Cities of Australia,Affordability,71.5,70.3
+Remoteness,Inner Regional Australia,Affordability,67.1,70.3
+Remoteness,Outer Regional Australia,Affordability,66.5,70.3
+Remoteness,Remote Australia,Affordability,69.1,70.3
+Remoteness,Very Remote Australia,Affordability,66.6,70.3
+Capital cities / regional,Metro,Affordability,72.0,70.3
+Capital cities / regional,Regional,Affordability,66.6,70.3
+National,National average,Digital Ability,73.6,73.6
+Age,18-34,Digital Ability,88.9,73.6
+Age,35-44,Digital Ability,80.1,73.6
+Age,45-54,Digital Ability,74.1,73.6
+Age,55-64,Digital Ability,67.6,73.6
+Age,65-74,Digital Ability,58.1,73.6
+Age,75+,Digital Ability,41.5,73.6
+Gender,Male,Digital Ability,74.8,73.6
+Gender,Female,Digital Ability,71.9,73.6
+Education levels,Did not complete secondary school,Digital Ability,54.4,73.6
+Education levels,Completed secondary school,Digital Ability,70.4,73.6
+Education levels,Certificate / diploma,Digital Ability,73.6,73.6
+Education levels,Bachelor and above,Digital Ability,82.7,73.6
+Education levels,Other,Digital Ability,47.1,73.6
+Employment,Employed,Digital Ability,80.0,73.6
+Employment,Unemployed,Digital Ability,75.8,73.6
+Employment,Not in labour force,Digital Ability,62.4,73.6
+People with disability,People with disability,Digital Ability,62.5,73.6
+People with disability,People without disability,Digital Ability,75.6,73.6
+First Nations,First Nations (national average),Digital Ability,68.6,73.6
+First Nations,First Nations (urban),Digital Ability,75.5,73.6
+First Nations,First Nations (inner regional),Digital Ability,64.5,73.6
+First Nations,First Nations (outer regional),Digital Ability,66.7,73.6
+First Nations,First Nations (remote),Digital Ability,61.5,73.6
+First Nations,First Nations (very remote),Digital Ability,56.8,73.6
+Remoteness,Major Cities of Australia,Digital Ability,75.4,73.6
+Remoteness,Inner Regional Australia,Digital Ability,68.6,73.6
+Remoteness,Outer Regional Australia,Digital Ability,68.9,73.6
+Remoteness,Remote Australia,Digital Ability,71.9,73.6
+Remoteness,Very Remote Australia,Digital Ability,63.6,73.6
+Capital cities / regional,Metro,Digital Ability,76.1,73.6
+Capital cities / regional,Regional,Digital Ability,68.3,73.6

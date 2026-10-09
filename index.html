@@ -101,26 +101,19 @@
       </div>
 
       <div class="pure-g">
-        <!-- 3.1 Choropleth: remoteness -->
-        <div class="pure-u-1 pure-u-md-1-2">
-          <div class="chart-block">
-            <h3>Choropleth: remoteness</h3>
-            <p class="chart-desc">[Description]</p>
-            <div id="vis-s3-choro-remote" class="vis-container"></div>
-          </div>
-        </div>
-        <!-- 3.2 Choropleth: LGA ADII scores -->
-        <div class="pure-u-1 pure-u-md-1-2">
+        <!-- 3.1 Choropleth: LGA ADII scores -->
+        <div class="pure-u-1">
           <div class="chart-block">
             <h3>Choropleth: LGA ADII scores</h3>
             <p class="chart-desc">[Description]</p>
-            <div id="vis-s3-choro-lga" class="vis-container"></div>
+            <div id="lga-state-select" class="state-select"></div> <!-- Vega-Lite puts the state radio buttons here -->
+            <div id="vis-s3-choro-lga" class="vis-container vis-tall"></div>
           </div>
         </div>
       </div>
 
       <div class="pure-g">
-        <!-- 3.3 Bivariate choropleth -->
+        <!-- 3.2 Bivariate choropleth -->
         <div class="pure-u-1">
           <div class="chart-block">
             <h3>Bivariate choropleth</h3>
@@ -131,7 +124,7 @@
       </div>
 
       <div class="pure-g">
-        <!-- 3.4 Dorling cartogram & First Nations -->
+        <!-- 3.3 Dorling cartogram & First Nations -->
         <div class="pure-u-1">
           <div class="chart-block">
             <h3>Dorling cartogram: First Nations</h3>
@@ -142,7 +135,7 @@
       </div>
 
       <div class="pure-g">
-        <!-- 3.5 Proportional symbol map: capitals -->
+        <!-- 3.4 Proportional symbol map: capitals -->
         <div class="pure-u-1 pure-u-md-1-2">
           <div class="chart-block">
             <h3>Proportional symbol map: capital cities</h3>
@@ -150,7 +143,7 @@
             <div id="vis-s3-prop-symbol" class="vis-container"></div>
           </div>
         </div>
-        <!-- 3.6 Beeswarm -->
+        <!-- 3.5 Beeswarm -->
         <div class="pure-u-1 pure-u-md-1-2">
           <div class="chart-block">
             <h3>Beeswarm</h3>
@@ -175,7 +168,29 @@
       </div>
 
       <div class="pure-g">
-        <!-- 4.1 Dumbbell: each group vs national average (full width, 31 groups need the height) -->
+        <!-- 4.1 Heatmap matrix -->
+        <div class="pure-u-1">
+          <div class="chart-block">
+            <h3>Heatmap matrix</h3>
+            <p class="chart-desc">[Description]</p>
+            <div id="vis-s4-heatmap" class="vis-container vis-tall"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pure-g">
+        <!-- 4.2 Choropleth: access and remoteness (moved from Section 3) -->
+        <div class="pure-u-1">
+          <div class="chart-block">
+            <h3>Impact of remoteness on access</h3>
+            <p class="chart-desc">[Description]</p>
+            <div id="vis-s4-choro-remote" class="vis-container vis-tall"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pure-g">
+        <!-- 4.3 Dumbbell: each group's Access score vs national average (full width, many groups need the height) -->
         <div class="pure-u-1">
           <div class="chart-block">
             <h3>Access to the internet: each group vs the national average</h3>
@@ -186,31 +201,12 @@
       </div>
 
       <div class="pure-g">
-        <!-- 4.2 Heatmap matrix -->
+        <!-- 4.4 Diverging stacked bar: exclusion bands per group (full width, many groups need the height) -->
         <div class="pure-u-1">
           <div class="chart-block">
-            <h3>Heatmap matrix</h3>
+            <h3>How many people in each group are digitally excluded</h3>
             <p class="chart-desc">[Description]</p>
-            <div id="vis-s4-heatmap" class="vis-container"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="pure-g">
-        <!-- 4.3 Diverging stacked bar: exclusion bands per group -->
-        <div class="pure-u-1 pure-u-md-1-2">
-          <div class="chart-block">
-            <h3>Diverging stacked bar: exclusion bands per group</h3>
-            <p class="chart-desc">[Description]</p>
-            <div id="vis-s4-diverging" class="vis-container"></div>
-          </div>
-        </div>
-        <!-- 4.4 Range interval plot -->
-        <div class="pure-u-1 pure-u-md-1-2">
-          <div class="chart-block">
-            <h3>Range interval plot</h3>
-            <p class="chart-desc">[Description]</p>
-            <div id="vis-s4-range" class="vis-container"></div>
+            <div id="vis-s4-diverging" class="vis-container vis-tall"></div>
           </div>
         </div>
       </div>

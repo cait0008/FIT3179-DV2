@@ -1,0 +1,102 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Two panels sharing one row per group (ADII 2025). Left: Access / Affordability / Digital Ability scores, coloured by gap from each measure's national average (from the 'Annotated Heatmap' example). Right: share of people in each inclusion band (from the 'Diverging Stacked Bar Chart' example). Standalone versions: s4_heatmap.vl.json, s4_diverging.vl.json.",
+  "autosize": { "type": "pad" },
+  "spacing": 24,
+  "resolve": { "scale": { "y": "shared", "color": "independent" } },
+  "hconcat": [
+    {
+      "title": "Score on each measure",
+      "width": { "step": 70 },
+      "height": { "step": 18 },
+      "data": { "url": "Charts/Data/GroupsByMeasure.csv" },
+      "transform": [
+        { "calculate": "datum.Score - datum.National", "as": "gap" },
+        { "window": [{ "op": "row_number", "as": "row" }], "groupby": ["Measure"] }
+      ],
+      "encoding": {
+        "y": { "field": "Group", "type": "nominal", "sort": { "field": "row", "op": "min" }, "title": null, "axis": { "labelLimit": 260 } },
+        "x": { "field": "Measure", "type": "nominal", "sort": ["Access", "Affordability", "Digital Ability"], "title": null, "axis": { "labelAngle": 0 } }
+      },
+      "layer": [
+        {
+          "mark": { "type": "rect", "stroke": "#FFFFFF", "strokeWidth": 1 },
+          "encoding": {
+            "color": {
+              "field": "gap",
+              "type": "quantitative",
+              "scale": { "domainMid": 0, "range": ["#8E1257", "#F7F1F8", "#5F566E"] },
+              "legend": { "title": "Points from national average", "orient": "bottom", "direction": "horizontal", "gradientLength": 180, "titleLimit": 300 }
+            },
+            "tooltip": [
+              { "field": "Group" },
+              { "field": "Measure" },
+              { "field": "Score", "type": "quantitative", "format": ".1f" },
+              { "field": "National", "type": "quantitative", "title": "National average", "format": ".1f" },
+              { "field": "gap", "type": "quantitative", "title": "Gap", "format": "+.1f" }
+            ]
+          }
+        },
+        {
+          "mark": { "type": "text", "fontSize": 11 },
+          "encoding": {
+            "text": { "field": "Score", "type": "quantitative", "format": ".1f" },
+            "color": { "condition": { "test": "datum.gap < -22 || datum.gap > 12", "value": "#FFFFFF" }, "value": "#25212E" }
+          }
+        }
+      ]
+    },
+    {
+      "title": "Share of people in each inclusion band",
+      "width": 430,
+      "height": { "step": 18 },
+      "data": { "url": "Charts/Data/ExclusionBands.csv" },
+      "transform": [
+        { "window": [{ "op": "row_number", "as": "row" }], "groupby": ["Band"] },
+        { "calculate": "indexof(['Highly excluded', 'Excluded'], datum.Band) >= 0 ? -datum.Share : datum.Share", "as": "signedShare" },
+        { "calculate": "datum.Band === 'Excluded' || datum.Band === 'Included' ? 1 : 2", "as": "stackOrder" }
+      ],
+      "encoding": {
+        "y": { "field": "Group", "type": "nominal", "sort": { "field": "row", "op": "min" }, "axis": null }
+      },
+      "layer": [
+        {
+          "mark": { "type": "bar", "height": { "band": 0.7 } },
+          "encoding": {
+            "x": {
+              "field": "signedShare",
+              "type": "quantitative",
+              "title": "Share excluded vs share included",
+              "axis": { "labelExpr": "format(abs(datum.value), '.0%')", "tickCount": 10 }
+            },
+            "color": {
+              "field": "Band",
+              "type": "nominal",
+              "scale": {
+                "domain": ["Highly excluded", "Excluded", "Included", "Highly included"],
+                "range": ["#8E1257", "#E48DBA", "#B9B0C8", "#5F566E"]
+              },
+              "legend": { "title": null, "orient": "bottom", "direction": "horizontal" }
+            },
+            "order": { "field": "stackOrder" },
+            "tooltip": [
+              { "field": "Group" },
+              { "field": "Band" },
+              { "field": "Share", "type": "quantitative", "format": ".0%" }
+            ]
+          }
+        },
+        {
+          "description": "line at zero, between excluded and included",
+          "data": { "values": [{}] },
+          "mark": { "type": "rule", "color": "#25212E" },
+          "encoding": {
+            "x": { "datum": 0 },
+            "y": { "value": 0 },
+            "y2": { "value": "height" }
+          }
+        }
+      ]
+    }
+  ]
+}

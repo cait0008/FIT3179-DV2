@@ -1,0 +1,129 @@
+Dimension,Group,Band,Share
+National,National average,Highly excluded,0.0922
+National,National average,Excluded,0.1137
+National,National average,Included,0.3723
+National,National average,Highly included,0.4218
+Age,18-34,Highly excluded,0.0177
+Age,18-34,Excluded,0.0381
+Age,18-34,Included,0.3401
+Age,18-34,Highly included,0.604
+Age,35-44,Highly excluded,0.0293
+Age,35-44,Excluded,0.0521
+Age,35-44,Included,0.3316
+Age,35-44,Highly included,0.587
+Age,45-54,Highly excluded,0.0609
+Age,45-54,Excluded,0.11
+Age,45-54,Included,0.3423
+Age,45-54,Highly included,0.4868
+Age,55-64,Highly excluded,0.0911
+Age,55-64,Excluded,0.1309
+Age,55-64,Included,0.499
+Age,55-64,Highly included,0.2789
+Age,65-74,Highly excluded,0.1589
+Age,65-74,Excluded,0.2696
+Age,65-74,Included,0.4431
+Age,65-74,Highly included,0.1285
+Age,75+,Highly excluded,0.4143
+Age,75+,Excluded,0.2512
+Age,75+,Included,0.3107
+Age,75+,Highly included,0.0238
+Gender,Male,Highly excluded,0.0859
+Gender,Male,Excluded,0.094
+Gender,Male,Included,0.3551
+Gender,Male,Highly included,0.4649
+Gender,Female,Highly excluded,0.1003
+Gender,Female,Excluded,0.1378
+Gender,Female,Included,0.3879
+Gender,Female,Highly included,0.3739
+Education levels,Did not complete secondary school,Highly excluded,0.3522
+Education levels,Did not complete secondary school,Excluded,0.1929
+Education levels,Did not complete secondary school,Included,0.3249
+Education levels,Did not complete secondary school,Highly included,0.13
+Education levels,Completed secondary school,Highly excluded,0.127
+Education levels,Completed secondary school,Excluded,0.1438
+Education levels,Completed secondary school,Included,0.3808
+Education levels,Completed secondary school,Highly included,0.3485
+Education levels,Certificate / diploma,Highly excluded,0.0583
+Education levels,Certificate / diploma,Excluded,0.1339
+Education levels,Certificate / diploma,Included,0.422
+Education levels,Certificate / diploma,Highly included,0.3857
+Education levels,Bachelor and above,Highly excluded,0.0247
+Education levels,Bachelor and above,Excluded,0.04
+Education levels,Bachelor and above,Included,0.3323
+Education levels,Bachelor and above,Highly included,0.603
+Education levels,Other,Highly excluded,0.3012
+Education levels,Other,Excluded,0.2683
+Education levels,Other,Included,0.2741
+Education levels,Other,Highly included,0.1564
+Employment,Employed,Highly excluded,0.0266
+Employment,Employed,Excluded,0.0599
+Employment,Employed,Included,0.3452
+Employment,Employed,Highly included,0.5683
+Employment,Unemployed,Highly excluded,0.1436
+Employment,Unemployed,Excluded,0.1532
+Employment,Unemployed,Included,0.4097
+Employment,Unemployed,Highly included,0.2935
+Employment,Not in labour force,Highly excluded,0.1968
+Employment,Not in labour force,Excluded,0.2061
+Employment,Not in labour force,Included,0.4174
+Employment,Not in labour force,Highly included,0.1797
+People with disability,People with disability,Highly excluded,0.195
+People with disability,People with disability,Excluded,0.2244
+People with disability,People with disability,Included,0.3821
+People with disability,People with disability,Highly included,0.1985
+People with disability,People without disability,Highly excluded,0.0723
+People with disability,People without disability,Excluded,0.0949
+People with disability,People without disability,Included,0.3711
+People with disability,People without disability,Highly included,0.4617
+First Nations,First Nations (national average),Highly excluded,0.2343
+First Nations,First Nations (national average),Excluded,0.1746
+First Nations,First Nations (national average),Included,0.3845
+First Nations,First Nations (national average),Highly included,0.2066
+First Nations,First Nations (urban),Highly excluded,0.1561
+First Nations,First Nations (urban),Excluded,0.1553
+First Nations,First Nations (urban),Included,0.4273
+First Nations,First Nations (urban),Highly included,0.2613
+First Nations,First Nations (inner regional),Highly excluded,0.2825
+First Nations,First Nations (inner regional),Excluded,0.1619
+First Nations,First Nations (inner regional),Included,0.3504
+First Nations,First Nations (inner regional),Highly included,0.2053
+First Nations,First Nations (outer regional),Highly excluded,0.2067
+First Nations,First Nations (outer regional),Excluded,0.1861
+First Nations,First Nations (outer regional),Included,0.3886
+First Nations,First Nations (outer regional),Highly included,0.2186
+First Nations,First Nations (remote),Highly excluded,0.3447
+First Nations,First Nations (remote),Excluded,0.1971
+First Nations,First Nations (remote),Included,0.3607
+First Nations,First Nations (remote),Highly included,0.0975
+First Nations,First Nations (very remote),Highly excluded,0.4371
+First Nations,First Nations (very remote),Excluded,0.2541
+First Nations,First Nations (very remote),Included,0.2923
+First Nations,First Nations (very remote),Highly included,0.0165
+Remoteness,Major Cities of Australia,Highly excluded,0.0811
+Remoteness,Major Cities of Australia,Excluded,0.0943
+Remoteness,Major Cities of Australia,Included,0.3679
+Remoteness,Major Cities of Australia,Highly included,0.4566
+Remoteness,Inner Regional Australia,Highly excluded,0.1158
+Remoteness,Inner Regional Australia,Excluded,0.1559
+Remoteness,Inner Regional Australia,Included,0.3988
+Remoteness,Inner Regional Australia,Highly included,0.3295
+Remoteness,Outer Regional Australia,Highly excluded,0.1279
+Remoteness,Outer Regional Australia,Excluded,0.1908
+Remoteness,Outer Regional Australia,Included,0.3401
+Remoteness,Outer Regional Australia,Highly included,0.3412
+Remoteness,Remote Australia,Highly excluded,0.1002
+Remoteness,Remote Australia,Excluded,0.1477
+Remoteness,Remote Australia,Included,0.4248
+Remoteness,Remote Australia,Highly included,0.3273
+Remoteness,Very Remote Australia,Highly excluded,0.2579
+Remoteness,Very Remote Australia,Excluded,0.1462
+Remoteness,Very Remote Australia,Included,0.4482
+Remoteness,Very Remote Australia,Highly included,0.1477
+Capital cities / regional,Metro,Highly excluded,0.0778
+Capital cities / regional,Metro,Excluded,0.0925
+Capital cities / regional,Metro,Included,0.3625
+Capital cities / regional,Metro,Highly included,0.4673
+Capital cities / regional,Regional,Highly excluded,0.122
+Capital cities / regional,Regional,Excluded,0.1576
+Capital cities / regional,Regional,Included,0.3928
+Capital cities / regional,Regional,Highly included,0.3277

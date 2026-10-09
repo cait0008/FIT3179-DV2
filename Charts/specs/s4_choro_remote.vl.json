@@ -1,0 +1,45 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Choropleth of Access score by remoteness area (ABS Remoteness Areas 2021 + ADII 2025), binned by distance from the national average (76.8). Based on the Vega-Lite 'Choropleth of Unemployment Rate per County' example.",
+  "width": "container",
+  "height": "container",
+  "data": {
+    "url": "Charts/Raw_Data/Shape_Files/RA_2021_AUST_GDA2020.json",
+    "format": { "type": "topojson", "feature": "RA_2021_AUST_GDA2020" }
+  },
+  "transform": [
+    { "filter": "datum.geometry != null && datum.properties.STE_CODE21 !== '9'" },
+    {
+      "lookup": "properties.RA_NAME21",
+      "from": {
+        "data": { "url": "Charts/Data/AccessGroupsNational.csv" },
+        "key": "Group",
+        "fields": ["Access score"]
+      }
+    },
+    { "calculate": "toNumber(datum['Access score']) - 76.8", "as": "gap" },
+    {
+      "calculate": "datum.gap >= 0 ? 'At or above average' : datum.gap >= -5 ? '0-5 points below' : datum.gap >= -10 ? '5-10 points below' : 'More than 10 points below'",
+      "as": "band"
+    }
+  ],
+  "projection": { "type": "conicEqualArea", "parallels": [-18, -36], "rotate": [-132, 0] },
+  "mark": { "type": "geoshape", "stroke": "#FFFFFF", "strokeWidth": 0.4 },
+  "encoding": {
+    "color": {
+      "field": "band",
+      "type": "ordinal",
+      "scale": {
+        "domain": ["More than 10 points below", "5-10 points below", "0-5 points below", "At or above average"],
+        "range": ["#8E1257", "#C93C8A", "#E48DBA", "#F2D3E4"]
+      },
+      "legend": { "title": "Access vs national average (76.8)", "orient": "bottom", "columns": 2, "symbolType": "square", "titleLimit": 400 }
+    },
+    "tooltip": [
+      { "field": "properties.RA_NAME21", "title": "Remoteness area" },
+      { "field": "properties.STE_NAME21", "title": "State" },
+      { "field": "Access score", "type": "quantitative", "format": ".1f" },
+      { "field": "gap", "type": "quantitative", "title": "Gap from national average", "format": "+.1f" }
+    ]
+  }
+}

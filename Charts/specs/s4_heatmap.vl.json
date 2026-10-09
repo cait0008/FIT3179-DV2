@@ -1,0 +1,44 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Heatmap of each group's Access, Affordability and Digital Ability scores, coloured by gap from that measure's national average (ADII 2025). Based on the Vega-Lite 'Annotated Heatmap' example.",
+  "width": "container",
+  "height": "container",
+  "data": { "url": "Charts/Data/GroupsByMeasure.csv" },
+  "transform": [
+    { "filter": "datum.Group !== 'Metro' && datum.Group !== 'Regional'" },
+    { "calculate": "datum.Score - datum.National", "as": "gap" },
+    { "window": [{ "op": "row_number", "as": "row" }], "groupby": ["Measure"] }
+  ],
+  "encoding": {
+    "y": { "field": "Group", "type": "nominal", "sort": { "field": "row", "op": "min" }, "title": null, "axis": { "labelLimit": 260 } },
+    "x": { "field": "Measure", "type": "nominal", "sort": ["Access", "Affordability", "Digital Ability"], "title": null, "axis": { "orient": "top", "labelAngle": 0 } }
+  },
+  "layer": [
+    {
+      "mark": { "type": "rect", "stroke": "#FFFFFF", "strokeWidth": 1 },
+      "encoding": {
+        "color": {
+          "field": "gap",
+          "type": "quantitative",
+          "scale": { "domainMid": 0, "range": ["#8E1257", "#F7F1F8", "#5F566E"] },
+          "legend": { "title": "Points from national average", "orient": "bottom", "direction": "horizontal", "gradientLength": 220, "titleLimit": 300 }
+        },
+        "tooltip": [
+          { "field": "Dimension", "title": "Category" },
+          { "field": "Group" },
+          { "field": "Measure" },
+          { "field": "Score", "type": "quantitative", "format": ".1f" },
+          { "field": "National", "type": "quantitative", "title": "National average", "format": ".1f" },
+          { "field": "gap", "type": "quantitative", "title": "Gap", "format": "+.1f" }
+        ]
+      }
+    },
+    {
+      "mark": { "type": "text", "fontSize": 11 },
+      "encoding": {
+        "text": { "field": "Score", "type": "quantitative", "format": ".1f" },
+        "color": { "condition": { "test": "datum.gap < -22 || datum.gap > 12", "value": "#FFFFFF" }, "value": "#25212E" }
+      }
+    }
+  ]
+}

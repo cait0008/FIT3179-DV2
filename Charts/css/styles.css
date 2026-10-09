@@ -162,9 +162,39 @@ h1 {
   height: 450px;
 }
 
+/* multi-panel charts (hconcat) size themselves; scroll sideways on narrow screens */
+.pure-u-1 > .chart-block .vis-container.vis-auto {
+  height: auto;
+  overflow-x: auto;
+}
+
 /* charts with many rows (e.g. the 31-group dumbbell) */
 .pure-u-1 > .chart-block .vis-container.vis-tall {
   height: 640px;
+}
+
+/* radio buttons that Vega-Lite draws for a chart (e.g. the LGA map's state zoom, placed in .state-select) */
+.state-select {
+  margin-bottom: 8px;
+  font-size: 0.875rem; /* 14px */
+  color: var(--charcoal);
+}
+
+.vega-bind-name {
+  font-family: 'Oxanium', sans-serif;
+  font-weight: 600;
+  margin-right: 8px;
+}
+
+.vega-bind-radio label {
+  margin-right: 12px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.vega-bind-radio input {
+  accent-color: var(--magenta);
+  margin-right: 4px;
 }
 
 .vis-placeholder {

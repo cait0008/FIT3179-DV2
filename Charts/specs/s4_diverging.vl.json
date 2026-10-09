@@ -1,0 +1,54 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Share of each group in each ADII inclusion band (ADII 2025): excluded bands to the left of zero, included bands to the right. Based on the Vega-Lite 'Diverging Stacked Bar Chart' example.",
+  "width": "container",
+  "height": "container",
+  "data": { "url": "Charts/Data/ExclusionBands.csv" },
+  "transform": [
+    { "filter": "datum.Dimension !== 'Gender' && datum.Group !== 'Metro' && datum.Group !== 'Regional'" },
+    { "window": [{ "op": "row_number", "as": "row" }], "groupby": ["Band"] },
+    { "calculate": "indexof(['Highly excluded', 'Excluded'], datum.Band) >= 0 ? -datum.Share : datum.Share", "as": "signedShare" },
+    { "calculate": "datum.Band === 'Excluded' || datum.Band === 'Included' ? 1 : 2", "as": "stackOrder" }
+  ],
+  "encoding": {
+    "y": { "field": "Group", "type": "nominal", "sort": { "field": "row", "op": "min" }, "title": null, "axis": { "labelLimit": 260 } }
+  },
+  "layer": [
+    {
+      "mark": { "type": "bar" },
+      "encoding": {
+        "x": {
+          "field": "signedShare",
+          "type": "quantitative",
+          "title": " Share excluded vs Share included",
+          "axis": { "labelExpr": "format(abs(datum.value), '.0%')", "tickCount": 10 }
+        },
+        "color": {
+          "field": "Band",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Highly excluded", "Excluded", "Included", "Highly included"],
+            "range": ["#8E1257", "#E48DBA", "#B9B0C8", "#5F566E"]
+          },
+          "legend": { "title": null, "orient": "top", "direction": "horizontal" }
+        },
+        "order": { "field": "stackOrder" },
+        "tooltip": [
+          { "field": "Group" },
+          { "field": "Band" },
+          { "field": "Share", "type": "quantitative", "format": ".0%" }
+        ]
+      }
+    },
+    {
+      "description": "line at zero, between excluded and included",
+      "data": { "values": [{}] },
+      "mark": { "type": "rule", "color": "#25212E" },
+      "encoding": {
+        "x": { "datum": 0 },
+        "y": { "value": 0 },
+        "y2": { "value": "height" }
+      }
+    }
+  ]
+}
