@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Digital Inclusion in Australia</title>
+
+  <!-- Vega, Vega-Lite & Vega-Embed -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+  <!-- Pure.css (base + responsive grids) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/grids-responsive-min.css">
+
+  <!-- Google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <!-- Own styles -->
+  <link rel="stylesheet" href="Charts/css/styles.css">
+</head>
+
+<body>
+
+  <!-- ===== NAV ===== -->
+  <nav class="pure-menu pure-menu-horizontal pure-menu-scrollable site-nav">
+    <a href="#top" class="pure-menu-heading">Digital Inclusion</a>
+    <ul class="pure-menu-list">
+      <li class="pure-menu-item"><a href="#s1" class="pure-menu-link">1. Introduction</a></li>
+      <li class="pure-menu-item"><a href="#s2" class="pure-menu-link">2. Quick comparison</a></li>
+      <li class="pure-menu-item"><a href="#s3" class="pure-menu-link">3. Geography</a></li>
+      <li class="pure-menu-item"><a href="#s4" class="pure-menu-link">4. Minorities</a></li>
+      <li class="pure-menu-item"><a href="#s5" class="pure-menu-link">5. Compounds</a></li>
+      <li class="pure-menu-item"><a href="#s6" class="pure-menu-link">6. Is the gap closing?</a></li>
+      <li class="pure-menu-item"><a href="#s7" class="pure-menu-link">7. Conclusion</a></li>
+    </ul>
+  </nav>
+
+  <div class="page" id="top">
+
+    <!-- ===== TITLE ===== -->
+    <header class="pure-g">
+      <div class="pure-u-1">
+        <h1>Digital Inclusion</h1>
+        <p class="lede">Investigate digital inclusion across Australia by comparing internet access, affordability and
+          digital ability across different population groups. Explore how digital inclusion has changed over time and
+          identify communities facing digital disadvantage.</p>
+      </div>
+    </header>
+
+
+    <!-- =========================================================
+         SECTION 1: INTRODUCTION
+         ========================================================= -->
+    <section id="s1" class="section">
+      <div class="pure-g">
+        <div class="pure-u-1">
+          <h2>Section 1: Introduction</h2>
+          <p>[Introduction text]</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+         SECTION 2: QUICK COMPARISON
+         ========================================================= -->
+    <section id="s2" class="section">
+      <div class="pure-g">
+        <div class="pure-u-1">
+          <h2>Section 2: Quick comparison</h2>
+          <p>[Section intro]</p>
+        </div>
+      </div>
+
+      <div class="pure-g">
+        <!-- 2.1 Isotype waffle: First Nations percentage -->
+        <div class="pure-u-1 pure-u-md-1-2">
+          <div class="chart-block">
+            <h3>Isotype waffle: First Nations percentage</h3>
+            <p class="chart-desc">[Description]</p>
+            <div id="vis-s2-waffle" class="vis-container"></div>
+          </div>
+        </div>
+        <!-- 2.2 Unit chart -->
+        <div class="pure-u-1 pure-u-md-1-2">
+          <div class="chart-block">
+            <h3>Unit chart</h3>
+            <p class="chart-desc">[Description]</p>
+            <div id="vis-s2-unit" class="vis-container"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+         SECTION 3: GEOGRAPHY OF THESE SCORES
+         ========================================================= -->
+    <section id="s3" class="section">
+      <div class="pure-g">
+        <div class="pure-u-1">
+          <h2>Section 3: Geography of these scores</h2>
+          <p>[Section intro]</p>
+        </div>
+      </div>
+
+      <div class="pure-g">
+        <!-- 3.1 Choropleth: remoteness -->
+        <div class="pure-u-1 pure-u-md-1-2">
+          <div class="chart-block">
+            <h3>Choropleth: remoteness</h3>
+            <p class="chart-desc">[Description]</p>
+            <div id="vis-s3-choro-remote" class="vis-container"></div>
+          </div>
+        </div>
+        <!-- 3.2 Choropleth: LGA ADII scores -->
+        <div class="pure-u-1 pure-u-md-1-2">
+          <div class="chart-block">
+            <h3>Choropleth: LGA ADII scores</h3>
+            <p class="chart-desc">[Description]</p>
+            <div id="vis-s3-choro-lga" class="vis-container"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pure-g">
+        <!-- 3.3 Bivariate choropleth -->
+        <div class="pure-u-1">
+          <div class="chart-block">
+            <h3>Bivariate choropleth</h3>
+            <p class="chart-desc">[Description]</p>
+            <div id="vis-s3-bivariate" class="vis-container"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pure-g">
+        <!-- 3.4 Dorling cartogram & First Nations -->
+        <div class="pure-u-1">
+          <div class="chart-block">
+            <h3>Dorling cartogram: First Nations</h3>
+            <p class="chart-desc">[Description]</p>
+            <div id="vis-s3-dorling" class="vis-container"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pure-g">
+        <!-- 3.5 Proportional symbol map: capitals -->
+        <div class="pure-u-1 pure-u-md-1-2">
+          <div class="chart-block">
+            <h3>Proportional symbol map: capital cities</h3>
+            <p class="chart-desc">[Description]</p>
+            <div id="vis-s3-prop-symbol" class="vis-container"></div>
+          </div>
+        </div>
+        <!-- 3.6 Beeswarm -->
+        <div class="pure-u-1 pure-u-md-1-2">
+          <div class="chart-block">
+            <h3>Beeswarm</h3>
+            <p class="chart-desc">[Description]</p>
+            <div id="vis-s3-beeswarm" class="vis-container"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+         SECTION 4: EXPLORING THE MINORITIES THAT FACE THIS DIVIDE
+         ========================================================= -->
+    <section id="s4" class="section">
+      <div class="pure-g">
+        <div class="pure-u-1">
+          <h2>Section 4: Exploring the minorities that face this divide</h2>
+          <p>[Section intro]</p>
+        </div>
+      </div>
+
+      <div class="pure-g">
+        <!-- 4.1 Dumbbell: each group vs national average -->
+        <div class="pure-u-1 pure-u-md-1-2">
+          <div class="chart-block">
+            <h3>Dumbbell: each group vs national average</h3>
+            <p class="chart-desc">[Description]</p>
+            <div id="vis-s4-dumbbell" class="vis-container"></div>
+          </div>
+        </div>
+        <!-- 4.2 Heatmap matrix -->
+        <div class="pure-u-1 pure-u-md-1-2">
+          <div class="chart-block">
+            <h3>Heatmap matrix</h3>
+            <p class="chart-desc">[Description]</p>
+            <div id="vis-s4-heatmap" class="vis-container"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pure-g">
+        <!-- 4.3 Diverging stacked bar: exclusion bands per group -->
+        <div class="pure-u-1 pure-u-md-1-2">
+          <div class="chart-block">
+            <h3>Diverging stacked bar: exclusion bands per group</h3>
+            <p class="chart-desc">[Description]</p>
+            <div id="vis-s4-diverging" class="vis-container"></div>
+          </div>
+        </div>
+        <!-- 4.4 Range interval plot -->
+        <div class="pure-u-1 pure-u-md-1-2">
+          <div class="chart-block">
+            <h3>Range interval plot</h3>
+            <p class="chart-desc">[Description]</p>
+            <div id="vis-s4-range" class="vis-container"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+         SECTION 5: COMPOUNDS
+         ========================================================= -->
+    <section id="s5" class="section">
+      <div class="pure-g">
+        <div class="pure-u-1">
+          <h2>Section 5: Compounds</h2>
+          <p>[Section intro]</p>
+        </div>
+      </div>
+
+      <div class="pure-g">
+        <!-- 5.1 Sub-index small-multiple map -->
+        <div class="pure-u-1">
+          <div class="chart-block">
+            <h3>Sub-index small-multiple maps</h3>
+            <p class="chart-desc">[Description]</p>
+            <div id="vis-s5-small-multiples" class="vis-container"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pure-g">
+        <!-- 5.2 Dual slope / divergence chart -->
+        <div class="pure-u-1 pure-u-md-1-2">
+          <div class="chart-block">
+            <h3>Dual slope / divergence chart</h3>
+            <p class="chart-desc">[Description]</p>
+            <div id="vis-s5-dual-slope" class="vis-container"></div>
+          </div>
+        </div>
+        <!-- 5.3 Slope graph: skills vs money -->
+        <div class="pure-u-1 pure-u-md-1-2">
+          <div class="chart-block">
+            <h3>Slope graph: skills vs money</h3>
+            <p class="chart-desc">[Description]</p>
+            <div id="vis-s5-slope" class="vis-container"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pure-g">
+        <!-- 5.4 Heatmap: barriers to use + devices × group (annotated) -->
+        <div class="pure-u-1">
+          <div class="chart-block">
+            <h3>Heatmap: barriers to use and devices by group</h3>
+            <p class="chart-desc">[Description]</p>
+            <div id="vis-s5-barriers" class="vis-container"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+         SECTION 6: IS THE GAP CLOSING?
+         ========================================================= -->
+    <section id="s6" class="section">
+      <div class="pure-g">
+        <div class="pure-u-1">
+          <h2>Section 6: Is the gap closing?</h2>
+          <p>[Section intro]</p>
+        </div>
+      </div>
+
+      <div class="pure-g">
+        <!-- 6.1 Bump chart: group rankings by year -->
+        <div class="pure-u-1 pure-u-md-1-2">
+          <div class="chart-block">
+            <h3>Bump chart: group rankings by year</h3>
+            <p class="chart-desc">[Description]</p>
+            <div id="vis-s6-bump" class="vis-container"></div>
+          </div>
+        </div>
+        <!-- 6.2 Gap over time -->
+        <div class="pure-u-1 pure-u-md-1-2">
+          <div class="chart-block">
+            <h3>Gap over time</h3>
+            <p class="chart-desc">[Description]</p>
+            <div id="vis-s6-gap" class="vis-container"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+         SECTION 7: CONCLUSION
+         ========================================================= -->
+    <section id="s7" class="section">
+      <div class="pure-g">
+        <div class="pure-u-1">
+          <h2>Section 7: Conclusion</h2>
+          <p>[Conclusion text]</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="pure-g">
+      <div class="pure-u-1 small-font">
+        <p>Created by [Your name] for FIT3179. Data sources: <a href="#" target="_blank">[Australian Digital Inclusion
+            Index]</a>, <a href="#" target="_blank">[ABS]</a>.</p>
+      </div>
+    </footer>
+
+  </div> <!-- end page -->
+
+  <script src="Charts/js/main.js"></script>
+</body>
+
+</html>
