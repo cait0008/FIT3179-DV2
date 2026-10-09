@@ -15,10 +15,10 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/grids-responsive-min.css">
 
-  <!-- Google font -->
+  <!-- Google fonts: Audiowide (title), Oxanium (headings), Atkinson Hyperlegible Next (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;1,400&family=Audiowide&family=Oxanium:wght@600;700&display=swap" rel="stylesheet">
 
   <!-- Own styles -->
   <link rel="stylesheet" href="Charts/css/styles.css">
@@ -26,29 +26,17 @@
 
 <body>
 
-  <!-- ===== NAV ===== -->
-  <nav class="pure-menu pure-menu-horizontal pure-menu-scrollable site-nav">
-    <a href="#top" class="pure-menu-heading">Digital Inclusion</a>
-    <ul class="pure-menu-list">
-      <li class="pure-menu-item"><a href="#s1" class="pure-menu-link">1. Introduction</a></li>
-      <li class="pure-menu-item"><a href="#s2" class="pure-menu-link">2. Quick comparison</a></li>
-      <li class="pure-menu-item"><a href="#s3" class="pure-menu-link">3. Geography</a></li>
-      <li class="pure-menu-item"><a href="#s4" class="pure-menu-link">4. Minorities</a></li>
-      <li class="pure-menu-item"><a href="#s5" class="pure-menu-link">5. Compounds</a></li>
-      <li class="pure-menu-item"><a href="#s6" class="pure-menu-link">6. Is the gap closing?</a></li>
-      <li class="pure-menu-item"><a href="#s7" class="pure-menu-link">7. Conclusion</a></li>
-    </ul>
-  </nav>
-
   <div class="page" id="top">
 
     <!-- ===== TITLE ===== -->
-    <header class="pure-g">
-      <div class="pure-u-1">
+    <!-- empty side columns keep the title centred; the date sits in the right one -->
+    <header class="pure-g title-row">
+      <div class="pure-u-1 pure-u-md-1-5"></div>
+      <div class="pure-u-1 pure-u-md-3-5">
         <h1>Digital Inclusion</h1>
-        <p class="lede">Investigate digital inclusion across Australia by comparing internet access, affordability and
-          digital ability across different population groups. Explore how digital inclusion has changed over time and
-          identify communities facing digital disadvantage.</p>
+      </div>
+      <div class="pure-u-1 pure-u-md-1-5">
+        <time class="title-date" datetime="2026-10-09">9 October 2026</time>
       </div>
     </header>
 
@@ -59,7 +47,8 @@
     <section id="s1" class="section">
       <div class="pure-g">
         <div class="pure-u-1">
-          <h2>Section 1: Introduction</h2>
+          <p class="section-label">Section 1</p>
+          <h2>Introduction</h2>
           <p>[Introduction text]</p>
         </div>
       </div>
@@ -72,7 +61,8 @@
     <section id="s2" class="section">
       <div class="pure-g">
         <div class="pure-u-1">
-          <h2>Section 2: Quick comparison</h2>
+          <p class="section-label">Section 2</p>
+          <h2>Quick comparison</h2>
           <p>[Section intro]</p>
         </div>
       </div>
@@ -104,7 +94,8 @@
     <section id="s3" class="section">
       <div class="pure-g">
         <div class="pure-u-1">
-          <h2>Section 3: Geography of these scores</h2>
+          <p class="section-label">Section 3</p>
+          <h2>Geography of these scores</h2>
           <p>[Section intro]</p>
         </div>
       </div>
@@ -177,7 +168,8 @@
     <section id="s4" class="section">
       <div class="pure-g">
         <div class="pure-u-1">
-          <h2>Section 4: Exploring the minorities that face this divide</h2>
+          <p class="section-label">Section 4</p>
+          <h2>Exploring the minorities that face this divide</h2>
           <p>[Section intro]</p>
         </div>
       </div>
@@ -228,7 +220,8 @@
     <section id="s5" class="section">
       <div class="pure-g">
         <div class="pure-u-1">
-          <h2>Section 5: Compounds</h2>
+          <p class="section-label">Section 5</p>
+          <h2>Compounds</h2>
           <p>[Section intro]</p>
         </div>
       </div>
@@ -282,7 +275,8 @@
     <section id="s6" class="section">
       <div class="pure-g">
         <div class="pure-u-1">
-          <h2>Section 6: Is the gap closing?</h2>
+          <p class="section-label">Section 6</p>
+          <h2>Is the gap closing?</h2>
           <p>[Section intro]</p>
         </div>
       </div>
@@ -314,24 +308,69 @@
     <section id="s7" class="section">
       <div class="pure-g">
         <div class="pure-u-1">
-          <h2>Section 7: Conclusion</h2>
+          <p class="section-label">Section 7</p>
+          <h2>Conclusion</h2>
           <p>[Conclusion text]</p>
         </div>
       </div>
     </section>
 
 
-    <!-- ===== FOOTER ===== -->
-    <footer class="pure-g">
-      <div class="pure-u-1 small-font">
-        <p>Created by [Your name] for FIT3179. Data sources: <a href="#" target="_blank">[Australian Digital Inclusion
-            Index]</a>, <a href="#" target="_blank">[ABS]</a>.</p>
+    <!-- =========================================================
+         DATA SOURCES (APA 7)
+         ========================================================= -->
+    <footer id="sources" class="section small-font">
+      <div class="pure-g">
+        <div class="pure-u-1">
+          <p class="section-label">References</p>
+          <h2>Data sources</h2>
+
+          <div class="references">
+            <p>Australian Bureau of Statistics. (2021). <em>Australian Statistical Geography Standard (ASGS) Edition 3:
+                July 2021 &ndash; June 2026</em> [Digital boundary files: States and Territories 2021, Remoteness Areas
+              2021, Local Government Areas 2025]. <a
+                href="https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026"
+                target="_blank">https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026</a>
+            </p>
+            <p>Thomas, J., McCosker, A., Parkinson, S., Hegarty, K., Featherstone, D., Kennedy, J., Ormond-Parker, L.,
+              Morrison, K., Rea, H., &amp; Ganley, L. (2025). <em>Measuring Australia&rsquo;s digital divide: Australian
+                Digital Inclusion Index 2025</em>. ARC Centre of Excellence for Automated Decision-Making and Society,
+              RMIT University, Swinburne University of Technology, and Telstra. <a
+                href="https://doi.org/10.60836/mtsq-at22" target="_blank">https://doi.org/10.60836/mtsq-at22</a></p>
+          </div>
+
+          <h3>How the data was prepared</h3>
+          <p>The ADII publishes its 2025 results as separate dashboard downloads: one file for each theme (Access,
+            Affordability, Digital Ability, Internet Use) for each way of splitting the population (age, gender,
+            education, employment, disability, First Nations status, remoteness and capital city), plus one ADII score
+            file for each state and territory. For this project, these 41 files were combined into five workbooks, one
+            per theme. Each workbook stacks every population group into a single table, with a column recording the
+            group it came from. This means groups can be compared side by side across all three dimensions of digital
+            inclusion, not one split at a time. Repeated tables and the duplicated national average were kept once,
+            wide tables were reshaped so every table reads the same way, and labels were trimmed of stray spaces. No
+            values were changed or rounded. The ABS boundary files were converted to TopoJSON for mapping.</p>
+
+          <h3>Licences</h3>
+          <p>ADII text and data are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+              target="_blank">Creative Commons Attribution&ndash;NonCommercial&ndash;ShareAlike 4.0 International (CC
+              BY-NC-SA 4.0)</a>. The combined data used here is a derivative of that data and is shared under the same
+            licence. ABS material is licensed under <a href="https://creativecommons.org/licenses/by/4.0/"
+              target="_blank">Creative Commons Attribution 4.0 International (CC BY 4.0)</a>.</p>
+
+          <p>Created by [Your name] for FIT3179 Data Visualisation, Monash University.</p>
+        </div>
       </div>
     </footer>
 
   </div> <!-- end page -->
 
+  <!-- main.js first: it defines chartConfig and embedChart() used by the section files -->
   <script src="Charts/js/main.js"></script>
+  <script src="Charts/js/section2.js"></script>
+  <script src="Charts/js/section3.js"></script>
+  <script src="Charts/js/section4.js"></script>
+  <script src="Charts/js/section5.js"></script>
+  <script src="Charts/js/section6.js"></script>
 </body>
 
 </html>

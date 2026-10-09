@@ -1,95 +1,224 @@
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 60px; 
+/* Layout comes from Pure.css (pure-g / pure-u-*). This file only sets colour, type and spacing.
+   Spacing uses an 8px scale: 4, 8, 16, 24, 32, 48. */
+
+/* ---------- Theme: Blush & Charcoal ---------- */
+/* All neutrals carry a hint of the magenta's hue so they sit together. */
+:root {
+  --charcoal: #25212E;  /* page background, headings (plum-tinted charcoal) */
+  --magenta: #E0248A;   /* accent: section strip, highlights */
+  --magenta-dark: #B8186F; /* magenta for small text/links on blush */
+  --pink-light: #F58AC4;   /* title: magenta lightened for the charcoal background */
+  --blush: #F1E4F3;     /* section containers (pastel pink-lilac) */
+  --mauve: #A79FB6;     /* mid-tone: text on charcoal, borders */
+  --muted: #5F566E;     /* small text on blush */
+
+  --gutter: 12px;       /* half the space between two columns */
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+/* ---------- Fonts & type scale (1.25 ratio: 13 / 16 / 20 / 25 / 40px) ---------- */
+/* body * is needed because Pure's grid sets its own font-family on pure-g / pure-u */
 body,
 body * {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Atkinson Hyperlegible Next', sans-serif;
 }
 
 body {
-  background-color: #e8e8e8;
-  color: #222;
+  background-color: var(--charcoal);
+  color: var(--charcoal);
+  font-size: 16px;
+  line-height: 1.6;
 }
 
-/* ---------- Nav ---------- */
-.site-nav {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background-color: #fff;
-  border-bottom: 1px solid #ddd;
+p {
+  max-width: 70ch; /* comfortable line length */
 }
 
-.site-nav .pure-menu-heading {
-  font-weight: 800;
-  text-transform: none;
+.section p:last-child {
+  margin-bottom: 0; /* keeps section padding even top and bottom */
+}
+
+h2,
+h3 {
+  font-family: 'Oxanium', sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--charcoal);
+}
+
+h2 {
+  font-size: 1.5625rem; /* 25px */
+  margin: 0 0 16px;
+}
+
+h3 {
+  font-size: 1.25rem; /* 20px */
+  margin: 0 0 4px;
+}
+
+table {
+  font-variant-numeric: tabular-nums; /* digits line up in columns */
 }
 
 /* ---------- Page ---------- */
 .page {
   max-width: 1000px;
-  background-color: #fff;
   margin: 0 auto;
-  padding: 35px 50px 50px;
+  padding: 48px 16px;
+}
+
+/* ---------- Title (sits directly on the charcoal background) ---------- */
+.title-row {
+  align-items: center; /* pure-g is a flex row; centre the date against the title */
 }
 
 h1 {
-  font-weight: 800;
-  margin-top: 0;
+  font-family: 'Audiowide', sans-serif;
+  font-weight: 400; /* Audiowide has one weight; bolding it would be faked */
+  font-size: 2.5rem; /* 40px */
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  margin: 0;
+  text-align: center;
+  color: var(--pink-light);
+  text-shadow: 0 0 8px rgba(224, 36, 138, 0.6); /* faint magenta glow */
 }
 
-.lede {
-  font-size: 1.1em;
-  line-height: 1.6;
+.title-date {
+  display: block;
+  text-align: right;
+  font-size: 0.8125rem; /* 13px */
+  color: var(--mauve);
 }
 
-/* ---------- Sections ---------- */
+/* ---------- Section containers ---------- */
 .section {
-  padding-top: 30px;
-  border-top: 1px solid #eee;
+  background-color: var(--blush);
+  border-top: 5px solid var(--magenta);
+  border-radius: 8px;
+  padding: 32px;
+  margin-bottom: 32px;
 }
 
-.section h2 {
-  margin-top: 0;
+/* small "SECTION 3" label above each heading */
+.section-label {
+  font-family: 'Oxanium', sans-serif;
+  font-weight: 600;
+  font-size: 0.8125rem; /* 13px */
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--magenta-dark);
+  margin: 0 0 4px;
 }
 
 .pure-g {
-  margin-bottom: 30px;
+  margin-bottom: 32px;
+}
+
+/* Equal gutters: every column gets padding on both sides, and the row pulls back
+   by the same amount so text and charts stay flush with the section edges. */
+.section .pure-g {
+  margin-left: calc(-1 * var(--gutter));
+  margin-right: calc(-1 * var(--gutter));
+}
+
+.section .pure-g:last-child {
+  margin-bottom: 0;
+}
+
+.section [class*="pure-u"] {
+  box-sizing: border-box;
+  padding: 0 var(--gutter);
 }
 
 /* ---------- Charts ---------- */
+/* Columns in a row stretch to equal height (pure-g is flex); pushing each chart to the
+   bottom of its column keeps paired charts' top and bottom edges on the same line. */
 .chart-block {
-  padding: 0 15px 0 0;
-}
-
-.chart-block h3 {
-  margin-bottom: 4px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .chart-desc {
-  margin-top: 0;
-  color: #555;
-  font-size: 14px;
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.5;
 }
 
 .vis-container {
   width: 100%;
-  min-height: 300px;
+  height: 320px;      /* two-up rows: use "height": "container" in the spec */
+  margin-top: auto;
+}
+
+/* full-width rows (maps, the barriers heatmap) get more room */
+.pure-u-1:not(.pure-u-md-1-2) > .chart-block .vis-container {
+  height: 450px;
 }
 
 .vis-placeholder {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 300px;
-  border: 2px dashed #ccc;
-  color: #999;
-  font-size: 14px;
+  height: 100%;
+  box-sizing: border-box;
+  border: 2px dashed var(--mauve);
+  border-radius: 6px;
+  color: var(--muted);
+  font-size: 0.875rem;
 }
 
+/* ---------- Sources ---------- */
 .small-font {
-  font-size: 14px;
+  font-size: 0.875rem; /* 14px */
+  color: var(--muted);
 }
 
+/* references are scanned, not read at length, so let them use the full width
+   instead of the 70ch cap (which left a gap on the right) */
+.small-font p {
+  max-width: none;
+}
+
+.small-font h3 {
+  margin-top: 24px;
+}
+
+.small-font a {
+  color: var(--magenta-dark);
+  overflow-wrap: anywhere; /* long URLs wrap on phones */
+}
+
+/* APA hanging indent */
+.references p {
+  padding-left: 2em;
+  text-indent: -2em;
+}
+
+/* ---------- Phones ---------- */
+@media (max-width: 767px) {
+  .page {
+    padding: 32px 16px;
+  }
+
+  .section {
+    padding: 24px 16px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .title-date {
+    text-align: center; /* stacks under the title */
+  }
+
+  .chart-block {
+    margin-bottom: 24px; /* space between charts once columns stack */
+  }
+}
