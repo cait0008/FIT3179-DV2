@@ -1,0 +1,39 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "National ADII score and its three dimensions (ADII 2025, national averages). Introduces the measure colours used later on the page. Based on the Vega-Lite 'Bar Chart with Labels' example.",
+  "width": "container",
+  "height": "container",
+  "data": {
+    "values": [
+      { "measure": "Overall ADII", "score": 73.6 },
+      { "measure": "Access", "score": 76.8 },
+      { "measure": "Affordability", "score": 70.3 },
+      { "measure": "Digital Ability", "score": 73.6 }
+    ]
+  },
+  "encoding": {
+    "y": { "field": "measure", "type": "nominal", "sort": null, "title": null, "axis": { "labelFontSize": 13, "labelFontWeight": 700 } },
+    "x": { "field": "score", "type": "quantitative", "scale": { "domain": [0, 100] }, "title": "National score (out of 100)", "axis": { "tickCount": 10 } }
+  },
+  "layer": [
+    {
+      "mark": { "type": "bar", "cornerRadiusEnd": 3, "height": { "band": 0.65 } },
+      "encoding": {
+        "color": {
+          "field": "measure",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Overall ADII", "Access", "Affordability", "Digital Ability"],
+            "range": ["#25212E", "#4A8DB3", "#C9784E", "#6C63B5"]
+          },
+          "legend": null
+        },
+        "tooltip": [{ "field": "measure", "title": "Measure" }, { "field": "score", "title": "National score", "format": ".1f" }]
+      }
+    },
+    {
+      "mark": { "type": "text", "align": "left", "dx": 6, "fontSize": 13, "fontWeight": 700 },
+      "encoding": { "text": { "field": "score", "format": ".1f" } }
+    }
+  ]
+}

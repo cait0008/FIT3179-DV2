@@ -168,6 +168,16 @@ h1 {
   overflow-x: auto;
 }
 
+/* short charts with only a few bars (e.g. the Section 2 overview) */
+.pure-u-1 > .chart-block .vis-container.vis-short {
+  height: 240px;
+}
+
+/* a bit shorter than vis-tall (e.g. the Section 1 waffle) */
+.pure-u-1 > .chart-block .vis-container.vis-medium {
+  height: 540px;
+}
+
 /* charts with many rows (e.g. the 31-group dumbbell) */
 .pure-u-1 > .chart-block .vis-container.vis-tall {
   height: 640px;

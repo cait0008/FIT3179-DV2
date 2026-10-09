@@ -33,7 +33,7 @@
     <header class="pure-g title-row">
       <div class="pure-u-1 pure-u-md-1-5"></div>
       <div class="pure-u-1 pure-u-md-3-5">
-        <h1>Digital Inclusion</h1>
+        <h1>Digital Inclusion in Australia</h1>
       </div>
       <div class="pure-u-1 pure-u-md-1-5">
         <time class="title-date" datetime="2026-10-09">9 October 2026</time>
@@ -68,20 +68,23 @@
       </div>
 
       <div class="pure-g">
-        <!-- 2.1 Isotype waffle: First Nations percentage -->
-        <div class="pure-u-1 pure-u-md-1-2">
+        <!-- 2.1 Overview: national ADII score and its three dimensions (also introduces the measure colours) -->
+        <div class="pure-u-1">
           <div class="chart-block">
-            <h3>Isotype waffle: First Nations percentage</h3>
+            <h3>What the ADII measures: one score, three dimensions</h3>
             <p class="chart-desc">[Description]</p>
-            <div id="vis-s2-waffle" class="vis-container"></div>
+            <div id="vis-s2-overview" class="vis-container vis-short"></div>
           </div>
         </div>
-        <!-- 2.2 Unit chart -->
-        <div class="pure-u-1 pure-u-md-1-2">
+      </div>
+
+      <div class="pure-g">
+        <!-- 2.2 Isotype waffle: all Australians vs First Nations Australians, 100 people each by inclusion band -->
+        <div class="pure-u-1">
           <div class="chart-block">
-            <h3>Unit chart</h3>
+            <h3>1 in 5 Australians is digitally excluded. For First Nations Australians, it's 2 in 5</h3>
             <p class="chart-desc">[Description]</p>
-            <div id="vis-s2-unit" class="vis-container"></div>
+            <div id="vis-s2-waffle" class="vis-container vis-medium"></div>
           </div>
         </div>
       </div>
@@ -135,16 +138,19 @@
       </div>
 
       <div class="pure-g">
-        <!-- 3.4 Proportional symbol map: capitals -->
-        <div class="pure-u-1 pure-u-md-1-2">
+        <!-- 3.4 Proportional symbol map: capitals (full width so the circles and labels have room) -->
+        <div class="pure-u-1">
           <div class="chart-block">
-            <h3>Proportional symbol map: capital cities</h3>
+            <h3>Where Australians live, and how their state scores</h3>
             <p class="chart-desc">[Description]</p>
-            <div id="vis-s3-prop-symbol" class="vis-container"></div>
+            <div id="vis-s3-prop-symbol" class="vis-container vis-tall"></div>
           </div>
         </div>
+      </div>
+
+      <div class="pure-g">
         <!-- 3.5 Beeswarm -->
-        <div class="pure-u-1 pure-u-md-1-2">
+        <div class="pure-u-1">
           <div class="chart-block">
             <h3>Beeswarm</h3>
             <p class="chart-desc">[Description]</p>
@@ -237,18 +243,21 @@
       </div>
 
       <div class="pure-g">
-        <!-- 5.2 Dual slope / divergence chart -->
-        <div class="pure-u-1 pure-u-md-1-2">
+        <!-- 5.2 Divergence chart: skills gap minus money gap, every group (full width, many rows) -->
+        <div class="pure-u-1">
           <div class="chart-block">
-            <h3>Dual slope / divergence chart</h3>
+            <h3>Skills or money: which barrier is bigger for each group?</h3>
             <p class="chart-desc">[Description]</p>
-            <div id="vis-s5-dual-slope" class="vis-container"></div>
+            <div id="vis-s5-dual-slope" class="vis-container vis-tall"></div>
           </div>
         </div>
-        <!-- 5.3 Slope graph: skills vs money -->
-        <div class="pure-u-1 pure-u-md-1-2">
+      </div>
+
+      <div class="pure-g">
+        <!-- 5.3 Slope graph: skills vs money, seven key groups -->
+        <div class="pure-u-1">
           <div class="chart-block">
-            <h3>Slope graph: skills vs money</h3>
+            <h3>Skills vs money: seven groups up close</h3>
             <p class="chart-desc">[Description]</p>
             <div id="vis-s5-slope" class="vis-container"></div>
           </div>
@@ -282,18 +291,22 @@
 
       <div class="pure-g">
         <!-- 6.1 Bump chart: group rankings by year -->
-        <div class="pure-u-1 pure-u-md-1-2">
+        <div class="pure-u-1">
           <div class="chart-block">
             <h3>Bump chart: group rankings by year</h3>
             <p class="chart-desc">[Description]</p>
             <div id="vis-s6-bump" class="vis-container"></div>
           </div>
         </div>
-        <!-- 6.2 Gap over time -->
-        <div class="pure-u-1 pure-u-md-1-2">
+      </div>
+
+      <div class="pure-g">
+        <!-- 6.2 Gap over time: each group's gap from the national average, 2020-2024 (radio buttons switch measure) -->
+        <div class="pure-u-1">
           <div class="chart-block">
-            <h3>Gap over time</h3>
+            <h3>Is the gap closing? Five groups, 2020 to 2024</h3>
             <p class="chart-desc">[Description]</p>
+            <div id="gap-measure-select" class="state-select"></div> <!-- Vega-Lite puts the measure radio buttons here -->
             <div id="vis-s6-gap" class="vis-container"></div>
           </div>
         </div>

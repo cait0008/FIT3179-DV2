@@ -1,0 +1,64 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Proportional symbols at each capital: size = population (ABS 2021 Census), colour = the state/territory's ADII gap from the national average (ADII 2025). Based on the Vega-Lite 'Earthquakes' / 'Airports' map examples.",
+  "width": "container",
+  "height": "container",
+  "padding": { "left": 176, "top": 16, "bottom": 16, "right": 16 },
+  "projection": { "type": "conicEqualArea", "parallels": [-18, -36], "rotate": [-132, 0] },
+  "layer": [
+    {
+      "data": {
+        "url": "Charts/Raw_Data/Shape_Files/STE_2021_AUST_GDA2020.json",
+        "format": { "type": "topojson", "feature": "STE_2021_AUST_GDA2020" }
+      },
+      "transform": [{ "filter": "datum.geometry != null && datum.properties.STE_CODE21 !== '9'" }],
+      "mark": { "type": "geoshape", "fill": "#E6DCE9", "stroke": "#FFFFFF", "strokeWidth": 1 }
+    },
+    {
+      "data": { "url": "Charts/Data/Capitals.csv" },
+      "encoding": {
+        "longitude": { "field": "Longitude", "type": "quantitative" },
+        "latitude": { "field": "Latitude", "type": "quantitative" }
+      },
+      "layer": [
+        {
+          "transform": [{ "calculate": "datum['Gap from national average'] < 0 ? 'Below national average' : 'At or above national average'", "as": "vsNational" }],
+          "mark": { "type": "circle", "opacity": 0.9, "stroke": "#25212E", "strokeWidth": 0.8 },
+          "encoding": {
+            "size": {
+              "field": "Population",
+              "type": "quantitative",
+              "scale": { "range": [0, 4500] },
+              "legend": { "title": ["Circle size:", "population (2021)"], "format": ".2s", "orient": "none", "legendX": -160, "legendY": { "expr": "height / 2 - 125" }, "values": [250000, 1000000, 5000000], "symbolFillColor": "#E6DCE9", "symbolStrokeColor": "#25212E" }
+            },
+            "color": {
+              "field": "vsNational",
+              "type": "nominal",
+              "scale": { "domain": ["Below national average", "At or above national average"], "range": ["#7B4A91", "#6FA88B"] },
+              "legend": { "title": ["Colour:", "state ADII score"], "orient": "none", "legendX": -160, "legendY": { "expr": "height / 2 + 65" }, "direction": "vertical", "symbolType": "circle", "labelLimit": 220, "labelExpr": "replace(datum.label, ' national average', ' average')" }
+            },
+            "tooltip": [
+              { "field": "City" },
+              { "field": "State" },
+              { "field": "Population", "type": "quantitative", "format": "," },
+              { "field": "State ADII score", "type": "quantitative", "format": ".1f" },
+              { "field": "Gap from national average", "type": "quantitative", "format": "+.1f" }
+            ]
+          }
+        },
+        {
+          "description": "big cities: label inside the circle",
+          "transform": [{ "filter": "datum.Population > 1000000" }],
+          "mark": { "type": "text", "fontSize": 11, "fontWeight": 600 },
+          "encoding": { "text": { "field": "City" } }
+        },
+        {
+          "description": "small cities: label to the left of the circle",
+          "transform": [{ "filter": "datum.Population <= 1000000" }],
+          "mark": { "type": "text", "align": "right", "dx": -12, "fontSize": 11, "fontWeight": 600 },
+          "encoding": { "text": { "field": "City" } }
+        }
+      ]
+    }
+  ]
+}

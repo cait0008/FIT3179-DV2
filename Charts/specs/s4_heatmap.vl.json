@@ -11,7 +11,7 @@
   ],
   "encoding": {
     "y": { "field": "Group", "type": "nominal", "sort": { "field": "row", "op": "min" }, "title": null, "axis": { "labelLimit": 260 } },
-    "x": { "field": "Measure", "type": "nominal", "sort": ["Access", "Affordability", "Digital Ability"], "title": null, "axis": { "orient": "top", "labelAngle": 0 } }
+    "x": { "field": "Measure", "type": "nominal", "sort": ["Access", "Affordability", "Digital Ability"], "title": null, "axis": { "orient": "top", "labelAngle": 0, "labelFontWeight": 700, "labelColor": { "condition": [{ "test": "datum.value === 'Access'", "value": "#4A8DB3" }, { "test": "datum.value === 'Affordability'", "value": "#C9784E" }], "value": "#6C63B5" } } }
   },
   "layer": [
     {
@@ -20,7 +20,7 @@
         "color": {
           "field": "gap",
           "type": "quantitative",
-          "scale": { "domainMid": 0, "range": ["#8E1257", "#F7F1F8", "#5F566E"] },
+          "scale": { "domain": [-40, -20, 0, 20, 40], "range": ["#5B2A6E", "#B79BC9", "#F4F0F5", "#A8CBB7", "#3E7F67"], "interpolate": "rgb" },
           "legend": { "title": "Points from national average", "orient": "bottom", "direction": "horizontal", "gradientLength": 220, "titleLimit": 300 }
         },
         "tooltip": [
@@ -37,7 +37,7 @@
       "mark": { "type": "text", "fontSize": 11 },
       "encoding": {
         "text": { "field": "Score", "type": "quantitative", "format": ".1f" },
-        "color": { "condition": { "test": "datum.gap < -22 || datum.gap > 12", "value": "#FFFFFF" }, "value": "#25212E" }
+        "color": { "condition": { "test": "datum.gap < -22", "value": "#FFFFFF" }, "value": "#25212E" }
       }
     }
   ]

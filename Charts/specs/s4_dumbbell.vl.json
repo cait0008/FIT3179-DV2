@@ -27,7 +27,7 @@
     {
       "description": "category name on the first row of each category",
       "transform": [{ "filter": "datum.row === datum.categoryStart" }],
-      "mark": { "type": "text", "align": "left", "dx": 4, "font": "Oxanium", "fontWeight": 600, "fontSize": 11, "color": "#B8186F" },
+      "mark": { "type": "text", "align": "left", "dx": 4, "font": "Oxanium", "fontWeight": 600, "fontSize": 11, "color": "#2A5F80" },
       "encoding": {
         "x": { "datum": 0 },
         "text": { "field": "Dimension" }
@@ -64,7 +64,7 @@
       "mark": { "type": "circle", "size": 80, "opacity": 1 },
       "encoding": {
         "x": { "field": "Access score", "type": "quantitative" },
-        "color": { "condition": { "test": "datum['Access score'] < 76.8", "value": "#E0248A" }, "value": "#5F566E" },
+        "color": { "condition": { "test": "datum['Access score'] < 76.8", "value": "#4A8DB3" }, "value": "#5F566E" },
         "tooltip": [{ "field": "Dimension", "title": "Category" }, { "field": "Group" }, { "field": "Access score" }]
       }
     }

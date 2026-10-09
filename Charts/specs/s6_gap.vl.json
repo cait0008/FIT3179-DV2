@@ -1,0 +1,57 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Gap from the national average over time (2020-2024; no 2023 survey) for five groups, for Access or Digital Ability (radio buttons). ADII 2025 time series. Based on the Vega-Lite 'Line Chart with Labels at the End' pattern.",
+  "width": "container",
+  "height": "container",
+  "params": [
+    {
+      "name": "measure",
+      "value": "Access",
+      "bind": { "input": "radio", "options": ["Access", "Digital Ability"], "name": "Show: ", "element": "#gap-measure-select" }
+    }
+  ],
+  "data": { "url": "Charts/Data/GapOverTime.csv" },
+  "transform": [
+    { "filter": "datum.Measure === measure" },
+    { "filter": { "field": "Group", "oneOf": ["75+", "Did not complete secondary school", "People with disability", "First Nations (national average)", "Unemployed"] } },
+    { "calculate": "indexof(['Age', 'Education levels', 'Employment'], datum.Dimension) >= 0 ? replace(datum.Dimension, ' levels', '') + ' (' + datum.Group + ')' : datum.Group", "as": "label" }
+  ],
+  "encoding": {
+    "x": { "field": "Year", "type": "quantitative", "title": null, "scale": { "domain": [2020, 2026.6] }, "axis": { "values": [2020, 2021, 2022, 2024], "format": "d" } },
+    "y": { "field": "Gap", "type": "quantitative", "title": "Points from national average", "scale": { "domainMax": 4 } }
+  },
+  "layer": [
+    {
+      "description": "national average = 0",
+      "data": { "values": [{}] },
+      "mark": { "type": "rule", "strokeDash": [4, 3], "color": "#5F566E" },
+      "encoding": { "y": { "datum": 0 }, "x": null }
+    },
+    {
+      "data": { "values": [{}] },
+      "mark": { "type": "text", "align": "left", "dy": -7, "fontSize": 11, "fontStyle": "italic", "color": "#5F566E", "text": "National average" },
+      "encoding": { "x": { "datum": 2020 }, "y": { "datum": 0 } }
+    },
+    {
+      "mark": { "type": "line", "strokeWidth": 2.5, "color": { "expr": "measure === 'Access' ? '#4A8DB3' : '#6C63B5'" } },
+      "encoding": { "detail": { "field": "Group" } }
+    },
+    {
+      "mark": { "type": "circle", "size": 50, "opacity": 1, "color": { "expr": "measure === 'Access' ? '#4A8DB3' : '#6C63B5'" } },
+      "encoding": {
+        "tooltip": [
+          { "field": "label", "title": "Group" },
+          { "field": "Year", "format": "d" },
+          { "field": "Score", "format": ".1f" },
+          { "field": "National", "title": "National average", "format": ".1f" },
+          { "field": "Gap", "format": "+.1f" }
+        ]
+      }
+    },
+    {
+      "transform": [{ "filter": "datum.Year === 2024" }],
+      "mark": { "type": "text", "align": "left", "dx": 8, "fontSize": 11, "color": "#25212E" },
+      "encoding": { "text": { "field": "label" } }
+    }
+  ]
+}

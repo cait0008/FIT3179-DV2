@@ -6,7 +6,6 @@
   "params": [
     {
       "name": "state",
-      "description": "radio buttons, placed in #lga-state-select above the map; values are the ABS state codes (STE_CODE21) in the boundary file",
       "value": "all",
       "bind": {
         "input": "radio",
@@ -36,7 +35,7 @@
       }
     },
     {
-      "calculate": "datum['Gap from national average'] == null ? 'No data' : datum['Gap from national average'] >= 0 ? 'At or above average' : datum['Gap from national average'] >= -5 ? '0-5 points below' : datum['Gap from national average'] >= -10 ? '5-10 points below' : 'More than 10 points below'",
+      "calculate": "datum['Gap from national average'] == null ? 'No data' : datum['Gap from national average'] < 0 ? 'Below national average' : 'At or above national average'",
       "as": "band"
     }
   ],
@@ -47,10 +46,10 @@
       "field": "band",
       "type": "ordinal",
       "scale": {
-        "domain": ["More than 10 points below", "5-10 points below", "0-5 points below", "At or above average", "No data"],
-        "range": ["#8E1257", "#C93C8A", "#E48DBA", "#F2D3E4", "#D9D9D9"]
+        "domain": ["Below national average", "At or above national average", "No data"],
+        "range": ["#7B4A91", "#6FA88B", "#D9D9D9"]
       },
-      "legend": { "title": "ADII score vs national average (73.6)", "orient": "bottom", "columns": 2, "symbolType": "square", "titleLimit": 400 }
+      "legend": { "title": "ADII score vs national average (73.6)", "orient": "bottom", "direction": "horizontal", "symbolType": "square", "titleLimit": 400 }
     },
     "tooltip": [
       { "field": "properties.LGA_NAME25", "title": "Local Government Area" },

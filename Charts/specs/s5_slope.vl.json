@@ -1,0 +1,36 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Slope graph for seven key groups: gap from national average on Affordability (money) vs Digital Ability (skills), ADII 2025. Based on the Vega-Lite 'Slope Graph' example.",
+  "width": "container",
+  "height": "container",
+  "data": { "url": "Charts/Data/GroupsByMeasure.csv" },
+  "transform": [
+    { "filter": { "field": "Group", "oneOf": ["75+", "Did not complete secondary school", "First Nations (very remote)", "People with disability", "First Nations (national average)", "Unemployed", "18-34"] } },
+    { "filter": "datum.Measure !== 'Access'" },
+    { "calculate": "indexof(['Age', 'Gender', 'Education levels', 'Employment'], datum.Dimension) >= 0 ? replace(datum.Dimension, ' levels', '') + ' (' + datum.Group + ')' : datum.Group", "as": "label" },
+    { "calculate": "datum.Score - datum.National", "as": "gap" },
+    { "calculate": "datum.Measure === 'Affordability' ? 'Money (Affordability)' : 'Skills (Digital Ability)'", "as": "side" },
+    { "calculate": "datum.Measure === 'Affordability' ? -datum.gap : datum.gap", "as": "signed" },
+    { "joinaggregate": [{ "op": "sum", "field": "signed", "as": "difference" }], "groupby": ["Group"] },
+    { "calculate": "datum.difference < 0 ? 'Weaker on skills than money' : 'Weaker on money than skills'", "as": "barrier" }
+  ],
+  "encoding": {
+    "x": { "field": "side", "type": "nominal", "title": null, "axis": { "orient": "top", "labelAngle": 0, "labelFontWeight": 700, "labelColor": { "condition": { "test": "datum.value === 'Money (Affordability)'", "value": "#C9784E" }, "value": "#6C63B5" } }, "scale": { "padding": 0.6, "align": 0.25 } },
+    "y": { "field": "gap", "type": "quantitative", "title": "Points from national average" },
+    "color": {
+      "field": "barrier",
+      "type": "nominal",
+      "scale": { "domain": ["Weaker on skills than money", "Weaker on money than skills"], "range": ["#6C63B5", "#C9784E"] },
+      "legend": { "title": null, "orient": "bottom" }
+    }
+  },
+  "layer": [
+    { "mark": "line", "encoding": { "detail": { "field": "Group" } } },
+    { "mark": { "type": "circle", "size": 60, "opacity": 1 }, "encoding": { "tooltip": [{ "field": "label", "title": "Group" }, { "field": "side", "title": "Measure" }, { "field": "gap", "title": "Gap", "format": "+.1f" }] } },
+    {
+      "transform": [{ "filter": "datum.Measure === 'Digital Ability'" }],
+      "mark": { "type": "text", "align": "left", "dx": 8, "fontSize": 11 },
+      "encoding": { "text": { "field": "label" } }
+    }
+  ]
+}

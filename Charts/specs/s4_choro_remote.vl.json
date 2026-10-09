@@ -31,7 +31,7 @@
       "type": "ordinal",
       "scale": {
         "domain": ["More than 10 points below", "5-10 points below", "0-5 points below", "At or above average"],
-        "range": ["#8E1257", "#C93C8A", "#E48DBA", "#F2D3E4"]
+        "range": ["#3B6E8F", "#6A9CC0", "#A9CBE0", "#E4EFF6"]
       },
       "legend": { "title": "Access vs national average (76.8)", "orient": "bottom", "columns": 2, "symbolType": "square", "titleLimit": 400 }
     },

@@ -1,0 +1,9 @@
+City,State,Latitude,Longitude,Population,State ADII score,Gap from national average
+Sydney,NSW,-33.87,151.21,5231147,74.0,0.4
+Melbourne,VIC,-37.81,144.96,4917750,74.1,0.5
+Brisbane,QLD,-27.47,153.03,2526238,72.9,-0.7
+Perth,WA,-31.95,115.86,2116647,73.9,0.3
+Adelaide,SA,-34.93,138.6,1387290,71.3,-2.3
+Hobart,TAS,-42.88,147.33,247086,69.4,-4.2
+Darwin,NT,-12.46,130.85,139902,72.5,-1.1
+Canberra,ACT,-35.28,149.13,454499,79.5,6.0

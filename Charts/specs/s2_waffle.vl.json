@@ -1,0 +1,53 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Base version adapted from the Vega-Lite 'Isotype Grid' example. Counts are people out of 100, rounded from ExclusionBands.csv (ADII 2025). Data-driven version: s2_waffle_full.vl.json",
+  "width": "container",
+  "height": "container",
+  "data": { "sequence": { "start": 1, "stop": 101, "as": "person" } },
+  "transform": [
+    { "calculate": "['All Australians', 'First Nations Australians']", "as": "group" },
+    { "flatten": ["group"] },
+    { "calculate": "datum.group === 'All Australians' ? [9, 21, 58] : [23, 41, 79]", "as": "cutoffs" },
+    { "calculate": "datum.person <= datum.cutoffs[0] ? 'Highly excluded' : datum.person <= datum.cutoffs[1] ? 'Excluded' : datum.person <= datum.cutoffs[2] ? 'Included' : 'Highly included'", "as": "band" },
+    { "calculate": "(datum.person - 1) % 10 + (datum.group === 'All Australians' ? 0 : 12)", "as": "col" },
+    { "calculate": "floor((datum.person - 1) / 10)", "as": "row" }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "opacity": 1,
+        "size": 70,
+        "shape": "M1.7 -1.7h-0.8c0.3 -0.2 0.6 -0.5 0.6 -0.9c0 -0.6 -0.4 -1 -1 -1c-0.6 0 -1 0.4 -1 1c0 0.4 0.2 0.7 0.6 0.9h-0.8c-0.4 0 -0.7 0.3 -0.7 0.6v1.9c0 0.3 0.3 0.6 0.6 0.6h0.2c0 0 0 0.1 0 0.1v1.9c0 0.3 0.2 0.6 0.3 0.6h1.3c0.2 0 0.3 -0.3 0.3 -0.6v-1.8c0 0 0 -0.1 0 -0.1h0.2c0.3 0 0.6 -0.3 0.6 -0.6v-2c0.2 -0.3 -0.1 -0.6 -0.4 -0.6z"
+      },
+      "encoding": {
+        "x": { "field": "col", "type": "quantitative", "axis": null },
+        "y": { "field": "row", "type": "quantitative", "axis": null, "scale": { "domain": [-2, 9.5], "reverse": true } },
+        "color": {
+          "field": "band",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Highly excluded", "Excluded", "Included", "Highly included"],
+            "range": ["#8E1257", "#E48DBA", "#B9B0C8", "#5F566E"]
+          },
+          "legend": { "title": null, "orient": "bottom", "direction": "horizontal", "symbolType": "square" }
+        },
+        "tooltip": [{ "field": "group" }, { "field": "band" }]
+      }
+    },
+    {
+      "data": { "values": [
+        { "x": 4.5, "label": "All Australians: 21 in 100 excluded" },
+        { "x": 16.5, "label": "First Nations Australians: 41 in 100 excluded" }
+      ] },
+      "mark": { "type": "text", "font": "Oxanium", "fontWeight": 700, "fontSize": 15 },
+      "encoding": {
+        "x": { "field": "x", "type": "quantitative" },
+        "y": { "datum": -1.5 },
+        "text": { "field": "label" }
+      }
+    }
+  ],
+  "config": { "legend": { "layout": { "bottom": { "anchor": "middle" } } } }
+}
