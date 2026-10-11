@@ -12,20 +12,32 @@
     { "calculate": "datum['Digital Ability'] - datum['Affordability']", "as": "difference" },
     { "calculate": "datum.difference < 0 ? 'Weaker on skills than money' : 'Weaker on money than skills'", "as": "barrier" }
   ],
-  "mark": "bar",
-  "encoding": {
-    "y": { "field": "label", "type": "nominal", "sort": "x", "title": null, "axis": { "labelLimit": 260 } },
-    "x": { "field": "difference", "type": "quantitative", "title": "weaker on skills vs weaker on money (points)" },
-    "color": {
-      "field": "barrier",
-      "type": "nominal",
-      "scale": { "domain": ["Weaker on skills than money", "Weaker on money than skills"], "range": ["#6C63B5", "#C9784E"] },
-      "legend": { "title": null, "orient": "top" }
+  "layer": [
+    {
+      "mark": "bar",
+      "encoding": {
+        "y": { "field": "label", "type": "nominal", "sort": "x", "title": null, "axis": { "labelLimit": 260 } },
+        "x": { "field": "difference", "type": "quantitative", "title": "weaker on skills vs weaker on money (points)" },
+        "color": {
+          "field": "barrier",
+          "type": "nominal",
+          "scale": { "domain": ["Weaker on skills than money", "Weaker on money than skills"], "range": ["#6C63B5", "#C9784E"] },
+          "legend": { "title": null, "orient": "top" }
+        },
+        "tooltip": [
+          { "field": "label", "title": "Group" },
+          { "field": "Affordability", "type": "quantitative", "title": "Money gap (Affordability)", "format": "+.1f" },
+          { "field": "Digital Ability", "type": "quantitative", "title": "Skills gap (Digital Ability)", "format": "+.1f" }
+        ]
+      }
     },
-    "tooltip": [
-      { "field": "label", "title": "Group" },
-      { "field": "Affordability", "type": "quantitative", "title": "Money gap (Affordability)", "format": "+.1f" },
-      { "field": "Digital Ability", "type": "quantitative", "title": "Skills gap (Digital Ability)", "format": "+.1f" }
-    ]
-  }
+    {
+      "description": "reading guide in the two empty corners (top rows are skills bars on the left, bottom rows money bars on the right)",
+      "data": { "values": [{}] },
+      "layer": [
+        { "mark": { "type": "text", "align": "right", "baseline": "top", "x": { "expr": "width - 4" }, "y": 4, "fontSize": 11, "fontStyle": "italic", "color": "#5F566E", "text": "cost is the bigger barrier " } },
+        { "mark": { "type": "text", "align": "left", "baseline": "bottom", "x": 4, "y": { "expr": "height - 4" }, "fontSize": 11, "fontStyle": "italic", "color": "#5F566E", "text": " skills are the bigger barrier" } }
+      ]
+    }
+  ]
 }

@@ -37,6 +37,18 @@
         "text": { "field": "Share", "type": "quantitative", "format": ".0%" },
         "color": { "condition": { "test": "datum.Share > 0.2", "value": "#FFFFFF" }, "value": "#25212E" }
       }
+    },
+    {
+      "description": "outline the three standout cells",
+      "transform": [{ "filter": "(datum.Group === '75+' && datum.Barrier === 'Not a priority') || (datum.Group === 'Remote Australia' && datum.Barrier === 'Slow connection') || (datum.Group === 'Unemployed' && datum.Barrier === 'Too expensive')" }],
+      "mark": { "type": "rect", "fill": null, "stroke": "#E0248A", "strokeWidth": 2.5 }
+    },
+    {
+      "description": "note, bottom right below the grid",
+      "data": { "values": [{}] },
+      "mark": { "type": "text", "align": "right", "baseline": "top", "x": { "expr": "width" }, "y": { "expr": "height + 8" }, "fontSize": 11, "fontStyle": "italic", "color": "#5F566E",
+                "text": "Outlined: the standout barrier for older, remote and unemployed Australians" },
+      "encoding": { "x": null, "y": null }
     }
   ]
 }

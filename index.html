@@ -11,9 +11,8 @@
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 
-  <!-- Pure.css (base + responsive grids) -->
+  <!-- Pure.css (base + grids) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/grids-responsive-min.css">
 
   <!-- Google fonts: Audiowide (title), Oxanium (headings), Atkinson Hyperlegible Next (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,11 +30,11 @@
     <!-- ===== TITLE ===== -->
     <!-- empty side columns keep the title centred; the date sits in the right one -->
     <header class="pure-g title-row">
-      <div class="pure-u-1 pure-u-md-1-5"></div>
-      <div class="pure-u-1 pure-u-md-3-5">
+      <div class="pure-u-1-5"></div>
+      <div class="pure-u-3-5">
         <h1>Digital Inclusion in Australia</h1>
       </div>
-      <div class="pure-u-1 pure-u-md-1-5">
+      <div class="pure-u-1-5">
         <time class="title-date" datetime="2026-10-09">9 October 2026</time>
       </div>
     </header>
@@ -48,8 +47,14 @@
       <div class="pure-g">
         <div class="pure-u-1">
           <p class="section-label">Section 1</p>
-          <h2>Introduction</h2>
-          <p>[Introduction text]</p>
+          <h2>Introduction to the digital divide</h2>
+          <p>Banking, healthcare, school and government services have all moved online, so being unable to get online
+            now means being shut out of everyday life. The Australian Digital Inclusion Index (ADII) measures how well
+            Australians can take part online across three dimensions: <strong>Access</strong> (having a good connection
+            and device), <strong>Affordability</strong> (being able to pay for it) and <strong>Digital Ability</strong>
+            (having the skills to use it).</p>
+          <p>This page uses the 2025 ADII to ask four questions: who is left behind, where they live, why, and whether
+            the gap is closing.</p>
         </div>
       </div>
     </section>
@@ -63,7 +68,9 @@
         <div class="pure-u-1">
           <p class="section-label">Section 2</p>
           <h2>How big is the digital divide?</h2>
-          <p>[Section intro]</p>
+          <p>Australia scores 73.6 out of 100 on the ADII, which sounds fine until you look at who sits underneath that
+            number. About one in five Australians is digitally excluded, and for First Nations Australians it is closer
+            to two in five. Before looking at who those people are, it helps to know what is being measured.</p>
         </div>
       </div>
 
@@ -71,8 +78,8 @@
         <!-- 2.1 Overview: national ADII score and its three dimensions (also introduces the measure colours) -->
         <div class="pure-u-1">
           <div class="chart-block">
-            <h3>What the ADII measures: one score, three dimensions</h3>
-            <p class="chart-desc">[Description]</p>
+            <h3>The ADII Score</h3>
+            <p class="chart-desc">Each bar is a national score out of 100, and each colour stays with its dimension for the rest of the page. The overall ADII is simply the average of the three. Access is the strongest part (76.8), while Affordability is the weakest (70.3), so before looking at any group it is worth knowing that cost is already the soft spot for the country as a whole.</p>
             <div id="vis-s2-overview" class="vis-container vis-short"></div>
           </div>
         </div>
@@ -82,8 +89,8 @@
         <!-- 2.2 Isotype waffle: all Australians vs First Nations Australians, 100 people each by inclusion band -->
         <div class="pure-u-1">
           <div class="chart-block">
-            <h3>1 in 5 Australians is digitally excluded. For First Nations Australians, it's 2 in 5</h3>
-            <p class="chart-desc">[Description]</p>
+            <h3>The digital divide between all Australians and First Nations Australians</h3>
+            <p class="chart-desc">Unlike the score charts, this counts people: each grid is 100 Australians, coloured from highly excluded (dark pink) to highly included (dark grey). About 21 in 100 Australians are excluded, compared with about 41 in 100 First Nations Australians. The gap is sharpest at the very bottom, where 23 in 100 First Nations people are highly excluded, about 2.5 times the national rate.</p>
             <div id="vis-s2-waffle" class="vis-container vis-medium"></div>
           </div>
         </div>
@@ -98,8 +105,11 @@
       <div class="pure-g">
         <div class="pure-u-1">
           <p class="section-label">Section 3</p>
-          <h2>Who gets left behind?</h2>
-          <p>[Section intro]</p>
+          <h2>Who faces this divide?</h2>
+          <p>Digital exclusion is not spread evenly. It piles up in particular groups: older Australians, people who left
+            school early, people without work, people with disability and First Nations people. These charts start with
+            how many people in each group are excluded, then look at how far each group falls behind on access to the
+            internet.</p>
         </div>
       </div>
 
@@ -108,7 +118,7 @@
         <div class="pure-u-1">
           <div class="chart-block">
             <h3>How many people in each group are digitally excluded</h3>
-            <p class="chart-desc">[Description]</p>
+            <p class="chart-desc">This extends the waffle to every group. Bars to the left of zero are the share of the group who are excluded, bars to the right are included, and the dashed line marks the national 21%. Anything reaching past that line is worse off than average. Two in three people aged 75+ (67%) and over half of people who did not finish school (55%) are excluded, compared with only 6% of 18 to 34 year olds and of people with a degree.</p>
             <div id="vis-s3-diverging" class="vis-container vis-tall"></div>
           </div>
         </div>
@@ -119,7 +129,7 @@
         <div class="pure-u-1">
           <div class="chart-block">
             <h3>Access to the internet: each group vs the national average</h3>
-            <p class="chart-desc">[Description]</p>
+            <p class="chart-desc">Where the bar chart counts people, this shows scores, and only for Access. Each dot is a group's score and the line runs to the national average, so a longer line means a bigger gap. About half the groups sit within 5 points of average, which makes the outliers stand out: First Nations people in very remote areas score just 37.3, about half the national score, followed by First Nations people in remote areas (55.9) and very remote Australians generally (57.4).</p>
             <div id="vis-s3-dumbbell" class="vis-container vis-tall"></div>
           </div>
         </div>
@@ -134,8 +144,11 @@
       <div class="pure-g">
         <div class="pure-u-1">
           <p class="section-label">Section 4</p>
-          <h2>Where do they live?</h2>
-          <p>[Section intro]</p>
+          <h2>Does where you live correlate with digital exclusion?</h2>
+          <p>Where you live matters too. Remote and very remote communities score lowest, but most local council areas also sit
+            below the national average, because a handful of big city councils pull it up. The first two maps show how
+            far behind each area is. The cartogram then resizes every area by population, so you can see where the
+            affected people actually live rather than how much land they cover.</p>
         </div>
       </div>
 
@@ -143,8 +156,8 @@
         <!-- 4.1 Spike map: how far each below-average LGA falls behind -->
         <div class="pure-u-1">
           <div class="chart-block">
-            <h3>How far behind is each local area?</h3>
-            <p class="chart-desc">[Description]</p>
+            <h3>How far behind the average is each local area?</h3>
+            <p class="chart-desc">This moves from groups to places. Each spike is a council that scores below the national ADII, and its height shows how far below, so you can compare size of gap, not just whether a place is behind. Use the buttons to zoom into a state. The tallest spikes are not spread evenly: they cluster in the Top End and Arnhem Land, Cape York and the Torres Strait, and the Kimberley, which are remote areas with large First Nations populations.</p>
             <div id="spike-state-select" class="state-select"></div> <!-- Vega-Lite puts the state radio buttons here -->
             <div id="vis-s4-spike-lga" class="vis-container vis-tall"></div>
           </div>
@@ -156,7 +169,7 @@
         <div class="pure-u-1">
           <div class="chart-block">
             <h3>Which local areas score above or below average?</h3>
-            <p class="chart-desc">[Description]</p>
+            <p class="chart-desc">The same councils, simplified to above (green) or below (purple) the national average. The map looks overwhelmingly purple: 423 of 545 councils fall below average, and the green is mostly squeezed into small patches around the capital cities. But each shape shows land, not people, so a huge outback council with a few thousand residents takes up far more space than a city council with hundreds of thousands. The next chart corrects for that.</p>
             <div id="lga-state-select" class="state-select"></div> <!-- Vega-Lite puts the state radio buttons here -->
             <div id="vis-s4-choro-lga" class="vis-container vis-tall"></div>
           </div>
@@ -167,8 +180,9 @@
         <!-- 4.3 Dorling cartogram: one circle per LGA, sized by population, coloured by ADII gap (fixed size, laid out by script) -->
         <div class="pure-u-1">
           <div class="chart-block">
-            <h3>The same map, sized by people instead of land</h3>
-            <p class="chart-desc">[Description]</p>
+            <h3>Comparing these ADII scores through population</h3>
+            <p class="chart-desc">Here every council is a circle sized by its population, so empty land shrinks and cities grow. Use the buttons to zoom into a state. The picture changes completely from the map above: only 122 councils score at or above average, but they are home to 56% of Australians, because big city councils like Brisbane, Blacktown and the ACT are mostly green. At the other end, the 80 councils more than 10 points below average hold under 1% of the population. The worst-off places are real, but they are small and remote, which makes them easy to overlook.</p>
+            <div id="carto-state-select" class="state-select"></div> <!-- Vega-Lite puts the state radio buttons here -->
             <div id="vis-s4-cartogram" class="vis-container vis-auto"></div>
           </div>
         </div>
@@ -183,8 +197,11 @@
       <div class="pure-g">
         <div class="pure-u-1">
           <p class="section-label">Section 5</p>
-          <h2>Why? Connection, cost or skills?</h2>
-          <p>[Section intro]</p>
+          <h2>Why are certain groups excluded?</h2>
+          <p>Knowing who and where is only half the story. To help, you need to know what is actually holding people back:
+            a poor connection, the cost, or not having the skills. The answer changes from group to group. Remote areas
+            mostly struggle with connections, while for many groups the bigger gap is skills rather than money. The
+            last chart asks people directly what stops them from going online more.</p>
         </div>
       </div>
 
@@ -192,8 +209,8 @@
         <!-- 5.1 Heatmap: every group x the three dimensions, coloured by gap from the national average -->
         <div class="pure-u-1">
           <div class="chart-block">
-            <h3>Three dimensions, different stories: every group's gap</h3>
-            <p class="chart-desc">[Description]</p>
+            <h3>Causes of the digital divide</h3>
+            <p class="chart-desc">The dumbbell only showed Access. This puts all three dimensions side by side for every group, with purple for below average, green for above, and the score written in each cell. Reading across a row shows whether a group is behind everywhere or on just one thing. People aged 75+ are behind on all three, but by far the most on Digital Ability (32 points below). Remote First Nations groups are furthest behind on Access instead.</p>
             <div id="vis-s5-heatmap" class="vis-container vis-tall"></div>
           </div>
         </div>
@@ -203,8 +220,8 @@
         <!-- 5.2 Sub-index small-multiple maps: Access / Affordability / Digital Ability by remoteness -->
         <div class="pure-u-1">
           <div class="chart-block">
-            <h3>Access, affordability or ability: which gap grows with remoteness?</h3>
-            <p class="chart-desc">[Description]</p>
+            <h3>The impact of remoteness on Access, affordability and ability</h3>
+            <p class="chart-desc">The heatmap showed remoteness as rows. Here it is mapped, with one panel per dimension on the same colour scale, so the panels can be compared directly. Access falls away sharply with distance (very remote areas are 19 points below). Affordability barely changes (under 4 points), and remote areas actually score better than regional ones on both Affordability and Digital Ability, so distance mainly hurts connections, not cost or skills.</p>
             <div id="vis-s5-small-multiples" class="vis-container vis-auto"></div>
           </div>
         </div>
@@ -214,8 +231,8 @@
         <!-- 5.3 Divergence chart: skills gap minus money gap, every group (full width, many rows) -->
         <div class="pure-u-1">
           <div class="chart-block">
-            <h3>Skills or money: which barrier is bigger for each group?</h3>
-            <p class="chart-desc">[Description]</p>
+            <h3>The impact of money and skills on digitally excluded groups</h3>
+            <p class="chart-desc">This boils each group down to one number: its skills gap minus its money gap. Bars to the left (indigo) mean skills are the bigger problem, and bars to the right (terracotta) mean cost is. The groups split almost evenly (16 lean towards skills, 13 towards money), which shows there is no single fix. Older Australians lean strongly towards skills, while unemployed people and urban First Nations people lean towards cost. Even young people aged 18 to 34, who are above average on both, have more room to improve on cost.</p>
             <div id="vis-s5-divergence" class="vis-container vis-tall"></div>
           </div>
         </div>
@@ -225,8 +242,8 @@
         <!-- 5.4 Slope graph: skills vs money, seven key groups -->
         <div class="pure-u-1">
           <div class="chart-block">
-            <h3>Skills vs money: seven groups up close</h3>
-            <p class="chart-desc">[Description]</p>
+            <h3>Closer analysis of the relationship between skills and money</h3>
+            <p class="chart-desc">A closer look at seven key groups from the chart above, showing the actual gaps rather than just the difference. Each line runs from the money gap (left) to the skills gap (right), so a line that drops means skills are the bigger barrier and a line that rises means cost is. Aged 75+ drops steeply, from 19 points below on money to 32 below on skills. Unemployed people rise, from 14 below on money to slightly above average on skills.</p>
             <div id="vis-s5-slope" class="vis-container"></div>
           </div>
         </div>
@@ -237,7 +254,7 @@
         <div class="pure-u-1">
           <div class="chart-block">
             <h3>What stops people getting online?</h3>
-            <p class="chart-desc">[Description]</p>
+            <p class="chart-desc">The charts above are built from ADII scores. This one shows what people say themselves, as the share of each group who report each barrier (people could choose more than one). Nationally, concern about privacy and scams (15%) and slow connections (14%) top the list, and cost comes in at only 6%. The outlined cells match the patterns above: older Australians often say the internet is not a priority (29%), remote areas report slow connections (29%), and cost matters most to unemployed people (15%).</p>
             <div id="vis-s5-barriers" class="vis-container vis-tall"></div>
           </div>
         </div>
@@ -253,7 +270,9 @@
         <div class="pure-u-1">
           <p class="section-label">Section 6</p>
           <h2>Is the gap closing?</h2>
-          <p>[Section intro]</p>
+          <p>The good news is that scores have gone up in every survey since 2020. The harder question is whether the
+            groups at the bottom are catching up, or just rising along with everyone else. Tracking each group over time,
+            and its rank each year, gives a fairly clear answer.</p>
         </div>
       </div>
 
@@ -261,8 +280,8 @@
         <!-- 6.1 Gap over time: each group's gap from the national average, 2020-2024 (radio buttons switch measure) -->
         <div class="pure-u-1">
           <div class="chart-block">
-            <h3>Is the gap closing? Five groups, 2020 to 2024</h3>
-            <p class="chart-desc">[Description]</p>
+            <h3>Comparison of the digital divide over time</h3>
+            <p class="chart-desc">Each line tracks how far a group sits below the national average in each survey, so a line moving up towards zero means the gap is closing. Use the buttons to switch between Access and Digital Ability, and note there was no survey in 2023. The trend is mixed. People with disability have closed in on both measures, and the skills gap for people aged 75+ narrowed from 39 to 32 points. But their Access gap has not moved (about 16 points), and the First Nations Access gap widened from 8 to 12.5 points.</p>
             <div id="gap-measure-select" class="state-select"></div> <!-- Vega-Lite puts the measure radio buttons here -->
             <div id="vis-s6-gap" class="vis-container"></div>
           </div>
@@ -273,8 +292,8 @@
         <!-- 6.2 Bump chart: group rankings by year (the punchline: the order doesn't change) -->
         <div class="pure-u-1">
           <div class="chart-block">
-            <h3>Who is at the bottom, year after year?</h3>
-            <p class="chart-desc">[Description]</p>
+            <h3>What goups remain excluded over time?</h3>
+            <p class="chart-desc">The chart above shows the size of each gap. This one shows rank, from 1 (highest score) down, so it answers a simpler question: has anyone changed places? Groups in the middle shuffle a little each year, and the dashed national average sits mid-table. At the bottom, nothing changes: people aged 75+ and people who did not finish secondary school are last and second-last in every survey since 2020, on both Access and Digital Ability.</p>
             <div id="bump-measure-select" class="state-select"></div> <!-- Vega-Lite puts the measure radio buttons here -->
             <div id="vis-s6-bump" class="vis-container vis-tall"></div>
           </div>
@@ -291,7 +310,14 @@
         <div class="pure-u-1">
           <p class="section-label">Section 7</p>
           <h2>Conclusion</h2>
-          <p>[Conclusion text]</p>
+          <p>Digital exclusion in Australia is not random. It is concentrated in older Australians, people who left school
+            early, people with disability and First Nations people, and it is deepest in remote communities. The causes
+            are different for each of them. Remote areas mostly lack good connections, older Australians mostly lack the
+            skills and see less reason to go online, and for people without work the main problem is cost.</p>
+          <p>Scores are improving across the country, but the same groups are still at the bottom every year. Rising
+            averages alone will not close the gap. That will take help aimed at the right people, in the right places,
+            for the right reason: better connections in remote areas, skills support for older Australians, and
+            affordable plans for people on low incomes.</p>
         </div>
       </div>
     </section>
@@ -307,6 +333,8 @@
           <h2>Data sources</h2>
 
           <div class="references">
+            <p>Anthropic. (2026). <em>Claude</em> (Opus 5.5) [Large language model]. <a href="https://claude.ai"
+                target="_blank">https://claude.ai</a></p>
             <p>Australian Bureau of Statistics. (2021). <em>Australian Statistical Geography Standard (ASGS) Edition 3:
                 July 2021 &ndash; June 2026</em> [Digital boundary files: States and Territories 2021, Remoteness Areas
               2021, Local Government Areas 2025]. <a
@@ -316,6 +344,9 @@
             <p>Australian Bureau of Statistics. (2026). <em>Regional population, 2024&ndash;25</em> [Data cube: Population
               estimates by LGA, 2024 to 2025]. <a href="https://www.abs.gov.au/statistics/people/population/regional-population/2024-25"
                 target="_blank">https://www.abs.gov.au/statistics/people/population/regional-population/2024-25</a></p>
+            <p>Satyanarayan, A., Moritz, D., Wongsuphasawat, K., &amp; Heer, J. (2017). Vega-Lite: A grammar of interactive
+              graphics. <em>IEEE Transactions on Visualization and Computer Graphics, 23</em>(1), 341&ndash;350. <a
+                href="https://doi.org/10.1109/TVCG.2016.2599030" target="_blank">https://doi.org/10.1109/TVCG.2016.2599030</a></p>
             <p>Thomas, J., McCosker, A., Parkinson, S., Hegarty, K., Featherstone, D., Kennedy, J., Ormond-Parker, L.,
               Morrison, K., Rea, H., &amp; Ganley, L. (2025). <em>Measuring Australia&rsquo;s digital divide: Australian
                 Digital Inclusion Index 2025</em>. ARC Centre of Excellence for Automated Decision-Making and Society,
@@ -324,17 +355,12 @@
           </div>
 
           <h3>How the data was prepared</h3>
-          <p>The ADII publishes its 2025 results as separate dashboard downloads: one file for each theme (Access,
-            Affordability, Digital Ability, Internet Use) for each way of splitting the population (age, gender,
-            education, employment, disability, First Nations status, remoteness and capital city), plus one ADII score
-            file for each state and territory. For this project, these 41 files were combined into five workbooks, one
-            per theme. Each workbook stacks every population group into a single table, with a column recording the
-            group it came from. This means groups can be compared side by side across all three dimensions of digital
-            inclusion, not one split at a time. Repeated tables and the duplicated national average were kept once,
-            wide tables were reshaped so every table reads the same way, and labels were trimmed of stray spaces. No
-            values were changed or rounded. The ABS boundary files were converted to TopoJSON for mapping. For the LGA cartogram, each LGA&rsquo;s
-            ADII score was joined to its ABS estimated resident population at 30 June 2025 by LGA code, and the circle
-            positions were worked out in advance by a script.</p>
+          <p>The 41 ADII 2025 dashboard downloads (one per theme and population split) were combined into five workbooks,
+            one per theme, with every group stacked in a single table. Duplicates were removed and tables reshaped, but no
+            values were changed. Python scripts then made a small CSV for each chart, joined LGA scores to the ABS
+            boundaries and 2025 populations by LGA code, and worked out the cartogram layout in advance. Boundaries were
+            converted to TopoJSON. Claude (Anthropic, 2026) helped write these scripts; outputs were checked against the
+            source data. Charts are adapted from Vega-Lite gallery examples (Satyanarayan et al., 2017).</p>
 
           <h3>Licences</h3>
           <p>ADII text and data are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"

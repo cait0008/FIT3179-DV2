@@ -38,7 +38,9 @@ function embedChart(id, spec) {
 
   // wait for the web fonts, otherwise Vega measures labels in a fallback font and long ones get clipped
   var embed = document.fonts.ready.then(function () {
-    return vegaEmbed('#' + id, spec, { actions: false, config: chartConfig });
+    // fixed-size charts (class vis-auto) are drawn as SVG so CSS can scale them to the box width
+    var renderer = el.classList.contains('vis-auto') ? 'svg' : 'canvas';
+    return vegaEmbed('#' + id, spec, { actions: false, config: chartConfig, renderer: renderer });
   });
   embed.catch(console.error);
   return embed;

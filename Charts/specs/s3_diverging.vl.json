@@ -49,6 +49,24 @@
         "y": { "value": 0 },
         "y2": { "value": "height" }
       }
+    },
+    {
+      "description": "national share excluded (21%): dashed line",
+      "data": { "values": [{}] },
+      "mark": { "type": "rule", "color": "#5F566E", "strokeDash": [4, 3] },
+      "encoding": { "x": { "datum": -0.21 }, "y": { "value": 0 }, "y2": { "value": "height" } }
+    },
+    {
+      "description": "label for the dashed line, in the 18-34 row where there's empty space left of the line",
+      "transform": [{ "filter": "datum.Group === '18-34' && datum.Band === 'Excluded'" }],
+      "mark": { "type": "text", "align": "right", "dx": -4, "fontSize": 11, "fontStyle": "italic", "color": "#5F566E" },
+      "encoding": { "x": { "datum": -0.21 }, "text": { "value": "national average: 21% excluded" } }
+    },
+    {
+      "description": "75+ callout, in the empty space right of its included bars",
+      "transform": [{ "filter": "datum.Group === '75+' && datum.Band === 'Excluded'" }],
+      "mark": { "type": "text", "align": "left", "dx": 6, "fontSize": 11, "fontStyle": "italic", "color": "#5F566E" },
+      "encoding": { "x": { "datum": 0.34 }, "text": { "value": "2 in 3 people aged 75+ are excluded" } }
     }
   ]
 }

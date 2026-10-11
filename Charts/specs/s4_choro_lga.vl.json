@@ -40,22 +40,33 @@
     }
   ],
   "projection": { "type": "conicEqualArea", "parallels": [-18, -36], "rotate": [-132, 0] },
-  "mark": { "type": "geoshape", "stroke": "#FFFFFF", "strokeWidth": 0.2 },
-  "encoding": {
-    "color": {
-      "field": "band",
-      "type": "ordinal",
-      "scale": {
-        "domain": ["Below national average", "At or above national average", "No data"],
-        "range": ["#7B4A91", "#6FA88B", "#D9D9D9"]
-      },
-      "legend": { "title": "ADII score vs national average (73.6)", "orient": "bottom", "direction": "horizontal", "symbolType": "square", "titleLimit": 400 }
+  "layer": [
+    {
+      "mark": { "type": "geoshape", "stroke": "#FFFFFF", "strokeWidth": 0.2 },
+      "encoding": {
+        "color": {
+          "field": "band",
+          "type": "ordinal",
+          "scale": {
+            "domain": ["Below national average", "At or above national average", "No data"],
+            "range": ["#7B4A91", "#6FA88B", "#D9D9D9"]
+          },
+          "legend": { "title": "ADII score vs national average (73.6)", "orient": "bottom", "direction": "horizontal", "symbolType": "square", "titleLimit": 400 }
+        },
+        "tooltip": [
+          { "field": "properties.LGA_NAME25", "title": "Local Government Area" },
+          { "field": "properties.STE_NAME21", "title": "State" },
+          { "field": "ADII score", "type": "quantitative", "format": ".1f" },
+          { "field": "Gap from national average", "type": "quantitative", "format": "+.1f" }
+        ]
+      }
     },
-    "tooltip": [
-      { "field": "properties.LGA_NAME25", "title": "Local Government Area" },
-      { "field": "properties.STE_NAME21", "title": "State" },
-      { "field": "ADII score", "type": "quantitative", "format": ".1f" },
-      { "field": "Gap from national average", "type": "quantitative", "format": "+.1f" }
-    ]
-  }
+    {
+      "description": "note, top right (pixels): most councils are below average, but most people live in small dense councils; leads into the cartogram",
+      "data": { "values": [{}] },
+      "transform": [{ "filter": "state === 'all'" }],
+      "mark": { "type": "text", "align": "right", "baseline": "top", "lineHeight": 15, "x": { "expr": "width - 4" }, "y": 4, "fontSize": 11, "fontStyle": "italic", "color": "#5F566E",
+                "text": ["423 of 545 councils sit below the national average.", "But land is not people: most Australians live in small,", "crowded city councils that barely show up here."] }
+    }
+  ]
 }

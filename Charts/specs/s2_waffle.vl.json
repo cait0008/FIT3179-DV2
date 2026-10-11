@@ -23,7 +23,7 @@
       },
       "encoding": {
         "x": { "field": "col", "type": "quantitative", "axis": null },
-        "y": { "field": "row", "type": "quantitative", "axis": null, "scale": { "domain": [-2, 9.5], "reverse": true } },
+        "y": { "field": "row", "type": "quantitative", "axis": null, "scale": { "domain": [-2, 10.6], "reverse": true } },
         "color": {
           "field": "band",
           "type": "nominal",
@@ -47,6 +47,15 @@
         "y": { "datum": -1.5 },
         "text": { "field": "label" }
       }
+    },
+    {
+      "description": "note under each grid",
+      "data": { "values": [
+        { "x": 4.5, "note": "9 in 100 are highly excluded" },
+        { "x": 16.5, "note": "23 in 100 are highly excluded: about 2.5 times the national rate" }
+      ] },
+      "mark": { "type": "text", "fontSize": 11, "fontStyle": "italic", "color": "#5F566E" },
+      "encoding": { "x": { "field": "x", "type": "quantitative" }, "y": { "datum": 10.1 }, "text": { "field": "note" } }
     }
   ],
   "config": { "legend": { "layout": { "bottom": { "anchor": "middle" } } } }

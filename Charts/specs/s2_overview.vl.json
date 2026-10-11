@@ -34,6 +34,15 @@
     {
       "mark": { "type": "text", "align": "left", "dx": 6, "fontSize": 13, "fontWeight": 700 },
       "encoding": { "text": { "field": "score", "format": ".1f" } }
+    },
+    {
+      "description": "annotations, in the empty space right of the bars",
+      "data": { "values": [
+        { "measure": "Overall ADII", "score": 81, "note": "the average of the three below" },
+        { "measure": "Affordability", "score": 81, "note": "the weakest of the three dimensions" }
+      ] },
+      "mark": { "type": "text", "align": "left", "fontSize": 11, "fontStyle": "italic", "color": "#5F566E" },
+      "encoding": { "text": { "field": "note" } }
     }
   ]
 }

@@ -31,6 +31,15 @@
       "transform": [{ "filter": "datum.Measure === 'Digital Ability'" }],
       "mark": { "type": "text", "align": "left", "dx": 8, "fontSize": 11 },
       "encoding": { "text": { "field": "label" } }
+    },
+    {
+      "description": "callouts, in the empty space under the money-side dots",
+      "data": { "values": [
+        { "side": "Money (Affordability)", "gap": -26, "note": "Aged 75+: 13 points further behind on skills than money" },
+        { "side": "Money (Affordability)", "gap": -30, "note": "Unemployed: 16 points further behind on money than skills" }
+      ] },
+      "mark": { "type": "text", "fontSize": 11, "fontStyle": "italic", "color": "#5F566E" },
+      "encoding": { "text": { "field": "note" }, "color": { "value": "#5F566E" } }
     }
   ]
 }

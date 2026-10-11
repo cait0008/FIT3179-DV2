@@ -27,6 +27,16 @@
       "encoding": { "text": { "field": "label" } }
     },
     {
+      "description": "notes: the missing 2023 survey, and the First Nations Access gap widening",
+      "data": { "values": [
+        { "Year": 2023, "Gap": 3, "note": "no 2023 survey", "show": "both" },
+        { "Year": 2023, "Gap": -14.6, "note": "First Nations gap widened from 8 to 12.5 points", "show": "Access" }
+      ] },
+      "transform": [{ "filter": "datum.show === 'both' || datum.show === measure" }],
+      "mark": { "type": "text", "fontSize": 11, "fontStyle": "italic", "color": "#5F566E" },
+      "encoding": { "text": { "field": "note" } }
+    },
+    {
       "mark": { "type": "rule", "strokeDash": [4, 3] },
       "encoding": { "y": { "datum": 0 }, "x": null }
     }

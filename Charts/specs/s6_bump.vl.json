@@ -36,6 +36,12 @@
       "encoding": { "strokeDash": { "condition": { "test": "datum.Group === 'National average'", "value": [5, 3] }, "value": [1, 0] } }
     },
     {
+      "description": "note just under the bottom line, between 2022 and 2024",
+      "transform": [{ "filter": "datum.Group === '75+' && datum.Year === 2022" }],
+      "mark": { "type": "text", "align": "left", "baseline": "top", "dx": 12, "dy": 8, "fontSize": 11, "fontStyle": "italic", "color": "#5F566E" },
+      "encoding": { "text": { "value": "Last and second-last in every survey since 2020" }, "color": { "value": "#5F566E" } }
+    },
+    {
       "transform": [{ "filter": "datum.Year === 2020" }],
       "mark": { "type": "text", "align": "right", "dx": -10, "fontSize": 11 },
       "encoding": { "text": { "field": "label" }, "color": { "condition": { "test": "datum.colourKey !== 'Other groups'", "field": "colourKey" }, "value": "#5F566E" } }

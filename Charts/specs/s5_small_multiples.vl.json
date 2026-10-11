@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Small-multiple choropleths: Access, Affordability and Digital Ability by remoteness area (ABS Remoteness Areas 2021 + ADII 2025). Every panel uses the same colour bins (gap from that sub-index's own national average), so the panels can be compared directly. Built from the remoteness choropleth (unused/s4_choro_remote) with a 'facet' by sub-index. The projection scale/translate are set by hand because Vega-Lite can't auto-fit a projection inside a facet (it fits a dataset that doesn't exist); they are the values auto-fit gives for one 350 x 300 panel. section5.js resizes the panels to fill the chart box and rescales these to match.",
+  "description": "Small-multiple choropleths: Access, Affordability and Digital Ability by remoteness area (ABS Remoteness Areas 2021 + ADII 2025). Every panel uses the same colour bins (gap from that sub-index's own national average), so the panels can be compared directly. Built from the remoteness choropleth (unused/s4_choro_remote) with a 'facet' by sub-index. The projection scale/translate are set by hand because Vega-Lite can't auto-fit a projection inside a facet (it fits a dataset that doesn't exist); they are the values auto-fit gives for one 350 x 300 panel. The chart is drawn as SVG and CSS scales it to the box width (class vis-auto).",
   "autosize": { "type": "pad" },
   "data": {
     "url": "Charts/Raw_Data/Shape_Files/RA_2021_AUST_GDA2020.json",
