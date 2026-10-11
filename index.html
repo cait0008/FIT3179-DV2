@@ -56,13 +56,13 @@
 
 
     <!-- =========================================================
-         SECTION 2: QUICK COMPARISON
+         SECTION 2: HOW BIG IS THE DIGITAL DIVIDE? (the hook)
          ========================================================= -->
     <section id="s2" class="section">
       <div class="pure-g">
         <div class="pure-u-1">
           <p class="section-label">Section 2</p>
-          <h2>Quick comparison</h2>
+          <h2>How big is the digital divide?</h2>
           <p>[Section intro]</p>
         </div>
       </div>
@@ -92,69 +92,35 @@
 
 
     <!-- =========================================================
-         SECTION 3: GEOGRAPHY OF THESE SCORES
+         SECTION 3: WHO GETS LEFT BEHIND? (the people)
          ========================================================= -->
     <section id="s3" class="section">
       <div class="pure-g">
         <div class="pure-u-1">
           <p class="section-label">Section 3</p>
-          <h2>Geography of these scores</h2>
+          <h2>Who gets left behind?</h2>
           <p>[Section intro]</p>
         </div>
       </div>
 
       <div class="pure-g">
-        <!-- 3.1 Choropleth: LGA ADII scores -->
+        <!-- 3.1 Diverging stacked bar: exclusion bands per group (full width, many groups need the height) -->
         <div class="pure-u-1">
           <div class="chart-block">
-            <h3>Choropleth: LGA ADII scores</h3>
+            <h3>How many people in each group are digitally excluded</h3>
             <p class="chart-desc">[Description]</p>
-            <div id="lga-state-select" class="state-select"></div> <!-- Vega-Lite puts the state radio buttons here -->
-            <div id="vis-s3-choro-lga" class="vis-container vis-tall"></div>
+            <div id="vis-s3-diverging" class="vis-container vis-tall"></div>
           </div>
         </div>
       </div>
 
       <div class="pure-g">
-        <!-- 3.2 Bivariate choropleth -->
+        <!-- 3.2 Dumbbell: each group's Access score vs national average (full width, many groups need the height) -->
         <div class="pure-u-1">
           <div class="chart-block">
-            <h3>Bivariate choropleth</h3>
+            <h3>Access to the internet: each group vs the national average</h3>
             <p class="chart-desc">[Description]</p>
-            <div id="vis-s3-bivariate" class="vis-container"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="pure-g">
-        <!-- 3.3 Dorling cartogram & First Nations -->
-        <div class="pure-u-1">
-          <div class="chart-block">
-            <h3>Dorling cartogram: First Nations</h3>
-            <p class="chart-desc">[Description]</p>
-            <div id="vis-s3-dorling" class="vis-container"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="pure-g">
-        <!-- 3.4 Proportional symbol map: capitals (full width so the circles and labels have room) -->
-        <div class="pure-u-1">
-          <div class="chart-block">
-            <h3>Where Australians live, and how their state scores</h3>
-            <p class="chart-desc">[Description]</p>
-            <div id="vis-s3-prop-symbol" class="vis-container vis-tall"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="pure-g">
-        <!-- 3.5 Beeswarm -->
-        <div class="pure-u-1">
-          <div class="chart-block">
-            <h3>Beeswarm</h3>
-            <p class="chart-desc">[Description]</p>
-            <div id="vis-s3-beeswarm" class="vis-container"></div>
+            <div id="vis-s3-dumbbell" class="vis-container vis-tall"></div>
           </div>
         </div>
       </div>
@@ -162,57 +128,48 @@
 
 
     <!-- =========================================================
-         SECTION 4: EXPLORING THE MINORITIES THAT FACE THIS DIVIDE
+         SECTION 4: WHERE DO THEY LIVE? (the places)
          ========================================================= -->
     <section id="s4" class="section">
       <div class="pure-g">
         <div class="pure-u-1">
           <p class="section-label">Section 4</p>
-          <h2>Exploring the minorities that face this divide</h2>
+          <h2>Where do they live?</h2>
           <p>[Section intro]</p>
         </div>
       </div>
 
       <div class="pure-g">
-        <!-- 4.1 Heatmap matrix -->
+        <!-- 4.1 Spike map: how far each below-average LGA falls behind -->
         <div class="pure-u-1">
           <div class="chart-block">
-            <h3>Heatmap matrix</h3>
+            <h3>How far behind is each local area?</h3>
             <p class="chart-desc">[Description]</p>
-            <div id="vis-s4-heatmap" class="vis-container vis-tall"></div>
+            <div id="spike-state-select" class="state-select"></div> <!-- Vega-Lite puts the state radio buttons here -->
+            <div id="vis-s4-spike-lga" class="vis-container vis-tall"></div>
           </div>
         </div>
       </div>
 
       <div class="pure-g">
-        <!-- 4.2 Choropleth: access and remoteness (moved from Section 3) -->
+        <!-- 4.2 Choropleth: LGA ADII scores above / below the national average -->
         <div class="pure-u-1">
           <div class="chart-block">
-            <h3>Impact of remoteness on access</h3>
+            <h3>Which local areas score above or below average?</h3>
             <p class="chart-desc">[Description]</p>
-            <div id="vis-s4-choro-remote" class="vis-container vis-tall"></div>
+            <div id="lga-state-select" class="state-select"></div> <!-- Vega-Lite puts the state radio buttons here -->
+            <div id="vis-s4-choro-lga" class="vis-container vis-tall"></div>
           </div>
         </div>
       </div>
 
       <div class="pure-g">
-        <!-- 4.3 Dumbbell: each group's Access score vs national average (full width, many groups need the height) -->
+        <!-- 4.3 Dorling cartogram: one circle per LGA, sized by population, coloured by ADII gap (fixed size, laid out by script) -->
         <div class="pure-u-1">
           <div class="chart-block">
-            <h3>Access to the internet: each group vs the national average</h3>
+            <h3>The same map, sized by people instead of land</h3>
             <p class="chart-desc">[Description]</p>
-            <div id="vis-s4-dumbbell" class="vis-container vis-tall"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="pure-g">
-        <!-- 4.4 Diverging stacked bar: exclusion bands per group (full width, many groups need the height) -->
-        <div class="pure-u-1">
-          <div class="chart-block">
-            <h3>How many people in each group are digitally excluded</h3>
-            <p class="chart-desc">[Description]</p>
-            <div id="vis-s4-diverging" class="vis-container vis-tall"></div>
+            <div id="vis-s4-cartogram" class="vis-container vis-auto"></div>
           </div>
         </div>
       </div>
@@ -220,41 +177,52 @@
 
 
     <!-- =========================================================
-         SECTION 5: COMPOUNDS
+         SECTION 5: WHY? CONNECTION, COST OR SKILLS? (the causes)
          ========================================================= -->
     <section id="s5" class="section">
       <div class="pure-g">
         <div class="pure-u-1">
           <p class="section-label">Section 5</p>
-          <h2>Compounds</h2>
+          <h2>Why? Connection, cost or skills?</h2>
           <p>[Section intro]</p>
         </div>
       </div>
 
       <div class="pure-g">
-        <!-- 5.1 Sub-index small-multiple map -->
+        <!-- 5.1 Heatmap: every group x the three dimensions, coloured by gap from the national average -->
         <div class="pure-u-1">
           <div class="chart-block">
-            <h3>Sub-index small-multiple maps</h3>
+            <h3>Three dimensions, different stories: every group's gap</h3>
             <p class="chart-desc">[Description]</p>
-            <div id="vis-s5-small-multiples" class="vis-container"></div>
+            <div id="vis-s5-heatmap" class="vis-container vis-tall"></div>
           </div>
         </div>
       </div>
 
       <div class="pure-g">
-        <!-- 5.2 Divergence chart: skills gap minus money gap, every group (full width, many rows) -->
+        <!-- 5.2 Sub-index small-multiple maps: Access / Affordability / Digital Ability by remoteness -->
+        <div class="pure-u-1">
+          <div class="chart-block">
+            <h3>Access, affordability or ability: which gap grows with remoteness?</h3>
+            <p class="chart-desc">[Description]</p>
+            <div id="vis-s5-small-multiples" class="vis-container vis-auto"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pure-g">
+        <!-- 5.3 Divergence chart: skills gap minus money gap, every group (full width, many rows) -->
         <div class="pure-u-1">
           <div class="chart-block">
             <h3>Skills or money: which barrier is bigger for each group?</h3>
             <p class="chart-desc">[Description]</p>
-            <div id="vis-s5-dual-slope" class="vis-container vis-tall"></div>
+            <div id="vis-s5-divergence" class="vis-container vis-tall"></div>
           </div>
         </div>
       </div>
 
       <div class="pure-g">
-        <!-- 5.3 Slope graph: skills vs money, seven key groups -->
+        <!-- 5.4 Slope graph: skills vs money, seven key groups -->
         <div class="pure-u-1">
           <div class="chart-block">
             <h3>Skills vs money: seven groups up close</h3>
@@ -265,12 +233,12 @@
       </div>
 
       <div class="pure-g">
-        <!-- 5.4 Heatmap: barriers to use + devices × group (annotated) -->
+        <!-- 5.5 Heatmap: share of each group reporting each barrier to using the internet more (annotated) -->
         <div class="pure-u-1">
           <div class="chart-block">
-            <h3>Heatmap: barriers to use and devices by group</h3>
+            <h3>What stops people getting online?</h3>
             <p class="chart-desc">[Description]</p>
-            <div id="vis-s5-barriers" class="vis-container"></div>
+            <div id="vis-s5-barriers" class="vis-container vis-tall"></div>
           </div>
         </div>
       </div>
@@ -278,7 +246,7 @@
 
 
     <!-- =========================================================
-         SECTION 6: IS THE GAP CLOSING?
+         SECTION 6: IS THE GAP CLOSING? (the trend)
          ========================================================= -->
     <section id="s6" class="section">
       <div class="pure-g">
@@ -290,24 +258,25 @@
       </div>
 
       <div class="pure-g">
-        <!-- 6.1 Bump chart: group rankings by year -->
-        <div class="pure-u-1">
-          <div class="chart-block">
-            <h3>Bump chart: group rankings by year</h3>
-            <p class="chart-desc">[Description]</p>
-            <div id="vis-s6-bump" class="vis-container"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="pure-g">
-        <!-- 6.2 Gap over time: each group's gap from the national average, 2020-2024 (radio buttons switch measure) -->
+        <!-- 6.1 Gap over time: each group's gap from the national average, 2020-2024 (radio buttons switch measure) -->
         <div class="pure-u-1">
           <div class="chart-block">
             <h3>Is the gap closing? Five groups, 2020 to 2024</h3>
             <p class="chart-desc">[Description]</p>
             <div id="gap-measure-select" class="state-select"></div> <!-- Vega-Lite puts the measure radio buttons here -->
             <div id="vis-s6-gap" class="vis-container"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pure-g">
+        <!-- 6.2 Bump chart: group rankings by year (the punchline: the order doesn't change) -->
+        <div class="pure-u-1">
+          <div class="chart-block">
+            <h3>Who is at the bottom, year after year?</h3>
+            <p class="chart-desc">[Description]</p>
+            <div id="bump-measure-select" class="state-select"></div> <!-- Vega-Lite puts the measure radio buttons here -->
+            <div id="vis-s6-bump" class="vis-container vis-tall"></div>
           </div>
         </div>
       </div>
@@ -344,6 +313,9 @@
                 href="https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026"
                 target="_blank">https://www.abs.gov.au/statistics/standards/australian-statistical-geography-standard-asgs-edition-3/jul2021-jun2026</a>
             </p>
+            <p>Australian Bureau of Statistics. (2026). <em>Regional population, 2024&ndash;25</em> [Data cube: Population
+              estimates by LGA, 2024 to 2025]. <a href="https://www.abs.gov.au/statistics/people/population/regional-population/2024-25"
+                target="_blank">https://www.abs.gov.au/statistics/people/population/regional-population/2024-25</a></p>
             <p>Thomas, J., McCosker, A., Parkinson, S., Hegarty, K., Featherstone, D., Kennedy, J., Ormond-Parker, L.,
               Morrison, K., Rea, H., &amp; Ganley, L. (2025). <em>Measuring Australia&rsquo;s digital divide: Australian
                 Digital Inclusion Index 2025</em>. ARC Centre of Excellence for Automated Decision-Making and Society,
@@ -360,7 +332,9 @@
             group it came from. This means groups can be compared side by side across all three dimensions of digital
             inclusion, not one split at a time. Repeated tables and the duplicated national average were kept once,
             wide tables were reshaped so every table reads the same way, and labels were trimmed of stray spaces. No
-            values were changed or rounded. The ABS boundary files were converted to TopoJSON for mapping.</p>
+            values were changed or rounded. The ABS boundary files were converted to TopoJSON for mapping. For the LGA cartogram, each LGA&rsquo;s
+            ADII score was joined to its ABS estimated resident population at 30 June 2025 by LGA code, and the circle
+            positions were worked out in advance by a script.</p>
 
           <h3>Licences</h3>
           <p>ADII text and data are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"

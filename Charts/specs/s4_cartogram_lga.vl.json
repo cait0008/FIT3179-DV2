@@ -1,0 +1,82 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Dorling cartogram of LGAs: circle area = population (ABS ERP 2025), colour = ADII gap from the national average (ADII 2025). Vega-Lite can't push circles apart, so the positions (x, y in pixels) and radii (r) are worked out by Charts/scripts/make_lga_cartogram_csv.py; this spec just draws them. Width and height must match WIDTH and HEIGHT in that script.",
+  "width": 1104,
+  "height": 640,
+  "autosize": { "type": "pad" },
+  "data": { "url": "Charts/Data/LGA_Cartogram.csv", "format": { "parse": { "x": "number", "y": "number", "r": "number", "Population": "number", "Gap from national average": "number" } } },
+  "transform": [
+    { "calculate": "4 * datum.r * datum.r", "as": "size" },
+    { "calculate": "datum['Gap from national average'] >= 0 ? 'At or above average' : datum['Gap from national average'] >= -5 ? '0-5 points below' : datum['Gap from national average'] >= -10 ? '5-10 points below' : 'More than 10 points below'", "as": "band" }
+  ],
+  "encoding": {
+    "x": { "field": "x", "type": "quantitative", "scale": null },
+    "y": { "field": "y", "type": "quantitative", "scale": null }
+  },
+  "layer": [
+    {
+      "mark": { "type": "circle", "opacity": 1, "stroke": "#FFFFFF", "strokeWidth": 0.5 },
+      "encoding": {
+        "size": { "field": "size", "type": "quantitative", "scale": null },
+        "color": {
+          "field": "band",
+          "type": "ordinal",
+          "scale": {
+            "domain": ["More than 10 points below", "5-10 points below", "0-5 points below", "At or above average"],
+            "range": ["#5B2A6E", "#8E6AA6", "#C9B6D6", "#A8CBB7"]
+          },
+          "legend": { "title": "ADII score vs national average (73.6)", "orient": "top-left", "symbolType": "circle", "titleLimit": 300 }
+        },
+        "tooltip": [
+          { "field": "LGA", "title": "Local Government Area" },
+          { "field": "State" },
+          { "field": "Population", "type": "quantitative", "format": "," },
+          { "field": "ADII score", "type": "quantitative", "format": ".1f" },
+          { "field": "Gap from national average", "type": "quantitative", "format": "+.1f" }
+        ]
+      }
+    },
+    {
+      "description": "name the biggest LGAs",
+      "transform": [{ "filter": "datum.Population >= 300000" }, { "calculate": "replace(datum.LGA, 'Unincorporated ', '')", "as": "LGA" }],
+      "mark": { "type": "text", "fontSize": 10, "fontWeight": 700 },
+      "encoding": {
+        "text": { "field": "LGA" },
+        "color": { "condition": { "test": "datum['Gap from national average'] < -10", "value": "#FFFFFF" }, "value": "#25212E" }
+      }
+    },
+    {
+      "description": "state labels at the middle of each state's cluster: a thick white copy underneath gives the text a halo",
+      "transform": [{ "aggregate": [{ "op": "mean", "field": "x", "as": "x" }, { "op": "mean", "field": "y", "as": "y" }], "groupby": ["State"] }],
+      "encoding": { "text": { "field": "State" } },
+      "layer": [
+        { "mark": { "type": "text", "fontSize": 16, "fontWeight": 700, "stroke": "#FFFFFF", "strokeWidth": 4, "strokeJoin": "round" } },
+        { "mark": { "type": "text", "fontSize": 16, "fontWeight": 700, "color": "#25212E" } }
+      ]
+    },
+    {
+      "description": "size key, bottom left: circles for 10k, 100k and 1M people side by side (radius from any LGA's r / sqrt(population))",
+      "transform": [
+        { "calculate": "datum.r / sqrt(datum.Population)", "as": "k" },
+        { "aggregate": [{ "op": "max", "field": "k", "as": "k" }] },
+        { "calculate": "[10000, 100000, 1000000]", "as": "people" },
+        { "flatten": ["people"] },
+        { "calculate": "datum.k * sqrt(datum.people)", "as": "r" },
+        { "calculate": "4 * datum.r * datum.r", "as": "size" },
+        { "calculate": "{'10000': 24, '100000': 52, '1000000': 108}[datum.people]", "as": "x" },
+        { "calculate": "640 - 22 - datum.r", "as": "y" },
+        { "calculate": "format(datum.people, '.0s')", "as": "label" }
+      ],
+      "layer": [
+        { "mark": { "type": "circle", "fill": null, "stroke": "#5F566E", "strokeWidth": 1 }, "encoding": { "size": { "field": "size", "type": "quantitative", "scale": null } } },
+        { "mark": { "type": "text", "baseline": "top", "fontSize": 11, "color": "#5F566E", "y": 624 }, "encoding": { "y": null, "text": { "field": "label" } } },
+        {
+          "description": "key title, just above the biggest key circle",
+          "transform": [{ "filter": "datum.people === 1000000" }, { "calculate": "datum.y - datum.r - 8", "as": "y" }],
+          "mark": { "type": "text", "align": "left", "fontSize": 13, "fontWeight": 700, "color": "#25212E", "text": "Circle size: people" },
+          "encoding": { "x": { "value": 0 } }
+        }
+      ]
+    }
+  ]
+}

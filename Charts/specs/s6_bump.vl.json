@@ -1,0 +1,49 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Bump chart adapted from the Vega-Lite 'Bump Chart' example: each group's rank by score in each survey year (1 = highest), 2020-2024 (no 2023 survey). Groups with all four years only (age, education, employment, disability) plus the national average for reference. The two lowest groups are highlighted.",
+  "width": "container",
+  "height": "container",
+  "params": [
+    { "name": "bumpMeasure", "value": "Access", "bind": { "input": "radio", "options": ["Access", "Digital Ability"], "name": "Show: ", "element": "#bump-measure-select" } }
+  ],
+  "data": { "url": "Charts/Data/GapOverTime.csv", "format": { "parse": { "Year": "number", "Score": "number" } } },
+  "transform": [
+    { "filter": "datum.Measure === bumpMeasure" },
+    { "filter": { "field": "Dimension", "oneOf": ["National", "Age", "Education levels", "Employment", "People with disability"] } },
+    { "filter": "datum.Group !== 'Other'" },
+    { "window": [{ "op": "row_number", "as": "rank" }], "groupby": ["Year"], "sort": [{ "field": "Score", "order": "descending" }, { "field": "Group" }] },
+    { "calculate": "indexof(['Age', 'Education levels', 'Employment'], datum.Dimension) >= 0 ? replace(datum.Dimension, ' levels', '') + ' (' + datum.Group + ')' : datum.Group", "as": "label" },
+    { "calculate": "indexof(['75+', 'Did not complete secondary school', 'National average'], datum.Group) >= 0 ? datum.label : 'Other groups'", "as": "colourKey" }
+  ],
+  "encoding": {
+    "x": { "field": "Year", "type": "quantitative", "title": null, "scale": { "domain": [2020, 2024] }, "axis": { "values": [2020, 2021, 2022, 2024], "format": "d", "grid": true, "orient": "top" } },
+    "y": { "field": "rank", "type": "ordinal", "title": null, "axis": null },
+    "color": {
+      "field": "colourKey",
+      "scale": { "domain": ["Age (75+)", "Education (Did not complete secondary school)", "National average", "Other groups"], "range": ["#B8186F", "#C9784E", "#25212E", "#C4BACB"] },
+      "legend": null
+    },
+    "detail": { "field": "Group" },
+    "order": { "field": "Year" },
+    "tooltip": [{ "field": "label", "title": "Group" }, { "field": "Year" }, { "field": "rank", "title": "Rank" }, { "field": "Score", "format": ".1f" }]
+  },
+  "layer": [
+    { "mark": { "type": "line", "point": true, "strokeWidth": 2 } },
+    {
+      "description": "highlighted groups and the national average again, so they sit on top",
+      "transform": [{ "filter": "datum.colourKey !== 'Other groups'" }],
+      "mark": { "type": "line", "point": { "size": 60 }, "strokeWidth": 3.5 },
+      "encoding": { "strokeDash": { "condition": { "test": "datum.Group === 'National average'", "value": [5, 3] }, "value": [1, 0] } }
+    },
+    {
+      "transform": [{ "filter": "datum.Year === 2020" }],
+      "mark": { "type": "text", "align": "right", "dx": -10, "fontSize": 11 },
+      "encoding": { "text": { "field": "label" }, "color": { "condition": { "test": "datum.colourKey !== 'Other groups'", "field": "colourKey" }, "value": "#5F566E" } }
+    },
+    {
+      "transform": [{ "filter": "datum.Year === 2024" }],
+      "mark": { "type": "text", "align": "left", "dx": 10, "fontSize": 11 },
+      "encoding": { "text": { "field": "label" }, "color": { "condition": { "test": "datum.colourKey !== 'Other groups'", "field": "colourKey" }, "value": "#5F566E" } }
+    }
+  ]
+}

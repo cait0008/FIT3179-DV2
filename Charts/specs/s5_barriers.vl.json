@@ -1,0 +1,42 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Heatmap of the share of each group who report each barrier to using the internet more (ADII 2025, Internet Use: barriers to use). Columns are the seven main barriers, ordered by national share; people could pick more than one. Based on the Vega-Lite 'Annotated Heatmap' example, styled like s5_heatmap.",
+  "width": "container",
+  "height": "container",
+  "data": { "url": "Charts/Data/Barriers.csv" },
+  "transform": [
+    { "filter": { "field": "Barrier", "oneOf": ["Privacy or scams", "Slow connection", "Not a priority", "Too expensive", "Offensive content", "Not confident", "No easy access"] } },
+    { "filter": "datum.Group !== 'Metro' && datum.Group !== 'Regional'" },
+    { "calculate": "indexof(['Age', 'Education levels', 'Employment'], datum.Dimension) >= 0 ? replace(datum.Dimension, ' levels', '') + ' (' + datum.Group + ')' : datum.Group", "as": "label" },
+    { "window": [{ "op": "row_number", "as": "row" }], "groupby": ["Barrier"] }
+  ],
+  "encoding": {
+    "y": { "field": "label", "type": "nominal", "sort": { "field": "row", "op": "min" }, "title": null, "axis": { "labelLimit": 260, "labelFontWeight": { "condition": { "test": "datum.value === 'National average'", "value": 700 }, "value": 400 } } },
+    "x": { "field": "Barrier", "type": "nominal", "sort": ["Privacy or scams", "Slow connection", "Not a priority", "Too expensive", "Offensive content", "Not confident", "No easy access"], "title": null, "axis": { "orient": "top", "labelAngle": 0, "labelFontWeight": 700, "labelColor": "#25212E" } }
+  },
+  "layer": [
+    {
+      "mark": { "type": "rect", "stroke": "#FFFFFF", "strokeWidth": 1 },
+      "encoding": {
+        "color": {
+          "field": "Share",
+          "type": "quantitative",
+          "scale": { "domain": [0, 0.3], "range": ["#F4F0F5", "#5B2A6E"], "clamp": true },
+          "legend": { "title": "Share of the group reporting this barrier", "format": ".0%", "orient": "bottom", "direction": "horizontal", "gradientLength": 220, "titleLimit": 300 }
+        },
+        "tooltip": [
+          { "field": "label", "title": "Group" },
+          { "field": "Wording", "title": "Barrier" },
+          { "field": "Share", "type": "quantitative", "format": ".1%" }
+        ]
+      }
+    },
+    {
+      "mark": { "type": "text", "fontSize": 11 },
+      "encoding": {
+        "text": { "field": "Share", "type": "quantitative", "format": ".0%" },
+        "color": { "condition": { "test": "datum.Share > 0.2", "value": "#FFFFFF" }, "value": "#25212E" }
+      }
+    }
+  ]
+}

@@ -1,0 +1,353 @@
+Dimension,Group,Barrier,Wording,Share
+National,National average,No barriers,No barriers - I use the internet regularly and do not need to use more often,0.5206
+Age,18-34,No barriers,No barriers - I use the internet regularly and do not need to use more often,0.6232
+Age,35-44,No barriers,No barriers - I use the internet regularly and do not need to use more often,0.6012
+Age,45-54,No barriers,No barriers - I use the internet regularly and do not need to use more often,0.5408
+Age,55-64,No barriers,No barriers - I use the internet regularly and do not need to use more often,0.4546
+Age,65-74,No barriers,No barriers - I use the internet regularly and do not need to use more often,0.3843
+Age,75+,No barriers,No barriers - I use the internet regularly and do not need to use more often,0.2899
+National,National average,Privacy or scams,I am concerned about privacy or scams,0.1463
+Age,18-34,Privacy or scams,I am concerned about privacy or scams,0.0929
+Age,35-44,Privacy or scams,I am concerned about privacy or scams,0.1207
+Age,45-54,Privacy or scams,I am concerned about privacy or scams,0.1309
+Age,55-64,Privacy or scams,I am concerned about privacy or scams,0.198
+Age,65-74,Privacy or scams,I am concerned about privacy or scams,0.1948
+Age,75+,Privacy or scams,I am concerned about privacy or scams,0.244
+National,National average,Slow connection,My internet connection is too slow/unreliable,0.1439
+Age,18-34,Slow connection,My internet connection is too slow/unreliable,0.1623
+Age,35-44,Slow connection,My internet connection is too slow/unreliable,0.1782
+Age,45-54,Slow connection,My internet connection is too slow/unreliable,0.1527
+Age,55-64,Slow connection,My internet connection is too slow/unreliable,0.1189
+Age,65-74,Slow connection,My internet connection is too slow/unreliable,0.1166
+Age,75+,Slow connection,My internet connection is too slow/unreliable,0.0811
+National,National average,Not a priority,The internet is not a priority for me,0.0697
+Age,18-34,Not a priority,The internet is not a priority for me,0.0165
+Age,35-44,Not a priority,The internet is not a priority for me,0.0305
+Age,45-54,Not a priority,The internet is not a priority for me,0.0506
+Age,55-64,Not a priority,The internet is not a priority for me,0.0606
+Age,65-74,Not a priority,The internet is not a priority for me,0.1227
+Age,75+,Not a priority,The internet is not a priority for me,0.2908
+National,National average,Too expensive,The internet is too expensive for me,0.0604
+Age,18-34,Too expensive,The internet is too expensive for me,0.0581
+Age,35-44,Too expensive,The internet is too expensive for me,0.077
+Age,45-54,Too expensive,The internet is too expensive for me,0.0578
+Age,55-64,Too expensive,The internet is too expensive for me,0.0648
+Age,65-74,Too expensive,The internet is too expensive for me,0.0458
+Age,75+,Too expensive,The internet is too expensive for me,0.0519
+National,National average,Offensive content,"I am concerned about online content that can offend, shame or cause conflict",0.0472
+Age,18-34,Offensive content,"I am concerned about online content that can offend, shame or cause conflict",0.046
+Age,35-44,Offensive content,"I am concerned about online content that can offend, shame or cause conflict",0.0306
+Age,45-54,Offensive content,"I am concerned about online content that can offend, shame or cause conflict",0.0402
+Age,55-64,Offensive content,"I am concerned about online content that can offend, shame or cause conflict",0.0699
+Age,65-74,Offensive content,"I am concerned about online content that can offend, shame or cause conflict",0.0511
+Age,75+,Offensive content,"I am concerned about online content that can offend, shame or cause conflict",0.0525
+National,National average,Not confident,I am not confident using the internet,0.0274
+Age,18-34,Not confident,I am not confident using the internet,0.0122
+Age,35-44,Not confident,I am not confident using the internet,0.0014
+Age,45-54,Not confident,I am not confident using the internet,0.0033
+Age,55-64,Not confident,I am not confident using the internet,0.0207
+Age,65-74,Not confident,I am not confident using the internet,0.0629
+Age,75+,Not confident,I am not confident using the internet,0.1327
+National,National average,No easy access,I do not have convenient access to the internet,0.0182
+Age,18-34,No easy access,I do not have convenient access to the internet,0.0103
+Age,35-44,No easy access,I do not have convenient access to the internet,0.0292
+Age,45-54,No easy access,I do not have convenient access to the internet,0.0092
+Age,55-64,No easy access,I do not have convenient access to the internet,0.0112
+Age,65-74,No easy access,I do not have convenient access to the internet,0.0273
+Age,75+,No easy access,I do not have convenient access to the internet,0.0377
+National,National average,Other,Other,0.017
+Age,18-34,Other,Other,0.0189
+Age,35-44,Other,Other,0.0153
+Age,45-54,Other,Other,0.0116
+Age,55-64,Other,Other,0.0182
+Age,65-74,Other,Other,0.0093
+Age,75+,Other,Other,0.0309
+National,National average,Disability,I have a disability that restricts me from using the internet,0.0042
+Age,18-34,Disability,I have a disability that restricts me from using the internet,0.0002
+Age,35-44,Disability,I have a disability that restricts me from using the internet,0.0006
+Age,45-54,Disability,I have a disability that restricts me from using the internet,0.0122
+Age,55-64,Disability,I have a disability that restricts me from using the internet,0.0023
+Age,65-74,Disability,I have a disability that restricts me from using the internet,0.0026
+Age,75+,Disability,I have a disability that restricts me from using the internet,0.0142
+National,National average,Language,Not enough content is available in my first language,0.0032
+Age,18-34,Language,Not enough content is available in my first language,0.0048
+Age,35-44,Language,Not enough content is available in my first language,0.0038
+Age,45-54,Language,Not enough content is available in my first language,0.0035
+Age,55-64,Language,Not enough content is available in my first language,0.0034
+Age,65-74,Language,Not enough content is available in my first language,0.0002
+Age,75+,Language,Not enough content is available in my first language,0.0
+Gender,Male,No barriers,No barriers - I use the internet regularly and do not need to use more often,0.5244
+Gender,Female,No barriers,No barriers - I use the internet regularly and do not need to use more often,0.5212
+Gender,Male,Privacy or scams,I am concerned about privacy or scams,0.1595
+Gender,Female,Privacy or scams,I am concerned about privacy or scams,0.1357
+Gender,Male,Slow connection,My internet connection is too slow/unreliable,0.1342
+Gender,Female,Slow connection,My internet connection is too slow/unreliable,0.1481
+Gender,Male,Not a priority,The internet is not a priority for me,0.0783
+Gender,Female,Not a priority,The internet is not a priority for me,0.0641
+Gender,Male,Too expensive,The internet is too expensive for me,0.0652
+Gender,Female,Too expensive,The internet is too expensive for me,0.0536
+Gender,Male,Offensive content,"I am concerned about online content that can offend, shame or cause conflict",0.0525
+Gender,Female,Offensive content,"I am concerned about online content that can offend, shame or cause conflict",0.0438
+Gender,Male,Not confident,I am not confident using the internet,0.0262
+Gender,Female,Not confident,I am not confident using the internet,0.0295
+Gender,Male,No easy access,I do not have convenient access to the internet,0.0148
+Gender,Female,No easy access,I do not have convenient access to the internet,0.0193
+Gender,Male,Other,Other,0.0154
+Gender,Female,Other,Other,0.0193
+Gender,Male,Disability,I have a disability that restricts me from using the internet,0.0046
+Gender,Female,Disability,I have a disability that restricts me from using the internet,0.0035
+Gender,Male,Language,Not enough content is available in my first language,0.0045
+Gender,Female,Language,Not enough content is available in my first language,0.0021
+Education levels,Did not complete secondary school,No barriers,No barriers - I use the internet regularly and do not need to use more often,0.3443
+Education levels,Completed secondary school,No barriers,No barriers - I use the internet regularly and do not need to use more often,0.4922
+Education levels,Certificate / diploma,No barriers,No barriers - I use the internet regularly and do not need to use more often,0.5053
+Education levels,Bachelor and above,No barriers,No barriers - I use the internet regularly and do not need to use more often,0.6117
+Education levels,Other,No barriers,No barriers - I use the internet regularly and do not need to use more often,0.381
+Education levels,Did not complete secondary school,Privacy or scams,I am concerned about privacy or scams,0.196
+Education levels,Completed secondary school,Privacy or scams,I am concerned about privacy or scams,0.183
+Education levels,Certificate / diploma,Privacy or scams,I am concerned about privacy or scams,0.1397
+Education levels,Bachelor and above,Privacy or scams,I am concerned about privacy or scams,0.1103
+Education levels,Other,Privacy or scams,I am concerned about privacy or scams,0.2623
+Education levels,Did not complete secondary school,Slow connection,My internet connection is too slow/unreliable,0.1104
+Education levels,Completed secondary school,Slow connection,My internet connection is too slow/unreliable,0.1266
+Education levels,Certificate / diploma,Slow connection,My internet connection is too slow/unreliable,0.1762
+Education levels,Bachelor and above,Slow connection,My internet connection is too slow/unreliable,0.133
+Education levels,Other,Slow connection,My internet connection is too slow/unreliable,0.0768
+Education levels,Did not complete secondary school,Not a priority,The internet is not a priority for me,0.1803
+Education levels,Completed secondary school,Not a priority,The internet is not a priority for me,0.1187
+Education levels,Certificate / diploma,Not a priority,The internet is not a priority for me,0.0506
+Education levels,Bachelor and above,Not a priority,The internet is not a priority for me,0.024
+Education levels,Other,Not a priority,The internet is not a priority for me,0.1965
+Education levels,Did not complete secondary school,Too expensive,The internet is too expensive for me,0.0551
+Education levels,Completed secondary school,Too expensive,The internet is too expensive for me,0.0783
+Education levels,Certificate / diploma,Too expensive,The internet is too expensive for me,0.052
+Education levels,Bachelor and above,Too expensive,The internet is too expensive for me,0.0558
+Education levels,Other,Too expensive,The internet is too expensive for me,0.1289
+Education levels,Did not complete secondary school,Offensive content,"I am concerned about online content that can offend, shame or cause conflict",0.0399
+Education levels,Completed secondary school,Offensive content,"I am concerned about online content that can offend, shame or cause conflict",0.0475
+Education levels,Certificate / diploma,Offensive content,"I am concerned about online content that can offend, shame or cause conflict",0.0426
+Education levels,Bachelor and above,Offensive content,"I am concerned about online content that can offend, shame or cause conflict",0.052
+Education levels,Other,Offensive content,"I am concerned about online content that can offend, shame or cause conflict",0.0793
+Education levels,Did not complete secondary school,Not confident,I am not confident using the internet,0.0783
+Education levels,Completed secondary school,Not confident,I am not confident using the internet,0.0326
+Education levels,Certificate / diploma,Not confident,I am not confident using the internet,0.0257
+Education levels,Bachelor and above,Not confident,I am not confident using the internet,0.0091
+Education levels,Other,Not confident,I am not confident using the internet,0.0811
+Education levels,Did not complete secondary school,No easy access,I do not have convenient access to the internet,0.0336
+Education levels,Completed secondary school,No easy access,I do not have convenient access to the internet,0.0108
+Education levels,Certificate / diploma,No easy access,I do not have convenient access to the internet,0.0203
+Education levels,Bachelor and above,No easy access,I do not have convenient access to the internet,0.0121
+Education levels,Other,No easy access,I do not have convenient access to the internet,0.0668
+Education levels,Did not complete secondary school,Other,Other,0.0183
+Education levels,Completed secondary school,Other,Other,0.0308
+Education levels,Certificate / diploma,Other,Other,0.0141
+Education levels,Bachelor and above,Other,Other,0.0105
+Education levels,Other,Other,Other,0.0391
+Education levels,Did not complete secondary school,Disability,I have a disability that restricts me from using the internet,0.0127
+Education levels,Completed secondary school,Disability,I have a disability that restricts me from using the internet,0.0012
+Education levels,Certificate / diploma,Disability,I have a disability that restricts me from using the internet,0.0043
+Education levels,Bachelor and above,Disability,I have a disability that restricts me from using the internet,0.0007
+Education levels,Other,Disability,I have a disability that restricts me from using the internet,0.0431
+Education levels,Did not complete secondary school,Language,Not enough content is available in my first language,0.0009
+Education levels,Completed secondary school,Language,Not enough content is available in my first language,0.0004
+Education levels,Certificate / diploma,Language,Not enough content is available in my first language,0.0002
+Education levels,Bachelor and above,Language,Not enough content is available in my first language,0.0091
+Education levels,Other,Language,Not enough content is available in my first language,0.0004
+Employment,Employed,No barriers,No barriers - I use the internet regularly and do not need to use more often,0.5789
+Employment,Unemployed,No barriers,No barriers - I use the internet regularly and do not need to use more often,0.513
+Employment,Not in labour force,No barriers,No barriers - I use the internet regularly and do not need to use more often,0.4225
+Employment,Employed,Privacy or scams,I am concerned about privacy or scams,0.115
+Employment,Unemployed,Privacy or scams,I am concerned about privacy or scams,0.1706
+Employment,Not in labour force,Privacy or scams,I am concerned about privacy or scams,0.2
+Employment,Employed,Slow connection,My internet connection is too slow/unreliable,0.1616
+Employment,Unemployed,Slow connection,My internet connection is too slow/unreliable,0.1423
+Employment,Not in labour force,Slow connection,My internet connection is too slow/unreliable,0.113
+Employment,Employed,Not a priority,The internet is not a priority for me,0.031
+Employment,Unemployed,Not a priority,The internet is not a priority for me,0.0346
+Employment,Not in labour force,Not a priority,The internet is not a priority for me,0.1398
+Employment,Employed,Too expensive,The internet is too expensive for me,0.0574
+Employment,Unemployed,Too expensive,The internet is too expensive for me,0.1479
+Employment,Not in labour force,Too expensive,The internet is too expensive for me,0.0569
+Employment,Employed,Offensive content,"I am concerned about online content that can offend, shame or cause conflict",0.0414
+Employment,Unemployed,Offensive content,"I am concerned about online content that can offend, shame or cause conflict",0.0637
+Employment,Not in labour force,Offensive content,"I am concerned about online content that can offend, shame or cause conflict",0.0564
+Employment,Employed,Not confident,I am not confident using the internet,0.011
+Employment,Unemployed,Not confident,I am not confident using the internet,0.0162
+Employment,Not in labour force,Not confident,I am not confident using the internet,0.056
+Employment,Employed,No easy access,I do not have convenient access to the internet,0.0159
+Employment,Unemployed,No easy access,I do not have convenient access to the internet,0.0437
+Employment,Not in labour force,No easy access,I do not have convenient access to the internet,0.0198
+Employment,Employed,Other,Other,0.0162
+Employment,Unemployed,Other,Other,0.0181
+Employment,Not in labour force,Other,Other,0.0186
+Employment,Employed,Disability,I have a disability that restricts me from using the internet,0.0025
+Employment,Unemployed,Disability,I have a disability that restricts me from using the internet,0.0007
+Employment,Not in labour force,Disability,I have a disability that restricts me from using the internet,0.0076
+Employment,Employed,Language,Not enough content is available in my first language,0.0038
+Employment,Unemployed,Language,Not enough content is available in my first language,0.0184
+Employment,Not in labour force,Language,Not enough content is available in my first language,0.0004
+People with disability,People with disability,No barriers,No barriers - I use the internet regularly and do not need to use more often,0.4588
+People with disability,People without disability,No barriers,No barriers - I use the internet regularly and do not need to use more often,0.5321
+People with disability,People with disability,Privacy or scams,I am concerned about privacy or scams,0.2082
+People with disability,People without disability,Privacy or scams,I am concerned about privacy or scams,0.1358
+People with disability,People with disability,Slow connection,My internet connection is too slow/unreliable,0.1488
+People with disability,People without disability,Slow connection,My internet connection is too slow/unreliable,0.1435
+People with disability,People with disability,Not a priority,The internet is not a priority for me,0.1281
+People with disability,People without disability,Not a priority,The internet is not a priority for me,0.0595
+People with disability,People with disability,Too expensive,The internet is too expensive for me,0.0968
+People with disability,People without disability,Too expensive,The internet is too expensive for me,0.0541
+People with disability,People with disability,Offensive content,"I am concerned about online content that can offend, shame or cause conflict",0.0636
+People with disability,People without disability,Offensive content,"I am concerned about online content that can offend, shame or cause conflict",0.0444
+People with disability,People with disability,Not confident,I am not confident using the internet,0.0745
+People with disability,People without disability,Not confident,I am not confident using the internet,0.0188
+People with disability,People with disability,No easy access,I do not have convenient access to the internet,0.0386
+People with disability,People without disability,No easy access,I do not have convenient access to the internet,0.0139
+People with disability,People with disability,Other,Other,0.0499
+People with disability,People without disability,Other,Other,0.0113
+People with disability,People with disability,Disability,I have a disability that restricts me from using the internet,0.0279
+People with disability,People without disability,Disability,I have a disability that restricts me from using the internet,0.0001
+People with disability,People with disability,Language,Not enough content is available in my first language,0.0011
+People with disability,People without disability,Language,Not enough content is available in my first language,0.0036
+First Nations,First Nations (national average),No barriers,No barriers - I use the internet regularly and do not need to use more often,0.5837
+First Nations,First Nations (urban),No barriers,No barriers - I use the internet regularly and do not need to use more often,0.5867
+First Nations,First Nations (inner regional),No barriers,No barriers - I use the internet regularly and do not need to use more often,0.6004
+First Nations,First Nations (outer regional),No barriers,No barriers - I use the internet regularly and do not need to use more often,0.4913
+First Nations,First Nations (remote),No barriers,No barriers - I use the internet regularly and do not need to use more often,0.5426
+First Nations,First Nations (very remote),No barriers,No barriers - I use the internet regularly and do not need to use more often,0.7323
+First Nations,First Nations (national average),Privacy or scams,I am concerned about privacy or scams,0.1051
+First Nations,First Nations (urban),Privacy or scams,I am concerned about privacy or scams,0.1172
+First Nations,First Nations (inner regional),Privacy or scams,I am concerned about privacy or scams,0.0682
+First Nations,First Nations (outer regional),Privacy or scams,I am concerned about privacy or scams,0.1585
+First Nations,First Nations (remote),Privacy or scams,I am concerned about privacy or scams,0.1305
+First Nations,First Nations (very remote),Privacy or scams,I am concerned about privacy or scams,0.0271
+First Nations,First Nations (national average),Slow connection,My internet connection is too slow/unreliable,0.1229
+First Nations,First Nations (urban),Slow connection,My internet connection is too slow/unreliable,0.1241
+First Nations,First Nations (inner regional),Slow connection,My internet connection is too slow/unreliable,0.1175
+First Nations,First Nations (outer regional),Slow connection,My internet connection is too slow/unreliable,0.1587
+First Nations,First Nations (remote),Slow connection,My internet connection is too slow/unreliable,0.1404
+First Nations,First Nations (very remote),Slow connection,My internet connection is too slow/unreliable,0.0517
+First Nations,First Nations (national average),Not a priority,The internet is not a priority for me,0.0834
+First Nations,First Nations (urban),Not a priority,The internet is not a priority for me,0.0708
+First Nations,First Nations (inner regional),Not a priority,The internet is not a priority for me,0.1165
+First Nations,First Nations (outer regional),Not a priority,The internet is not a priority for me,0.1006
+First Nations,First Nations (remote),Not a priority,The internet is not a priority for me,0.0827
+First Nations,First Nations (very remote),Not a priority,The internet is not a priority for me,0.021
+First Nations,First Nations (national average),Too expensive,The internet is too expensive for me,0.1167
+First Nations,First Nations (urban),Too expensive,The internet is too expensive for me,0.1489
+First Nations,First Nations (inner regional),Too expensive,The internet is too expensive for me,0.0726
+First Nations,First Nations (outer regional),Too expensive,The internet is too expensive for me,0.1397
+First Nations,First Nations (remote),Too expensive,The internet is too expensive for me,0.1178
+First Nations,First Nations (very remote),Too expensive,The internet is too expensive for me,0.044
+First Nations,First Nations (national average),Offensive content,"I am concerned about online content that can offend, shame or cause conflict",0.042
+First Nations,First Nations (urban),Offensive content,"I am concerned about online content that can offend, shame or cause conflict",0.0433
+First Nations,First Nations (inner regional),Offensive content,"I am concerned about online content that can offend, shame or cause conflict",0.032
+First Nations,First Nations (outer regional),Offensive content,"I am concerned about online content that can offend, shame or cause conflict",0.0532
+First Nations,First Nations (remote),Offensive content,"I am concerned about online content that can offend, shame or cause conflict",0.07
+First Nations,First Nations (very remote),Offensive content,"I am concerned about online content that can offend, shame or cause conflict",0.0223
+First Nations,First Nations (national average),Not confident,I am not confident using the internet,0.0555
+First Nations,First Nations (urban),Not confident,I am not confident using the internet,0.0369
+First Nations,First Nations (inner regional),Not confident,I am not confident using the internet,0.0495
+First Nations,First Nations (outer regional),Not confident,I am not confident using the internet,0.0635
+First Nations,First Nations (remote),Not confident,I am not confident using the internet,0.1041
+First Nations,First Nations (very remote),Not confident,I am not confident using the internet,0.1056
+First Nations,First Nations (national average),No easy access,I do not have convenient access to the internet,0.0447
+First Nations,First Nations (urban),No easy access,I do not have convenient access to the internet,0.021
+First Nations,First Nations (inner regional),No easy access,I do not have convenient access to the internet,0.0428
+First Nations,First Nations (outer regional),No easy access,I do not have convenient access to the internet,0.0715
+First Nations,First Nations (remote),No easy access,I do not have convenient access to the internet,0.058
+First Nations,First Nations (very remote),No easy access,I do not have convenient access to the internet,0.0923
+First Nations,First Nations (national average),Other,Other,0.0289
+First Nations,First Nations (urban),Other,Other,0.0206
+First Nations,First Nations (inner regional),Other,Other,0.0187
+First Nations,First Nations (outer regional),Other,Other,0.0383
+First Nations,First Nations (remote),Other,Other,0.0625
+First Nations,First Nations (very remote),Other,Other,0.0515
+First Nations,First Nations (national average),Disability,I have a disability that restricts me from using the internet,0.0071
+First Nations,First Nations (urban),Disability,I have a disability that restricts me from using the internet,0.0045
+First Nations,First Nations (inner regional),Disability,I have a disability that restricts me from using the internet,0.0082
+First Nations,First Nations (outer regional),Disability,I have a disability that restricts me from using the internet,0.0068
+First Nations,First Nations (remote),Disability,I have a disability that restricts me from using the internet,0.0148
+First Nations,First Nations (very remote),Disability,I have a disability that restricts me from using the internet,0.0118
+First Nations,First Nations (national average),Language,Not enough content is available in my first language,0.0105
+First Nations,First Nations (urban),Language,Not enough content is available in my first language,0.0039
+First Nations,First Nations (inner regional),Language,Not enough content is available in my first language,0.0098
+First Nations,First Nations (outer regional),Language,Not enough content is available in my first language,0.0131
+First Nations,First Nations (remote),Language,Not enough content is available in my first language,0.0208
+First Nations,First Nations (very remote),Language,Not enough content is available in my first language,0.029
+Remoteness,Major Cities of Australia,No barriers,No barriers - I use the internet regularly and do not need to use more often,0.5412
+Remoteness,Inner Regional Australia,No barriers,No barriers - I use the internet regularly and do not need to use more often,0.4524
+Remoteness,Outer Regional Australia,No barriers,No barriers - I use the internet regularly and do not need to use more often,0.5008
+Remoteness,Remote Australia,No barriers,No barriers - I use the internet regularly and do not need to use more often,0.3833
+Remoteness,Very Remote Australia,No barriers,No barriers - I use the internet regularly and do not need to use more often,0.5382
+Remoteness,Major Cities of Australia,Privacy or scams,I am concerned about privacy or scams,0.1425
+Remoteness,Inner Regional Australia,Privacy or scams,I am concerned about privacy or scams,0.1659
+Remoteness,Outer Regional Australia,Privacy or scams,I am concerned about privacy or scams,0.142
+Remoteness,Remote Australia,Privacy or scams,I am concerned about privacy or scams,0.1428
+Remoteness,Very Remote Australia,Privacy or scams,I am concerned about privacy or scams,0.0878
+Remoteness,Major Cities of Australia,Slow connection,My internet connection is too slow/unreliable,0.1312
+Remoteness,Inner Regional Australia,Slow connection,My internet connection is too slow/unreliable,0.186
+Remoteness,Outer Regional Australia,Slow connection,My internet connection is too slow/unreliable,0.149
+Remoteness,Remote Australia,Slow connection,My internet connection is too slow/unreliable,0.2898
+Remoteness,Very Remote Australia,Slow connection,My internet connection is too slow/unreliable,0.1239
+Remoteness,Major Cities of Australia,Not a priority,The internet is not a priority for me,0.0585
+Remoteness,Inner Regional Australia,Not a priority,The internet is not a priority for me,0.0976
+Remoteness,Outer Regional Australia,Not a priority,The internet is not a priority for me,0.1092
+Remoteness,Remote Australia,Not a priority,The internet is not a priority for me,0.0728
+Remoteness,Very Remote Australia,Not a priority,The internet is not a priority for me,0.0882
+Remoteness,Major Cities of Australia,Too expensive,The internet is too expensive for me,0.061
+Remoteness,Inner Regional Australia,Too expensive,The internet is too expensive for me,0.0577
+Remoteness,Outer Regional Australia,Too expensive,The internet is too expensive for me,0.0576
+Remoteness,Remote Australia,Too expensive,The internet is too expensive for me,0.1107
+Remoteness,Very Remote Australia,Too expensive,The internet is too expensive for me,0.0231
+Remoteness,Major Cities of Australia,Offensive content,"I am concerned about online content that can offend, shame or cause conflict",0.0495
+Remoteness,Inner Regional Australia,Offensive content,"I am concerned about online content that can offend, shame or cause conflict",0.0409
+Remoteness,Outer Regional Australia,Offensive content,"I am concerned about online content that can offend, shame or cause conflict",0.0429
+Remoteness,Remote Australia,Offensive content,"I am concerned about online content that can offend, shame or cause conflict",0.042
+Remoteness,Very Remote Australia,Offensive content,"I am concerned about online content that can offend, shame or cause conflict",0.0142
+Remoteness,Major Cities of Australia,Not confident,I am not confident using the internet,0.0222
+Remoteness,Inner Regional Australia,Not confident,I am not confident using the internet,0.0448
+Remoteness,Outer Regional Australia,Not confident,I am not confident using the internet,0.0301
+Remoteness,Remote Australia,Not confident,I am not confident using the internet,0.0437
+Remoteness,Very Remote Australia,Not confident,I am not confident using the internet,0.0856
+Remoteness,Major Cities of Australia,No easy access,I do not have convenient access to the internet,0.0111
+Remoteness,Inner Regional Australia,No easy access,I do not have convenient access to the internet,0.0311
+Remoteness,Outer Regional Australia,No easy access,I do not have convenient access to the internet,0.0448
+Remoteness,Remote Australia,No easy access,I do not have convenient access to the internet,0.0577
+Remoteness,Very Remote Australia,No easy access,I do not have convenient access to the internet,0.0869
+Remoteness,Major Cities of Australia,Other,Other,0.0188
+Remoteness,Inner Regional Australia,Other,Other,0.0112
+Remoteness,Outer Regional Australia,Other,Other,0.0116
+Remoteness,Remote Australia,Other,Other,0.0248
+Remoteness,Very Remote Australia,Other,Other,0.0212
+Remoteness,Major Cities of Australia,Disability,I have a disability that restricts me from using the internet,0.0034
+Remoteness,Inner Regional Australia,Disability,I have a disability that restricts me from using the internet,0.0067
+Remoteness,Outer Regional Australia,Disability,I have a disability that restricts me from using the internet,0.0054
+Remoteness,Remote Australia,Disability,I have a disability that restricts me from using the internet,0.0022
+Remoteness,Very Remote Australia,Disability,I have a disability that restricts me from using the internet,0.0091
+Remoteness,Major Cities of Australia,Language,Not enough content is available in my first language,0.0036
+Remoteness,Inner Regional Australia,Language,Not enough content is available in my first language,0.002
+Remoteness,Outer Regional Australia,Language,Not enough content is available in my first language,0.0014
+Remoteness,Remote Australia,Language,Not enough content is available in my first language,0.0047
+Remoteness,Very Remote Australia,Language,Not enough content is available in my first language,0.012
+Capital cities / regional,Metro,No barriers,No barriers - I use the internet regularly and do not need to use more often,0.5544
+Capital cities / regional,Regional,No barriers,No barriers - I use the internet regularly and do not need to use more often,0.4507
+Capital cities / regional,Metro,Privacy or scams,I am concerned about privacy or scams,0.1464
+Capital cities / regional,Regional,Privacy or scams,I am concerned about privacy or scams,0.1462
+Capital cities / regional,Metro,Slow connection,My internet connection is too slow/unreliable,0.1272
+Capital cities / regional,Regional,Slow connection,My internet connection is too slow/unreliable,0.1785
+Capital cities / regional,Metro,Not a priority,The internet is not a priority for me,0.0533
+Capital cities / regional,Regional,Not a priority,The internet is not a priority for me,0.1038
+Capital cities / regional,Metro,Too expensive,The internet is too expensive for me,0.0599
+Capital cities / regional,Regional,Too expensive,The internet is too expensive for me,0.0615
+Capital cities / regional,Metro,Offensive content,"I am concerned about online content that can offend, shame or cause conflict",0.051
+Capital cities / regional,Regional,Offensive content,"I am concerned about online content that can offend, shame or cause conflict",0.0392
+Capital cities / regional,Metro,Not confident,I am not confident using the internet,0.0222
+Capital cities / regional,Regional,Not confident,I am not confident using the internet,0.0383
+Capital cities / regional,Metro,No easy access,I do not have convenient access to the internet,0.0134
+Capital cities / regional,Regional,No easy access,I do not have convenient access to the internet,0.0282
+Capital cities / regional,Metro,Other,Other,0.0179
+Capital cities / regional,Regional,Other,Other,0.0152
+Capital cities / regional,Metro,Disability,I have a disability that restricts me from using the internet,0.0037
+Capital cities / regional,Regional,Disability,I have a disability that restricts me from using the internet,0.0051
+Capital cities / regional,Metro,Language,Not enough content is available in my first language,0.004
+Capital cities / regional,Regional,Language,Not enough content is available in my first language,0.0016

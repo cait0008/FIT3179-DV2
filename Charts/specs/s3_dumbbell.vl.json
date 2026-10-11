@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Base version adapted from the Vega-Lite 'Ranged Dot Plot' example. Full version with bands, labels and annotations: s4_dumbbell_full.vl.json",
+  "description": "Base version adapted from the Vega-Lite 'Ranged Dot Plot' example. Full version with bands, labels and annotations: s3_dumbbell_full.vl.json",
   "width": "container",
   "height": "container",
   "data": { "url": "Charts/Data/AccessGroupsNational.csv" },
