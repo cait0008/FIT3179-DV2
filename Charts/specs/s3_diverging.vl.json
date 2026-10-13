@@ -67,6 +67,16 @@
       "transform": [{ "filter": "datum.Group === '75+' && datum.Band === 'Excluded'" }],
       "mark": { "type": "text", "align": "left", "dx": 6, "fontSize": 11, "fontStyle": "italic", "color": "#5F566E" },
       "encoding": { "x": { "datum": 0.34 }, "text": { "value": "2 in 3 people aged 75+ are excluded" } }
+    },
+    {
+      "description": "remote First Nations callouts, in the empty space right of each row's included bars",
+      "transform": [
+        { "filter": "(datum.Group === 'First Nations (very remote)' || datum.Group === 'First Nations (remote)') && datum.Band === 'Excluded'" },
+        { "calculate": "datum.Group === 'First Nations (remote)' ? 0.49 : 0.34", "as": "noteX" },
+        { "calculate": "datum.Group === 'First Nations (remote)' ? 'more than half are excluded (54%)' : '7 in 10 are excluded, the most of any group'", "as": "note" }
+      ],
+      "mark": { "type": "text", "align": "left", "dx": 6, "fontSize": 11, "fontStyle": "italic", "color": "#5F566E" },
+      "encoding": { "x": { "field": "noteX", "type": "quantitative" }, "text": { "field": "note" } }
     }
   ]
 }

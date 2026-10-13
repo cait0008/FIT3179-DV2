@@ -62,11 +62,36 @@
       }
     },
     {
-      "description": "note, top right (pixels): most councils are below average, but most people live in small dense councils; leads into the cartogram",
-      "data": { "values": [{}] },
-      "transform": [{ "filter": "state === 'all'" }],
-      "mark": { "type": "text", "align": "right", "baseline": "top", "lineHeight": 15, "x": { "expr": "width - 4" }, "y": 4, "fontSize": 11, "fontStyle": "italic", "color": "#5F566E",
-                "text": ["423 of 545 councils sit below the national average.", "But land is not people: most Australians live in small,", "crowded city councils that barely show up here."] }
+      "description": "note in the Great Australian Bight (map coordinates, so it lines up at any width), with lines fanning out to the five mainland capitals; Australia view only",
+      "data": { "values": [
+        { "lon2": 115.86, "lat2": -31.95 },
+        { "lon2": 138.6, "lat2": -34.93 },
+        { "lon2": 144.96, "lat2": -37.81 },
+        { "lon2": 151.21, "lat2": -33.87 },
+        { "lon2": 153.03, "lat2": -27.47 }
+      ] },
+      "transform": [{ "filter": "state === 'all'" }, { "calculate": "127", "as": "lon" }, { "calculate": "-39.3", "as": "lat" }],
+      "layer": [
+        {
+          "description": "white outline under each line, so it shows over the purple land",
+          "mark": { "type": "rule", "color": "#FFFFFF", "strokeWidth": 2.5 },
+          "encoding": { "longitude": { "field": "lon", "type": "quantitative" }, "latitude": { "field": "lat", "type": "quantitative" }, "longitude2": { "field": "lon2" }, "latitude2": { "field": "lat2" } }
+        },
+        {
+          "mark": { "type": "rule", "color": "#25212E", "strokeWidth": 0.8 },
+          "encoding": { "longitude": { "field": "lon", "type": "quantitative" }, "latitude": { "field": "lat", "type": "quantitative" }, "longitude2": { "field": "lon2" }, "latitude2": { "field": "lat2" } }
+        },
+        {
+          "mark": { "type": "circle", "size": 30, "fill": "#FFFFFF", "stroke": "#25212E", "strokeWidth": 1, "opacity": 1 },
+          "encoding": { "longitude": { "field": "lon2", "type": "quantitative" }, "latitude": { "field": "lat2", "type": "quantitative" } }
+        },
+        {
+          "transform": [{ "filter": "datum.lon2 === 115.86" }],
+          "mark": { "type": "text", "baseline": "top", "dy": 4, "lineHeight": 15, "fontSize": 11, "fontStyle": "italic", "color": "#5F566E",
+                    "text": ["423 of 545 councils sit below the national average.", "However this size of land is not representative of people: most Australians live ", "in small, crowded city councils that barely show up here."] },
+          "encoding": { "longitude": { "field": "lon", "type": "quantitative" }, "latitude": { "field": "lat", "type": "quantitative" } }
+        }
+      ]
     }
   ]
 }

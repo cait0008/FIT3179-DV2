@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Small-multiple choropleths: Access, Affordability and Digital Ability by remoteness area (ABS Remoteness Areas 2021 + ADII 2025). Every panel uses the same colour bins (gap from that sub-index's own national average), so the panels can be compared directly. Built from the remoteness choropleth (unused/s4_choro_remote) with a 'facet' by sub-index. The projection scale/translate are set by hand because Vega-Lite can't auto-fit a projection inside a facet (it fits a dataset that doesn't exist); they are the values auto-fit gives for one 350 x 300 panel. The chart is drawn as SVG and CSS scales it to the box width (class vis-auto).",
+  "description": "Small-multiple choropleths: Access, Affordability and Digital Ability by remoteness area (ABS Remoteness Areas 2021 + ADII 2025). Every panel uses the same colour bins (gap from that sub-index's own national average), so the panels can be compared directly. Built from the remoteness choropleth (unused/s4_choro_remote) with a 'facet' by sub-index. The projection scale/translate are set by hand because Vega-Lite can't auto-fit a projection inside a facet (it fits a dataset that doesn't exist); they are the values auto-fit gives for one 350 x 300 panel (panels are 350 tall, leaving room under the map for the Access note). The chart is drawn as SVG and CSS scales it to the box width (class vis-auto).",
   "autosize": { "type": "pad" },
   "data": {
     "url": "Charts/Raw_Data/Shape_Files/RA_2021_AUST_GDA2020.json",
@@ -38,8 +38,10 @@
   "spacing": 16,
   "spec": {
     "width": 350,
-    "height": 300,
+    "height": 350,
     "projection": { "type": "conicEqualArea", "parallels": [-18, -36], "rotate": [-132, 0], "scale": 477, "translate": [151, -292] },
+    "layer": [
+      {
     "mark": { "type": "geoshape", "stroke": "#FFFFFF", "strokeWidth": 0.4 },
     "encoding": {
       "color": {
@@ -59,6 +61,54 @@
         { "field": "gap", "type": "quantitative", "title": "Gap from national average", "format": "+.1f" }
       ]
     }
+      },
+      {
+        "description": "Access panel only: note in the space under the map, with a line up to remote central Australia (one row: the NT's very remote area)",
+        "transform": [
+          { "filter": "datum.measure === 'Access' && datum.properties.RA_NAME21 === 'Very Remote Australia' && datum.properties.STE_CODE21 === '7'" },
+          { "calculate": "117", "as": "lon" }, { "calculate": "-45.5", "as": "lat" }, { "calculate": "131", "as": "lon2" }, { "calculate": "-24", "as": "lat2" }
+        ],
+        "layer": [
+          {
+            "mark": { "type": "rule", "color": "#25212E", "strokeWidth": 0.8 },
+            "encoding": { "longitude": { "field": "lon", "type": "quantitative" }, "latitude": { "field": "lat", "type": "quantitative" }, "longitude2": { "field": "lon2" }, "latitude2": { "field": "lat2" } }
+          },
+          {
+            "description": "white dot where the line ends, so it shows against the dark purple",
+            "mark": { "type": "circle", "size": 30, "fill": "#FFFFFF", "stroke": "#25212E", "strokeWidth": 1, "opacity": 1 },
+            "encoding": { "longitude": { "field": "lon2", "type": "quantitative" }, "latitude": { "field": "lat2", "type": "quantitative" } }
+          },
+          {
+            "mark": { "type": "text", "align": "left", "baseline": "top", "dx": -14, "dy": 4, "lineHeight": 14, "fontSize": 11, "fontStyle": "italic", "color": "#5F566E",
+                      "text": ["Remote areas score lowest and cover most of the map,", "but only about 2% of Australians live there."] },
+            "encoding": { "longitude": { "field": "lon", "type": "quantitative" }, "latitude": { "field": "lat", "type": "quantitative" } }
+          }
+        ]
+      },
+      {
+        "description": "Digital Ability panel only: the other side of the story, with a line from the note to Sydney (one row: NSW's major cities area)",
+        "transform": [
+          { "filter": "datum.measure === 'Digital Ability' && datum.properties.RA_NAME21 === 'Major Cities of Australia' && datum.properties.STE_CODE21 === '1'" },
+          { "calculate": "117", "as": "lon" }, { "calculate": "-45.5", "as": "lat" },
+          { "calculate": "141", "as": "lineLon" }, { "calculate": "-44.3", "as": "lineLat" }, { "calculate": "151.2", "as": "lon2" }, { "calculate": "-33.9", "as": "lat2" }
+        ],
+        "layer": [
+          {
+            "mark": { "type": "rule", "color": "#25212E", "strokeWidth": 0.8 },
+            "encoding": { "longitude": { "field": "lineLon", "type": "quantitative" }, "latitude": { "field": "lineLat", "type": "quantitative" }, "longitude2": { "field": "lon2" }, "latitude2": { "field": "lat2" } }
+          },
+          {
+            "mark": { "type": "circle", "size": 30, "fill": "#FFFFFF", "stroke": "#25212E", "strokeWidth": 1, "opacity": 1 },
+            "encoding": { "longitude": { "field": "lon2", "type": "quantitative" }, "latitude": { "field": "lat2", "type": "quantitative" } }
+          },
+          {
+            "mark": { "type": "text", "align": "left", "baseline": "top", "dx": -14, "dy": 4, "lineHeight": 14, "fontSize": 11, "fontStyle": "italic", "color": "#5F566E",
+                      "text": ["Most Australians live in the major cities, mainly on", "the east coast, which score above average on all three."] },
+            "encoding": { "longitude": { "field": "lon", "type": "quantitative" }, "latitude": { "field": "lat", "type": "quantitative" } }
+          }
+        ]
+      }
+    ]
   },
   "config": { "legend": { "layout": { "bottom": { "anchor": "middle" } } } }
 }

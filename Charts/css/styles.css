@@ -26,8 +26,9 @@ h1 { font-family: 'Audiowide', sans-serif; font-weight: 400; font-size: 2.5rem; 
 .title-date { display: block; text-align: right; font-size: 0.8125rem; color: var(--mauve); }
 
 .section { background: var(--blush); border-top: 5px solid var(--magenta); border-radius: 8px; padding: 32px; margin-top: 32px; }
-.section-label { font-family: 'Oxanium', sans-serif; font-weight: 600; font-size: 0.8125rem; text-transform: uppercase;
-                 letter-spacing: 0.1em; color: var(--magenta-dark); margin: 0; }
+/* number each section heading (1. 2. ...) in pink; the sources footer is not a <section>, so it isn't numbered */
+body { counter-reset: section; }
+section h2::before { counter-increment: section; content: counter(section) ". "; color: var(--magenta); }
 
 /* charts: "height": "container" specs fill these boxes */
 .chart-desc { margin: 0 0 16px; color: var(--muted); }

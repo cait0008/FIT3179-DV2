@@ -67,6 +67,18 @@
         "color": { "condition": { "test": "datum['Access score'] < 76.8", "value": "#4A8DB3" }, "value": "#5F566E" },
         "tooltip": [{ "field": "Dimension", "title": "Category" }, { "field": "Group" }, { "field": "Access score" }]
       }
+    },
+    {
+      "description": "lowest: note left of the dot (its line runs right, to the average)",
+      "transform": [{ "filter": "datum.Group === 'First Nations (very remote)'" }],
+      "mark": { "type": "text", "align": "right", "dx": -10, "fontSize": 11, "fontStyle": "italic", "color": "#5F566E" },
+      "encoding": { "x": { "field": "Access score", "type": "quantitative" }, "text": { "value": "37.3: about half the national score" } }
+    },
+    {
+      "description": "highest: note right of the dot",
+      "transform": [{ "filter": "datum.Group === '35-44'" }],
+      "mark": { "type": "text", "align": "left", "dx": 10, "fontSize": 11, "fontStyle": "italic", "color": "#5F566E" },
+      "encoding": { "x": { "field": "Access score", "type": "quantitative" }, "text": { "value": "80.7: the highest of any group" } }
     }
   ]
 }
