@@ -10,7 +10,7 @@
       "bind": { "input": "radio", "element": "#carto-state-select", "name": "Zoom to: ",
                 "options": ["all", "1", "2", "3", "4", "5", "6", "7"], "labels": ["Australia", "NSW", "VIC", "QLD", "SA", "WA", "TAS", "NT"] }
     },
-    { "name": "views", "value": {"all": {"scale": 965.664, "translate": [505.979, -134.599]}, "1": {"scale": 4030.15, "translate": [-385.322, -2020.959]}, "2": {"scale": 7916.2, "translate": [-861.035, -4764.896]}, "3": {"scale": 1519.693, "translate": [165.324, -259.171]}, "4": {"scale": 2898.356, "translate": [348.314, -1314.111]}, "5": {"scale": 1503.853, "translate": [857.196, -382.978]}, "6": {"scale": 8826.476, "translate": [-1125.164, -6119.017]}, "7": {"scale": 2166.935, "translate": [529.68, -315.63]}} }
+    { "name": "views", "value": {"all": {"scale": 1021.282, "translate": [615.662, -151.155]}, "1": {"scale": 3185.452, "translate": [-170.251, -1536.275]}, "2": {"scale": 6396.377, "translate": [-526.88, -3761.896]}, "3": {"scale": 1504.954, "translate": [300.215, -235.928]}, "4": {"scale": 2848.772, "translate": [518.663, -1259.134]}, "5": {"scale": 1456.546, "translate": [942.656, -332.59]}, "6": {"scale": 8072.903, "translate": [-878.124, -5542.511]}, "7": {"scale": 2147.517, "translate": [625.115, -321.889]}} }
   ],
   "projection": { "type": "conicEqualArea", "parallels": [-18, -36], "rotate": [-132, 0], "center": [0, 0],
                   "scale": { "expr": "views[cartoState].scale" }, "translate": { "expr": "views[cartoState].translate" } },
@@ -76,17 +76,19 @@
       "encoding": { "x": null, "y": null }
     },
     {
-      "description": "size key, bottom left: circles for 10k, 100k and 1M people (radius from this view's r / sqrt(population))",
+      "description": "size key, bottom left: up to three of 1k / 10k / 100k / 1M people, whichever fit this view (radius from the view's r / sqrt(population))",
       "transform": [
         { "calculate": "datum.r / sqrt(datum.Population)", "as": "k" },
         { "aggregate": [{ "op": "max", "field": "k", "as": "k" }] },
-        { "calculate": "[10000, 100000, 1000000]", "as": "people" },
+        { "calculate": "[1000, 10000, 100000, 1000000]", "as": "people" },
         { "flatten": ["people"] },
         { "calculate": "datum.k * sqrt(datum.people)", "as": "r" },
+        { "filter": "datum.r >= 3 && datum.r <= 40" },
         { "calculate": "4 * datum.r * datum.r", "as": "size" },
-        { "calculate": "{'10000': 0, '100000': 1, '1000000': 2}[datum.people]", "as": "i" },
+        { "calculate": "2 * datum.r + 28", "as": "slot" },
+        { "window": [{ "op": "sum", "field": "slot", "as": "end" }], "sort": [{ "field": "people" }] },
         { "joinaggregate": [{ "op": "max", "field": "r", "as": "rMax" }] },
-        { "calculate": "8 + datum.rMax * [0.2, 0.75, 2][datum.i] + datum.i * 14", "as": "x" },
+        { "calculate": "8 + datum.end - datum.slot + datum.r", "as": "x" },
         { "calculate": "640 - 22 - datum.r", "as": "y" },
         { "calculate": "format(datum.people, '.0s')", "as": "label" }
       ],
@@ -94,7 +96,7 @@
         { "mark": { "type": "circle", "fill": null, "stroke": "#5F566E", "strokeWidth": 1 }, "encoding": { "size": { "field": "size", "type": "quantitative", "scale": null } } },
         { "mark": { "type": "text", "baseline": "top", "fontSize": 11, "color": "#5F566E", "y": 624 }, "encoding": { "y": null, "text": { "field": "label" } } },
         {
-          "transform": [{ "filter": "datum.people === 1000000" }, { "calculate": "datum.y - datum.r - 8", "as": "y" }],
+          "transform": [{ "filter": "datum.r === datum.rMax" }, { "calculate": "640 - 22 - 2 * datum.rMax - 10", "as": "y" }],
           "mark": { "type": "text", "align": "left", "fontSize": 13, "fontWeight": 700, "color": "#25212E", "text": "Circle size: people" },
           "encoding": { "x": { "value": 0 } }
         }

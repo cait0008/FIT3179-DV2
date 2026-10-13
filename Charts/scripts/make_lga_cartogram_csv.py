@@ -33,7 +33,9 @@ from pathlib import Path
 
 WORKBOOK = Path('Charts/Raw_Data/PopulationEstimatebyLGA_ABS.xlsx')
 OUT = Path('Charts/Data/LGA_Cartogram.csv')
-WIDTH, HEIGHT, MARGIN = 1104, 640, 40  # must match "width" / "height" in the spec; MARGIN leaves room for the coastline
+WIDTH, HEIGHT, MARGIN = 1104, 640, 12  # must match "width" / "height" in the spec
+LEFT = 230  # left strip kept clear for the legend and size key; the map is fitted into the space to its right
+MAP_W, MID_X = WIDTH - LEFT, LEFT + (WIDTH - LEFT) / 2
 SPEC = Path('Charts/specs/s4_cartogram_lga.vl.json')
 FILL = {'all': 0.06, 'state': 0.11}  # share of the chart the circles cover (bigger = more circles pushed out of place);
                                    # Australia is kept small so cities stay near their real spots, zoomed states get bigger circles
@@ -119,28 +121,49 @@ def layout(view_codes, home, scale):
     return r, pos
 
 
+# ---- state outlines (projected), so each view is fitted to the whole state, not just its council centre points ----
+topo = json.loads(Path('Charts/Raw_Data/Shape_Files/STE_2021_AUST_GDA2020.json').read_text())
+(sx, sy), (tx, ty) = topo['transform']['scale'], topo['transform']['translate']
+arcs = []
+for arc in topo['arcs']:  # TopoJSON arcs store quantised steps; turn each into projected points
+    x = y = 0
+    arcs.append([])
+    for dx, dy in arc:
+        x, y = x + dx, y + dy
+        arcs[-1].append(project(x * sx + tx, y * sy + ty))
+
+
+def arc_ids(nested):
+    return [a for item in nested for a in (arc_ids(item) if isinstance(item, list) else [item if item >= 0 else ~item])]
+
+
+outline = {g['properties']['STE_CODE21']: [pt for a in arc_ids(g['arcs']) for pt in arcs[a]]
+           for g in next(iter(topo['objects'].values()))['geometries'] if g.get('arcs')}
+
 rows, projections = [], {}
 for view, view_state in VIEWS.items():
     view_codes = [c for c in codes if view_state in (None, state[c])]
-    # fit this view's centre points into the chart
-    xs, ys = [raw[c][0] for c in view_codes], [raw[c][1] for c in view_codes]
-    k = min((WIDTH - 2 * MARGIN) / ((max(xs) - min(xs)) or 1), (HEIGHT - 2 * MARGIN) / ((max(ys) - min(ys)) or 1))
+    # fit this view's state outline(s) into the chart
+    pts = [pt for code in (['1', '2', '3', '4', '5', '6', '7', '8'] if view == 'all' else [view]) for pt in outline[code]]
+    xs, ys = [p[0] for p in pts], [p[1] for p in pts]
+    k = min((MAP_W - 2 * MARGIN) / ((max(xs) - min(xs)) or 1), (HEIGHT - 2 * MARGIN) / ((max(ys) - min(ys)) or 1))
     home = {c: ((raw[c][0] - min(xs)) * k + MARGIN, (raw[c][1] - min(ys)) * k + MARGIN) for c in view_codes}
     # circle size: all circles together cover this share of the chart
     fill = FILL['all' if view == 'all' else 'state']
-    scale = math.sqrt(fill * WIDTH * HEIGHT / (math.pi * sum(population[c] for c in view_codes)))
+    scale = math.sqrt(fill * MAP_W * HEIGHT / (math.pi * sum(population[c] for c in view_codes)))
     r, pos = layout(view_codes, home, scale)
     # ---- 4. shrink evenly to fit (positions and radii together, so nothing starts overlapping), and centre ----
-    left = min(pos[c][0] - r[c] for c in view_codes); right = max(pos[c][0] + r[c] for c in view_codes)
-    top = min(pos[c][1] - r[c] for c in view_codes); bottom = max(pos[c][1] + r[c] for c in view_codes)
-    f = min(1, (WIDTH - 8) / (right - left), (HEIGHT - 8) / (bottom - top))
+    # the outline sits at MARGIN .. MARGIN + its size * k; circles pushed out to sea can stick out past it
+    left = min([pos[c][0] - r[c] for c in view_codes] + [MARGIN]); right = max([pos[c][0] + r[c] for c in view_codes] + [MARGIN + (max(xs) - min(xs)) * k])
+    top = min([pos[c][1] - r[c] for c in view_codes] + [MARGIN]); bottom = max([pos[c][1] + r[c] for c in view_codes] + [MARGIN + (max(ys) - min(ys)) * k])
+    f = min(1, (MAP_W - 8) / (right - left), (HEIGHT - 8) / (bottom - top))
     cx, cy = (left + right) / 2, (top + bottom) / 2
     for c in view_codes:
         sc = scores[c]
         rows.append([view, c, sc['LGA_NAME25'], sc['State'], population[c], sc['ADII score'], sc['Gap from national average'],
-                     round(WIDTH / 2 + (pos[c][0] - cx) * f, 1), round(HEIGHT / 2 + (pos[c][1] - cy) * f, 1), round(r[c] * f, 2)])
+                     round(MID_X + (pos[c][0] - cx) * f, 1), round(HEIGHT / 2 + (pos[c][1] - cy) * f, 1), round(r[c] * f, 2)])
     # ---- 5. matching projection for this view's outline (d3 maps raw x, y to translate + scale * (x, -y)) ----
-    projections[view] = {'scale': round(k * f, 3), 'translate': [round(WIDTH / 2 + (MARGIN - min(xs) * k - cx) * f, 3),
+    projections[view] = {'scale': round(k * f, 3), 'translate': [round(MID_X + (MARGIN - min(xs) * k - cx) * f, 3),
                                                                  round(HEIGHT / 2 + (MARGIN - min(ys) * k - cy) * f, 3)]}
     print(f'{view}: {len(view_codes)} LGAs, largest radius {max(r.values()) * f:.0f}px')
 
