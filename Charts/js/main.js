@@ -1,11 +1,8 @@
 // Shared chart setup. Loaded before the section files (section2.js ... section6.js),
 // which call embedChart() for each of their charts.
 
-// Shared look for every chart, so axis labels and legends match the page typography.
-// A spec's own "config" overrides these. Leave "title" out of specs: the HTML <h3> is the title.
-// In each spec, use "width": "container" and "height": "container" to fill the CSS-sized box.
 var chartConfig = {
-  background: '#FFFFFF', // white card behind every chart (was null = transparent on the section colour)
+  background: '#FFFFFF', // same as the section cards (--card in styles.css), so charts sit seamlessly inside them
   padding: 16,
   autosize: { type: 'fit', contains: 'padding' }, // keep the padding inside the container, so charts don't overflow
   font: 'Atkinson Hyperlegible Next',

@@ -1,34 +1,37 @@
 /* Layout comes from Pure.css (pure-g / pure-u-*). This file only sets colour, type and chart sizes. */
 
 :root {
-  --plum: #25212E;      /* page background, headings and body text */
-  --magenta: #E0248A;   /* section strip, radio buttons */
-  --magenta-dark: #B8186F;
-  --pink-light: #F58AC4; /* title */
-  --blush: #F1E4F3;     /* section cards */
-  --mauve: #A79FB6;
-  --muted: #5F566E;     /* small text */
+  --ink: #25212E;       /* headings and body text */
+  --page: #d5d5d5;      /* page background: */
+  --card: #FFFFFF;      /* section cards; charts use the same colour (main.js) so they sit seamlessly inside */
+  --magenta: #e0248b6d;   /* soft (see-through) magenta: section strip */
+  --pink: #E0248A;      /* solid magenta: section numbers, radio buttons */
+  --magenta-dark: #B8186F; /* title and links */
+  --muted: #574E66;     /* small text */
 }
 
 /* Pure's grid sets its own font on pure-u, so apply ours to everything */
 body, body * { font-family: 'Atkinson Hyperlegible Next', sans-serif; }
-body { background: var(--plum); color: var(--plum); font-size: 1.25rem; line-height: 1.6; }
+body { background: var(--page); color: var(--ink); font-size: 1.5rem; line-height: 1.55; } /* large text keeps full-width lines to a readable number of words */
 h2, h3 { font-family: 'Oxanium', sans-serif; line-height: 1.2; margin: 0 0 8px; }
-h2 { font-size: 2rem; }
-h3 { font-size: 1.5rem; margin-top: 32px; }
+h2 { font-size: 2.375rem; }
+h3 { font-size: 1.75rem; margin-top: 32px; }
 .section p:last-child { margin-bottom: 0; }
+.section p { text-align: justify; hyphens: auto; } /* straight right edge; hyphenation stops big gaps between words */
+.small-font p { text-align: left; hyphens: manual; } /* references keep a ragged edge, since long URLs would stretch justified lines */
 
 /* page: fits a small laptop screen (1200px of content) */
 .page { max-width: 1200px; margin: 0 auto; padding: 48px 16px; }
 .title-row { align-items: center; }
-h1 { font-family: 'Audiowide', sans-serif; font-weight: 400; font-size: 2.5rem; text-align: center; margin: 0;
-     color: var(--pink-light); text-shadow: 0 0 8px rgba(224, 36, 138, 0.6); }
-.title-date { display: block; text-align: right; font-size: 0.8125rem; color: var(--mauve); }
+h1 { font-family: 'Audiowide', sans-serif; font-weight: 400; font-size: 3.5rem; text-align: center; margin: 0;
+     color: var(--pink); text-shadow: 0 0 2px #FFFFFF, 0 0 12px rgba(255, 255, 255, 0.9); } /* white glow keeps the lighter pink readable */
+.title-date { display: block; text-align: right; font-size: 0.8125rem; color: var(--muted); }
 
-.section { background: var(--blush); border-top: 5px solid var(--magenta); border-radius: 8px; padding: 32px; margin-top: 32px; }
+.section { background: var(--card); border-top: 5px solid var(--magenta); border-radius: 8px; padding: 32px; margin-top: 32px;
+           box-shadow: 0 2px 12px rgba(37, 33, 46, 0.10); }
 /* number each section heading (1. 2. ...) in pink; the sources footer is not a <section>, so it isn't numbered */
 body { counter-reset: section; }
-section h2::before { counter-increment: section; content: counter(section) ". "; color: var(--magenta); }
+section h2::before { counter-increment: section; content: counter(section) ". "; color: var(--pink); }
 
 /* charts: "height": "container" specs fill these boxes */
 .chart-desc { margin: 0 0 16px; color: var(--muted); }
@@ -44,7 +47,7 @@ section h2::before { counter-increment: section; content: counter(section) ". ";
 .state-select { font-size: 0.875rem; margin-bottom: 8px; }
 .vega-bind-name { font-weight: 700; margin-right: 8px; }
 .vega-bind-radio label { margin-right: 12px; cursor: pointer; }
-.vega-bind-radio input { accent-color: var(--magenta); }
+.vega-bind-radio input { accent-color: var(--pink); }
 
 /* sources */
 .small-font { font-size: 0.875rem; color: var(--muted); }

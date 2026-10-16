@@ -1,0 +1,65 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Dot density map: 1 dot = 5,000 people (ABS ERP 2025), placed at random inside its council's real boundary and coloured by that council's ADII gap (ADII 2025). Dot positions come from Charts/scripts/make_lga_dots_csv.py. The first digit of an LGA code is its state code.",
+  "width": "container",
+  "height": "container",
+  "params": [
+    {
+      "name": "dotState", "value": "all",
+      "bind": { "input": "radio", "element": "#dots-state-select", "name": "Zoom to: ",
+                "options": ["all", "1", "2", "3", "4", "5", "6", "7", "8"], "labels": ["Australia", "NSW", "VIC", "QLD", "SA", "WA", "TAS", "NT", "ACT"] }
+    }
+  ],
+  "projection": { "type": "conicEqualArea", "parallels": [-18, -36], "rotate": [-132, 0] },
+  "layer": [
+    {
+      "data": { "url": "Charts/Raw_Data/Shape_Files/LGA_2025_AUST_GDA2020.json", "format": { "type": "topojson", "feature": "LGA_2025_AUST_GDA2020" } },
+      "transform": [{ "filter": "datum.geometry && datum.properties.STE_CODE21 !== '9' && (dotState === 'all' || datum.properties.STE_CODE21 === dotState)" }],
+      "mark": { "type": "geoshape", "fill": "#ECECEE", "stroke": "#FFFFFF", "strokeWidth": 0.4 }
+    },
+    {
+      "data": { "url": "Charts/Data/LGA_Dots.csv" },
+      "transform": [
+        { "filter": "dotState === 'all' || datum.State === dotState" },
+        { "calculate": "datum['Gap from national average'] >= 0 ? 'At or above average' : datum['Gap from national average'] >= -5 ? '0-5 points below' : datum['Gap from national average'] >= -10 ? '5-10 points below' : 'More than 10 points below'", "as": "band" }
+      ],
+      "mark": { "type": "circle", "size": { "expr": "dotState === 'all' ? 8 : 14" }, "opacity": 0.8 },
+      "encoding": {
+        "longitude": { "field": "Longitude", "type": "quantitative" },
+        "latitude": { "field": "Latitude", "type": "quantitative" },
+        "color": {
+          "field": "band", "type": "ordinal",
+          "scale": { "domain": ["More than 10 points below", "5-10 points below", "0-5 points below", "At or above average"], "range": ["#5B2A6E", "#8E6AA6", "#C9B6D6", "#6FA88B"] },
+          "legend": { "title": "Each dot = 5,000 people, coloured by their council's ADII score vs the national average (73.6)", "orient": "bottom", "direction": "horizontal", "symbolType": "circle", "symbolSize": 60, "titleLimit": 700 }
+        },
+        "tooltip": [{ "field": "LGA" }, { "field": "Gap from national average", "title": "Council's gap from national average" }]
+      }
+    },
+    {
+      "description": "annotations (Australia view only, map coordinates so they line up at any width): each callout has a label point (lon, lat) and a line to its target (lon2, lat2)",
+      "data": { "values": [
+        { "kind": "city", "lon": 127, "lat": -39.3, "lon2": 115.86, "lat2": -31.95 },
+        { "kind": "city", "lon": 127, "lat": -39.3, "lon2": 138.6, "lat2": -34.93 },
+        { "kind": "city", "lon": 127, "lat": -39.3, "lon2": 144.96, "lat2": -37.81 },
+        { "kind": "city", "lon": 127, "lat": -39.3, "lon2": 151.21, "lat2": -33.87 },
+        { "kind": "city", "lon": 127, "lat": -39.3, "lon2": 153.03, "lat2": -27.47,
+          "note": ["About 6 in 10 Australians live in and around the five", "mainland capitals, and 3 in 4 of them live in councils", "at or above the national average."] },
+        { "kind": "remote", "lon": 133.5, "lat": -17.0, "lon2": 135.66, "lat2": -12.88, "note": ["East Arnhem", "14 points below, 8,130 people"] },
+        { "kind": "remote", "lon": 123.0, "lat": -23.5, "lon2": 127.62, "lat2": -19.26, "note": ["Halls Creek", "16 points below, 4,245 people"] },
+        { "kind": "remote", "lon": 152.0, "lat": -14.5, "lon2": 142.27, "lat2": -10.18, "note": ["Torres Strait Island", "17 points below, 4,298 people"] }
+      ] },
+      "transform": [{ "filter": "dotState === 'all'" }],
+      "layer": [
+        { "mark": { "type": "rule", "color": "#FFFFFF", "strokeWidth": 2.5 }, "encoding": { "longitude": { "field": "lon", "type": "quantitative" }, "latitude": { "field": "lat", "type": "quantitative" }, "longitude2": { "field": "lon2" }, "latitude2": { "field": "lat2" } } },
+        { "mark": { "type": "rule", "color": "#25212E", "strokeWidth": 0.8 }, "encoding": { "longitude": { "field": "lon", "type": "quantitative" }, "latitude": { "field": "lat", "type": "quantitative" }, "longitude2": { "field": "lon2" }, "latitude2": { "field": "lat2" } } },
+        { "mark": { "type": "circle", "size": 30, "fill": "#FFFFFF", "stroke": "#25212E", "strokeWidth": 1, "opacity": 1 }, "encoding": { "longitude": { "field": "lon2", "type": "quantitative" }, "latitude": { "field": "lat2", "type": "quantitative" } } },
+        {
+          "transform": [{ "filter": "datum.note" }],
+          "mark": { "type": "text", "baseline": "top", "dy": 4, "lineHeight": 14, "fontSize": 11, "fontStyle": "italic", "color": "#5F566E" },
+          "encoding": { "longitude": { "field": "lon", "type": "quantitative" }, "latitude": { "field": "lat", "type": "quantitative" }, "text": { "field": "note" } }
+        }
+      ]
+    }
+  ],
+  "config": { "legend": { "layout": { "bottom": { "anchor": "middle" } } } }
+}

@@ -38,8 +38,8 @@
     },
     {
       "data": { "values": [
-        { "x": 4.5, "label": "All Australians: 21 in 100 excluded" },
-        { "x": 16.5, "label": "First Nations Australians: 41 in 100 excluded" }
+        { "x": 4.5, "label": "All Australians: 21% excluded" },
+        { "x": 16.5, "label": "First Nations Australians: 41% excluded" }
       ] },
       "mark": { "type": "text", "font": "Oxanium", "fontWeight": 700, "fontSize": 15 },
       "encoding": {
@@ -51,8 +51,8 @@
     {
       "description": "note under each grid",
       "data": { "values": [
-        { "x": 4.5, "note": "9 in 100 are highly excluded" },
-        { "x": 16.5, "note": "23 in 100 are highly excluded: about 2.5 times the national rate" }
+        { "x": 4.5, "note": "9% highly excluded, 12% excluded, 37% included, 42% highly included" },
+        { "x": 16.5, "note": "23% highly excluded (2.5 times the national rate), 18% excluded, 38% included, 21% highly included" }
       ] },
       "mark": { "type": "text", "fontSize": 11, "fontStyle": "italic", "color": "#5F566E" },
       "encoding": { "x": { "field": "x", "type": "quantitative" }, "y": { "datum": 10.1 }, "text": { "field": "note" } }

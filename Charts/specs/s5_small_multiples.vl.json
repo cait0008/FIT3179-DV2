@@ -107,6 +107,26 @@
             "encoding": { "longitude": { "field": "lon", "type": "quantitative" }, "latitude": { "field": "lat", "type": "quantitative" } }
           }
         ]
+      },
+      {
+        "description": "Affordability panel only (the palest, so labels read best): name each remoteness class at a point checked to lie inside it, plus a one-line definition under the map",
+        "transform": [
+          { "filter": "datum.measure === 'Affordability' && datum.properties.RA_NAME21 === 'Very Remote Australia' && datum.properties.STE_CODE21 === '7'" },
+          { "calculate": "[{'name': 'Major city', 'lon': 151.0, 'lat': -33.85}, {'name': 'Inner regional', 'lon': 146.0, 'lat': -36.4}, {'name': 'Outer regional', 'lon': 145.5, 'lat': -17.5}, {'name': 'Remote', 'lon': 116.0, 'lat': -28.8}, {'name': 'Very remote', 'lon': 133.0, 'lat': -24.0}]", "as": "labels" },
+          { "flatten": ["labels"] },
+          { "calculate": "datum.labels.name", "as": "name" }, { "calculate": "datum.labels.lon", "as": "lon" }, { "calculate": "datum.labels.lat", "as": "lat" }
+        ],
+        "encoding": { "longitude": { "field": "lon", "type": "quantitative" }, "latitude": { "field": "lat", "type": "quantitative" } },
+        "layer": [
+          { "mark": { "type": "circle", "size": 16, "color": "#25212E", "opacity": 1 } },
+          { "mark": { "type": "text", "align": "left", "dx": 5, "fontSize": 10, "fontWeight": 700, "stroke": "#FFFFFF", "strokeWidth": 3, "strokeJoin": "round" }, "encoding": { "text": { "field": "name" } } },
+          { "mark": { "type": "text", "align": "left", "dx": 5, "fontSize": 10, "fontWeight": 700, "color": "#25212E" }, "encoding": { "text": { "field": "name" } } },
+          {
+            "transform": [{ "filter": "datum.name === 'Very remote'" }, { "calculate": "117", "as": "lon" }, { "calculate": "-45.5", "as": "lat" }],
+            "mark": { "type": "text", "align": "left", "baseline": "top", "dx": -14, "dy": 4, "lineHeight": 14, "fontSize": 11, "fontStyle": "italic", "color": "#5F566E",
+                      "text": ["The Australian Bureau of Statistics groups places by road", "distance to services like shops, schools and hospitals."] }
+          }
+        ]
       }
     ]
   },

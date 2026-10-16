@@ -8,7 +8,8 @@
     { "filter": { "field": "Barrier", "oneOf": ["Privacy or scams", "Slow connection", "Not a priority", "Too expensive", "Offensive content", "Not confident", "No easy access"] } },
     { "filter": "datum.Group !== 'Metro' && datum.Group !== 'Regional'" },
     { "calculate": "indexof(['Age', 'Education levels', 'Employment'], datum.Dimension) >= 0 ? replace(datum.Dimension, ' levels', '') + ' (' + datum.Group + ')' : datum.Group", "as": "label" },
-    { "window": [{ "op": "row_number", "as": "row" }], "groupby": ["Barrier"] }
+    { "window": [{ "op": "row_number", "as": "row" }], "groupby": ["Barrier"] },
+    { "calculate": "datum.Share < 0.05 ? 'Under 5%' : datum.Share < 0.1 ? '5 to 10%' : datum.Share < 0.2 ? '10 to 20%' : '20% or more'", "as": "bin" }
   ],
   "encoding": {
     "y": { "field": "label", "type": "nominal", "sort": { "field": "row", "op": "min" }, "title": null, "axis": { "labelLimit": 260, "labelFontWeight": { "condition": { "test": "datum.value === 'National average'", "value": 700 }, "value": 400 } } },
@@ -19,10 +20,10 @@
       "mark": { "type": "rect", "stroke": "#FFFFFF", "strokeWidth": 1 },
       "encoding": {
         "color": {
-          "field": "Share",
-          "type": "quantitative",
-          "scale": { "domain": [0, 0.3], "range": ["#F4F0F5", "#5B2A6E"], "clamp": true },
-          "legend": { "title": "Share of the group reporting this barrier", "format": ".0%", "orient": "bottom", "direction": "horizontal", "gradientLength": 220, "titleLimit": 300 }
+          "field": "bin",
+          "type": "ordinal",
+          "scale": { "domain": ["Under 5%", "5 to 10%", "10 to 20%", "20% or more"], "range": ["#F4F0F5", "#D9C9E2", "#A887BD", "#5B2A6E"] },
+          "legend": { "title": "Share of the group who say this stops them using the internet more (people could choose more than one)", "orient": "bottom", "direction": "horizontal", "symbolType": "square", "titleLimit": 700 }
         },
         "tooltip": [
           { "field": "label", "title": "Group" },
@@ -35,7 +36,7 @@
       "mark": { "type": "text", "fontSize": 11 },
       "encoding": {
         "text": { "field": "Share", "type": "quantitative", "format": ".0%" },
-        "color": { "condition": { "test": "datum.Share > 0.2", "value": "#FFFFFF" }, "value": "#25212E" }
+        "color": { "condition": { "test": "datum.Share >= 0.2", "value": "#FFFFFF" }, "value": "#25212E" }
       }
     },
     {

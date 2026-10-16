@@ -6,10 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Digital Inclusion in Australia</title>
 
-  <!-- Vega, Vega-Lite & Vega-Embed -->
-  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  <!-- Vega, Vega-Lite & Vega-Embed (exact versions, so the charts never change under a new release) -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.33.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.23.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.29.0"></script>
 
   <!-- Pure.css (base + grids) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
@@ -30,12 +30,12 @@
     <!-- ===== TITLE ===== -->
     <!-- empty side columns keep the title centred; the date sits in the right one -->
     <header class="pure-g title-row">
-      <div class="pure-u-1-5"></div>
-      <div class="pure-u-3-5">
+      <div class="pure-u-1-8"></div>
+      <div class="pure-u-3-4">
         <h1>Digital Inclusion in Australia</h1>
       </div>
-      <div class="pure-u-1-5">
-        <time class="title-date" datetime="2026-10-09">9 October 2026</time>
+      <div class="pure-u-1-8">
+        <time class="title-date" datetime="2026-10-16">16 October 2026</time>
       </div>
     </header>
 
@@ -76,7 +76,7 @@
         <!-- 2.1 Overview: national ADII score and its three dimensions (also introduces the measure colours) -->
         <div class="pure-u-1">
           <div class="chart-block">
-            <h3>The ADII Score</h3>
+            <h3>The ADII score</h3>
             <p class="chart-desc">Each bar is a national score out of 100, and each colour stays with its dimension for the rest of the page. The overall ADII is simply the average of the three. Access is the strongest part (76.8), while Affordability is the weakest (70.3), so before looking at any group it is worth knowing that cost is already the soft spot for the country as a whole.</p>
             <div id="vis-s2-overview" class="vis-container vis-short"></div>
           </div>
@@ -115,7 +115,7 @@
         <div class="pure-u-1">
           <div class="chart-block">
             <h3>How many people in each group are digitally excluded</h3>
-            <p class="chart-desc">This extends the waffle to every group. Bars to the left of zero are the share of the group who are excluded, bars to the right are included, and the dashed line marks the national 21%. Anything reaching past that line is worse off than average. Two in three people aged 75+ (67%) and over half of people who did not finish school (55%) are excluded, compared with only 6% of 18 to 34 year olds and of people with a degree.</p>
+            <p class="chart-desc">This extends the waffle to every group. Bars to the left of zero are the share of the group who are excluded, bars to the right are included, and the dashed line marks the national 21%. Both sides run to 100%, so the two halves can be compared fairly. Anything reaching past that line is worse off than average. Two in three people aged 75+ (67%) and over half of people who did not finish school (55%) are excluded, compared with only 6% of 18 to 34 year olds and of people with a degree.</p>
             <div id="vis-s3-diverging" class="vis-container vis-tall"></div>
           </div>
         </div>
@@ -141,19 +141,19 @@
       <div class="pure-g">
         <div class="pure-u-1">
           <h2>Does where you live correlate with digital exclusion?</h2>
-          <p>Where you live matters too. Remote and very remote communities score lowest, but most local council areas also sit
-            below the national average, because a handful of big city councils pull it up. The first two maps show how
-            far behind each area is. The cartogram then resizes every area by population, so you can see where the
-            affected people actually live rather than how much land they cover.</p>
+          <p>Where you live matters too. Remote and very remote communities score lowest, but most local council areas
+            (Local Government Areas, or LGAs) also sit below the national average, because a handful of big city councils
+            pull it up. The first two maps show how far behind each area is. The dot density map then shows where people
+            actually live, rather than how much land each area covers.</p>
         </div>
       </div>
 
       <div class="pure-g">
-        <!-- 4.1 Spike map: how far each below-average LGA falls behind -->
+        <!-- 4.1 Proportional symbol map: how far each below-average LGA falls behind -->
         <div class="pure-u-1">
           <div class="chart-block">
-            <h3>How far behind the average is each local area?</h3>
-            <p class="chart-desc">This moves from groups to places. Each spike is a council that scores below the national ADII, and its height shows how far below, so you can compare size of gap, not just whether a place is behind. Use the buttons to zoom into a state. The tallest spikes are not spread evenly: they cluster in the Top End and Arnhem Land, Cape York and the Torres Strait, and the Kimberley, which are remote areas with large First Nations populations.</p>
+            <h3>Proportional symbol map: How far behind the average is each local area?</h3>
+            <p class="chart-desc">This moves from groups to places. Use the buttons to zoom from the whole country into a state. Each circle is a council that scores below the national ADII, and the bigger the circle, the further below it is, so you can compare the size of each gap, not just whether a place is behind. Councils at or above average have no circle. The biggest circles are not spread evenly: they cluster in the Top End and Arnhem Land, the Kimberley, and Cape York and the Torres Strait, which are remote areas with large First Nations populations.</p>
             <div id="spike-state-select" class="state-select"></div> <!-- Vega-Lite puts the state radio buttons here -->
             <div id="vis-s4-spike-lga" class="vis-container vis-tall"></div>
           </div>
@@ -164,7 +164,7 @@
         <!-- 4.2 Choropleth: LGA ADII scores above / below the national average -->
         <div class="pure-u-1">
           <div class="chart-block">
-            <h3>Which local areas score above or below average?</h3>
+            <h3>Choropleth map: Which local areas score above or below average?</h3>
             <p class="chart-desc">The same councils, simplified to above (green) or below (purple) the national average. The map looks overwhelmingly purple: 423 of 545 councils fall below average, and the green is mostly squeezed into small patches around the capital cities. But each shape shows land, not people, so a huge outback council with a few thousand residents takes up far more space than a city council with hundreds of thousands. The next chart corrects for that.</p>
             <div id="lga-state-select" class="state-select"></div> <!-- Vega-Lite puts the state radio buttons here -->
             <div id="vis-s4-choro-lga" class="vis-container vis-tall"></div>
@@ -173,13 +173,13 @@
       </div>
 
       <div class="pure-g">
-        <!-- 4.3 Dorling cartogram: one circle per LGA, sized by population, coloured by ADII gap (fixed size, laid out by script) -->
+        <!-- 4.3 Dot density: 1 dot = 5,000 people, placed inside each council and coloured by its ADII gap -->
         <div class="pure-u-1">
           <div class="chart-block">
-            <h3>Comparing these ADII scores through population</h3>
-            <p class="chart-desc">Here every council is a circle sized by its population, so empty land shrinks and cities grow. Use the buttons to zoom into a state. The picture changes completely from the map above: only 122 councils score at or above average, but they are home to 56% of Australians, because big city councils like Brisbane, Blacktown and the ACT are mostly green. At the other end, the 80 councils more than 10 points below average hold under 1% of the population. The worst-off places are real, but they are small and remote, which makes them easy to overlook.</p>
-            <div id="carto-state-select" class="state-select"></div> <!-- Vega-Lite puts the state radio buttons here -->
-            <div id="vis-s4-cartogram" class="vis-container vis-auto"></div>
+            <h3>Dot density map: Where Australians live, one dot per 5,000 people</h3>
+            <p class="chart-desc">The map above shows land, not people. This one keeps every council in its real place but shows people instead: each dot is 5,000 people, scattered inside the council they live in and coloured by that council's score. Use the buttons to zoom into a state. Only 122 of 545 councils score at or above average, but they are home to 56% of Australians, and their dots pack into the capital cities. At the other end, the 80 councils more than 10 points below average hold under 1% of the population, so the huge remote councils at the bottom of the rankings get one or two dots, or none. The worst-off places are real, but they are small and remote, which makes them easy to overlook. Note that a dot's colour is its council's average score, not the score of those particular people.</p>
+            <div id="dots-state-select" class="state-select"></div> <!-- Vega-Lite puts the state radio buttons here -->
+            <div id="vis-s4-dots" class="vis-container vis-tall"></div>
           </div>
         </div>
       </div>
@@ -205,7 +205,7 @@
         <div class="pure-u-1">
           <div class="chart-block">
             <h3>Causes of the digital divide</h3>
-            <p class="chart-desc">The dumbbell only showed Access. This puts all three dimensions side by side for every group, with purple for below average, green for above, and the score written in each cell. Reading across a row shows whether a group is behind everywhere or on just one thing. People aged 75+ are behind on all three, but by far the most on Digital Ability (32 points below). Remote First Nations groups are furthest behind on Access instead.</p>
+            <p class="chart-desc">The dumbbell only showed Access. This heatmap puts all three ADII dimensions side by side for every group, using measured survey scores, with purple for below average, green for above, and the score written in each cell. Reading across a row shows whether a group is behind everywhere or on just one thing. People aged 75+ are behind on all three, but by far the most on Digital Ability (32 points below). Remote First Nations groups are furthest behind on Access instead.</p>
             <div id="vis-s5-heatmap" class="vis-container vis-tall"></div>
           </div>
         </div>
@@ -215,8 +215,8 @@
         <!-- 5.2 Sub-index small-multiple maps: Access / Affordability / Digital Ability by remoteness -->
         <div class="pure-u-1">
           <div class="chart-block">
-            <h3>The impact of remoteness on Access, affordability and ability</h3>
-            <p class="chart-desc">The heatmap showed remoteness as rows. Here it is mapped, with one panel per dimension on the same colour scale, so the panels can be compared directly. Access falls away sharply with distance (very remote areas are 19 points below). Affordability barely changes (under 4 points), and remote areas actually score better than regional ones on both Affordability and Digital Ability, so distance mainly hurts connections, not cost or skills.</p>
+            <h3>Small-multiple choropleth maps: The impact of remoteness on Access, Affordability and Digital Ability</h3>
+            <p class="chart-desc">Remoteness here uses the Remoteness Areas defined by the Australian Bureau of Statistics (ABS), which group every part of Australia by how far it is by road from services such as shops, schools and hospitals: major cities, inner regional, outer regional, remote and very remote (labelled on the middle map). The heatmap showed these as rows. Here they are mapped, with one panel per dimension on the same colour scale, so the panels can be compared directly. Access falls away sharply with distance (very remote areas are 19 points below). Affordability barely changes (under 4 points), and remote areas actually score better than regional ones on both Affordability and Digital Ability, so distance mainly hurts connections, not cost or skills.</p>
             <div id="vis-s5-small-multiples" class="vis-container vis-auto"></div>
           </div>
         </div>
@@ -227,7 +227,7 @@
         <div class="pure-u-1">
           <div class="chart-block">
             <h3>The impact of money and skills on digitally excluded groups</h3>
-            <p class="chart-desc">This boils each group down to one number: its skills gap minus its money gap. Bars to the left (indigo) mean skills are the bigger problem, and bars to the right (terracotta) mean cost is. The groups split almost evenly (16 lean towards skills, 13 towards money), which shows there is no single fix. Older Australians lean strongly towards skills, while unemployed people and urban First Nations people lean towards cost. Even young people aged 18 to 34, who are above average on both, have more room to improve on cost.</p>
+            <p class="chart-desc">This chart covers every group at once and boils each one down to a single number: its skills gap minus its money gap, so it answers one question quickly (which barrier is bigger?) for the whole population. Bars to the left (indigo) mean skills are the bigger problem, and bars to the right (terracotta) mean cost is. The groups split almost evenly (16 lean towards skills, 13 towards money), which shows there is no single fix. Older Australians lean strongly towards skills, while unemployed people and urban First Nations people lean towards cost. Even young people aged 18 to 34, who are above average on both, have more room to improve on cost.</p>
             <div id="vis-s5-divergence" class="vis-container vis-tall"></div>
           </div>
         </div>
@@ -238,7 +238,7 @@
         <div class="pure-u-1">
           <div class="chart-block">
             <h3>Closer analysis of the relationship between skills and money</h3>
-            <p class="chart-desc">A closer look at seven key groups from the chart above, showing the actual gaps rather than just the difference. Each line runs from the money gap (left) to the skills gap (right), so a line that drops means skills are the bigger barrier and a line that rises means cost is. Aged 75+ drops steeply, from 19 points below on money to 32 below on skills. Unemployed people rise, from 14 below on money to slightly above average on skills.</p>
+            <p class="chart-desc">The bar chart above only shows which barrier is bigger. This slope graph zooms in on seven key groups and shows how big each gap actually is, and whether the group is above or below average on each, which a single difference cannot tell you. Each line runs from the money gap (left) to the skills gap (right), so a line that drops means skills are the bigger barrier and a line that rises means cost is. The dashed line at 0 is the national average, so any point below it is behind. Aged 75+ drops steeply, from 19 points below on money to 32 below on skills. Unemployed people rise, from 14 below on money to slightly above average on skills.</p>
             <div id="vis-s5-slope" class="vis-container"></div>
           </div>
         </div>
@@ -249,7 +249,7 @@
         <div class="pure-u-1">
           <div class="chart-block">
             <h3>What stops people getting online?</h3>
-            <p class="chart-desc">The charts above are built from ADII scores. This one shows what people say themselves, as the share of each group who report each barrier (people could choose more than one). Nationally, concern about privacy and scams (15%) and slow connections (14%) top the list, and cost comes in at only 6%. The outlined cells match the patterns above: older Australians often say the internet is not a priority (29%), remote areas report slow connections (29%), and cost matters most to unemployed people (15%).</p>
+            <p class="chart-desc">The first heatmap in this section showed measured ADII scores. This one uses the same layout for something different: what people say themselves, as the share of each group who report each barrier (people could choose more than one). Nationally, concern about privacy and scams (15%) and slow connections (14%) top the list, and cost comes in at only 6%. The outlined cells match the patterns above: older Australians often say the internet is not a priority (29%), remote areas report slow connections (29%), and cost matters most to unemployed people (15%).</p>
             <div id="vis-s5-barriers" class="vis-container vis-tall"></div>
           </div>
         </div>
@@ -286,7 +286,7 @@
         <!-- 6.2 Bump chart: group rankings by year (the punchline: the order doesn't change) -->
         <div class="pure-u-1">
           <div class="chart-block">
-            <h3>What goups remain excluded over time?</h3>
+            <h3>What groups remain excluded over time?</h3>
             <p class="chart-desc">The chart above shows the size of each gap. This one shows rank, from 1 (highest score) down, so it answers a simpler question: has anyone changed places? Groups in the middle shuffle a little each year, and the dashed national average sits mid-table. At the bottom, nothing changes: people aged 75+ and people who did not finish secondary school are last and second-last in every survey since 2020, on both Access and Digital Ability.</p>
             <div id="bump-measure-select" class="state-select"></div> <!-- Vega-Lite puts the measure radio buttons here -->
             <div id="vis-s6-bump" class="vis-container vis-tall"></div>
@@ -350,7 +350,7 @@
           <p>The 41 ADII 2025 dashboard downloads (one per theme and population split) were combined into five workbooks,
             one per theme, with every group stacked in a single table. Duplicates were removed and tables reshaped, but no
             values were changed. Python scripts then made a small CSV for each chart, joined LGA scores to the ABS
-            boundaries and 2025 populations by LGA code, and worked out the cartogram layout in advance. Boundaries were
+            boundaries and 2025 populations by LGA code, and placed the dot density map's dots in advance. Boundaries were
             converted to TopoJSON. Claude (Anthropic, 2026) helped write these scripts; outputs were checked against the
             source data. Charts are adapted from Vega-Lite gallery examples (Satyanarayan et al., 2017).</p>
 

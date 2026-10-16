@@ -1,14 +1,13 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Spike map: one spike per LGA below the national ADII of 73.6 (ADII 2025); height = points below (20 points = 64px). Each spike is a 'point' with a triangle shape, so it keeps its size when zooming to a state. The first digit of an LGA code is its state code.",
+  "description": "Proportional symbol map, for Australia or one state: a circle at each LGA that scores below the national ADII of 73.6 (ADII 2025); circle area and shade = points below the average. The first digit of an LGA code is its state code. (ACT is left out: its one council is above average.)",
   "width": "container",
   "height": "container",
   "params": [
     {
       "name": "spikeState", "value": "all",
       "bind": { "input": "radio", "element": "#spike-state-select", "name": "Zoom to: ",
-                "options": ["all", "1", "2", "3", "4", "5", "6", "7", "8"],
-                "labels": ["Australia", "NSW", "VIC", "QLD", "SA", "WA", "TAS", "NT", "ACT"] }
+                "options": ["all", "1", "2", "3", "4", "5", "6", "7"], "labels": ["Australia", "NSW", "VIC", "QLD", "SA", "WA", "TAS", "NT"] }
     }
   ],
   "projection": { "type": "conicEqualArea", "parallels": [-18, -36], "rotate": [-132, 0] },
@@ -19,48 +18,51 @@
       "mark": { "type": "geoshape", "fill": "#EFE8F1", "stroke": "#C9BBD0", "strokeWidth": 0.4 }
     },
     {
-      "data": { "url": "Charts/Raw_Data/Shape_Files/STE_2021_AUST_GDA2020.json", "format": { "type": "topojson", "feature": "STE_2021_AUST_GDA2020" } },
-      "transform": [{ "filter": "datum.geometry && datum.properties.STE_CODE21 !== '9' && (spikeState === 'all' || datum.properties.STE_CODE21 === spikeState)" }],
-      "mark": { "type": "geoshape", "fill": null, "stroke": "#8E829E" }
-    },
-    {
       "data": { "url": "Charts/Data/LGA_ADII.csv" },
       "transform": [
         { "filter": "datum['Gap from national average'] < 0 && (spikeState === 'all' || datum.LGA_CODE25[0] === spikeState)" },
         { "lookup": "LGA_CODE25", "from": { "data": { "url": "Charts/Data/LGA_Centroids.csv" }, "key": "LGA_CODE25", "fields": ["Longitude", "Latitude"] } },
-        { "calculate": "-datum['Gap from national average']", "as": "pointsBelow" }
+        { "calculate": "-datum['Gap from national average']", "as": "pointsBelow" },
+        { "calculate": "datum.pointsBelow * (spikeState === 'all' ? 30 : 80)", "as": "area" },
+        { "calculate": "datum.pointsBelow >= 10 ? '10+ points below' : datum.pointsBelow >= 5 ? '5-10 points below' : 'Under 5 points below'", "as": "band" }
       ],
-      "mark": "point",
+      "mark": "circle",
       "encoding": {
         "longitude": { "field": "Longitude", "type": "quantitative" },
         "latitude": { "field": "Latitude", "type": "quantitative" },
-        "size": { "field": "pointsBelow", "type": "quantitative", "scale": { "type": "pow", "exponent": 2, "domain": [0, 20], "range": [0, 16384] }, "legend": null },
+        "size": { "field": "area", "type": "quantitative", "scale": null },
+        "color": { "field": "band", "type": "ordinal", "scale": { "domain": ["Under 5 points below", "5-10 points below", "10+ points below"], "range": ["#C9B6D6", "#8E6AA6", "#5B2A6E"] }, "legend": null },
+        "order": { "field": "pointsBelow", "sort": "descending" },
         "tooltip": [{ "field": "LGA_NAME25", "title": "LGA" }, { "field": "State" }, { "field": "ADII score" }, { "field": "Gap from national average" }]
       }
     },
     {
       "description": "hand-made legend, bottom left (x/y in pixels, so the projection doesn't move it)",
-      "data": { "values": [{ "pointsBelow": 5, "x": 24 }, { "pointsBelow": 10, "x": 72 }, { "pointsBelow": 20, "x": 120 }] },
+      "data": { "values": [{ "pointsBelow": 2, "x": 22 }, { "pointsBelow": 5, "x": 56 }, { "pointsBelow": 10, "x": 96 }] },
+      "transform": [
+        { "calculate": "datum.pointsBelow >= 10 ? '10+ points below' : datum.pointsBelow >= 5 ? '5-10 points below' : 'Under 5 points below'", "as": "band" },
+        { "calculate": "datum.pointsBelow * (spikeState === 'all' ? 30 : 80)", "as": "area" }
+      ],
       "encoding": { "x": { "field": "x", "type": "quantitative", "scale": null } },
       "layer": [
-        { "mark": { "type": "point", "y": { "expr": "height - 26" } }, "encoding": { "size": { "field": "pointsBelow", "type": "quantitative" } } },
+        { "mark": { "type": "circle", "y": { "expr": "height - 50" } }, "encoding": { "size": { "field": "area", "type": "quantitative", "scale": null }, "color": { "field": "band", "type": "ordinal" } } },
         { "mark": { "type": "text", "baseline": "top", "y": { "expr": "height - 20" } }, "encoding": { "text": { "field": "pointsBelow" } } },
         {
-          "transform": [{ "filter": "datum.pointsBelow === 5" }],
-          "mark": { "type": "text", "align": "left", "baseline": "top", "lineHeight": 16, "x": 8, "y": { "expr": "height - 150" },
-                    "text": ["Spike height: points below", "the national average (73.6).", "No spike = at or above average"] }
+          "transform": [{ "filter": "datum.pointsBelow === 2" }],
+          "mark": { "type": "text", "align": "left", "baseline": "top", "lineHeight": 16, "x": 8, "y": { "expr": "height - 140" },
+                    "text": ["Circle size and shade: points below", "the national average (73.6).", "No circle = at or above average"] }
         }
       ]
     },
     {
-      "description": "note on where the tallest spikes cluster, top right (pixels); Australia view only",
+      "description": "note on where the biggest circles cluster, top right (pixels); Australia view only",
       "data": { "values": [{}] },
       "transform": [{ "filter": "spikeState === 'all'" }],
       "mark": { "type": "text", "align": "right", "baseline": "top", "lineHeight": 15, "x": { "expr": "width - 4" }, "y": 4, "fontSize": 11, "fontStyle": "italic", "color": "#5F566E",
-                "text": ["The tallest spikes cluster in the Top End and", "Arnhem Land, Cape York and the Torres Strait,", "and the Kimberley. Many of these councils are", "remote First Nations communities, where long", "distances make connections slower, patchier", "and more expensive."] }
+                "text": ["The biggest, darkest circles cluster in the Top End", "and Arnhem Land, Cape York and the Torres Strait,", "and the Kimberley. Many of these councils are remote", "First Nations communities, where long distances make", "connections slower, patchier and more expensive."] }
     },
     {
-      "description": "cluster callouts: a short leader line from a label in the sea to each cluster of tall spikes; Australia view only",
+      "description": "cluster callouts: a leader line from a label in the sea to each cluster; Australia view only",
       "data": { "values": [
         { "name": "Kimberley", "lon": 117.5, "lat": -14.5, "lon2": 125.5, "lat2": -16.5 },
         { "name": "Top End and Arnhem Land", "lon": 126, "lat": -10.2, "lon2": 134.5, "lat2": -12.6 },
@@ -68,22 +70,15 @@
       ] },
       "transform": [{ "filter": "spikeState === 'all'" }],
       "layer": [
-        {
-          "mark": { "type": "rule", "color": "#5F566E", "strokeWidth": 0.8 },
-          "encoding": {
-            "longitude": { "field": "lon", "type": "quantitative" }, "latitude": { "field": "lat", "type": "quantitative" },
-            "longitude2": { "field": "lon2" }, "latitude2": { "field": "lat2" }
-          }
-        },
-        {
-          "mark": { "type": "text", "baseline": "bottom", "dy": -3, "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#5F566E" },
-          "encoding": { "longitude": { "field": "lon", "type": "quantitative" }, "latitude": { "field": "lat", "type": "quantitative" }, "text": { "field": "name" } }
-        }
+        { "mark": { "type": "rule", "color": "#5F566E", "strokeWidth": 0.8 },
+          "encoding": { "longitude": { "field": "lon", "type": "quantitative" }, "latitude": { "field": "lat", "type": "quantitative" }, "longitude2": { "field": "lon2" }, "latitude2": { "field": "lat2" } } },
+        { "mark": { "type": "text", "baseline": "bottom", "dy": -3, "fontWeight": 700, "fontSize": 11, "fontStyle": "italic", "color": "#5F566E" },
+          "encoding": { "longitude": { "field": "lon", "type": "quantitative" }, "latitude": { "field": "lat", "type": "quantitative" }, "text": { "field": "name" } } }
       ]
     }
   ],
   "config": {
-    "point": { "shape": "M-0.05,0L0,-1L0.05,0Z", "filled": true, "color": "#7B4A91", "opacity": 0.75, "strokeWidth": 0 },
+    "circle": { "opacity": 0.85, "stroke": "#FFFFFF", "strokeWidth": 0.8 },
     "text": { "fontSize": 12, "color": "#5F566E" }
   }
 }

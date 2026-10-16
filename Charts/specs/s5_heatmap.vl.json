@@ -7,6 +7,7 @@
   "transform": [
     { "filter": "datum.Group !== 'Metro' && datum.Group !== 'Regional'" },
     { "calculate": "datum.Score - datum.National", "as": "gap" },
+    { "calculate": "datum.gap <= -20 ? '20+ points below' : datum.gap <= -10 ? '10 to 20 below' : datum.gap <= -5 ? '5 to 10 below' : datum.gap < 5 ? 'Within 5 points' : datum.gap < 10 ? '5 to 10 above' : '10+ points above'", "as": "bin" },
     { "window": [{ "op": "row_number", "as": "row" }], "groupby": ["Measure"] }
   ],
   "encoding": {
@@ -18,10 +19,13 @@
       "mark": { "type": "rect", "stroke": "#FFFFFF", "strokeWidth": 1 },
       "encoding": {
         "color": {
-          "field": "gap",
-          "type": "quantitative",
-          "scale": { "domain": [-40, -20, 0, 20, 40], "range": ["#5B2A6E", "#B79BC9", "#F4F0F5", "#A8CBB7", "#3E7F67"], "interpolate": "rgb" },
-          "legend": { "title": "Points from national average", "orient": "bottom", "direction": "horizontal", "gradientLength": 220, "titleLimit": 300 }
+          "field": "bin",
+          "type": "ordinal",
+          "scale": {
+            "domain": ["20+ points below", "10 to 20 below", "5 to 10 below", "Within 5 points", "5 to 10 above", "10+ points above"],
+            "range": ["#5B2A6E", "#8E6AA6", "#C9B6D6", "#F4F0F5", "#A8CBB7", "#5E9C80"]
+          },
+          "legend": { "title": "Score compared with the national average for that dimension (number in each cell = score out of 100)", "orient": "bottom", "direction": "horizontal", "symbolType": "square", "titleLimit": 700 }
         },
         "tooltip": [
           { "field": "Dimension", "title": "Category" },
@@ -37,7 +41,7 @@
       "mark": { "type": "text", "fontSize": 11 },
       "encoding": {
         "text": { "field": "Score", "type": "quantitative", "format": ".1f" },
-        "color": { "condition": { "test": "datum.gap < -22", "value": "#FFFFFF" }, "value": "#25212E" }
+        "color": { "condition": { "test": "datum.gap <= -10 || datum.gap >= 10", "value": "#FFFFFF" }, "value": "#25212E" }
       }
     }
   ]

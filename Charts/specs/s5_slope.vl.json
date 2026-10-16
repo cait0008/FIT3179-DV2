@@ -25,6 +25,15 @@
     }
   },
   "layer": [
+    {
+      "description": "zero line = the national average, so above/below reads at a glance (gap: 0 so Vega-Lite's missing-value filter keeps the row)",
+      "data": { "values": [{ "gap": 0 }] },
+      "layer": [
+        { "mark": { "type": "rule", "strokeDash": [5, 3], "color": "#25212E", "strokeWidth": 1.2 }, "encoding": { "x": null, "color": null } },
+        { "mark": { "type": "text", "align": "left", "baseline": "bottom", "dy": -3, "x": 4, "fontSize": 11, "fontWeight": 700, "color": "#25212E", "text": "0 = national average" },
+          "encoding": { "x": null, "color": null } }
+      ]
+    },
     { "mark": "line", "encoding": { "detail": { "field": "Group" } } },
     { "mark": { "type": "circle", "size": 60, "opacity": 1 }, "encoding": { "tooltip": [{ "field": "label", "title": "Group" }, { "field": "side", "title": "Measure" }, { "field": "gap", "title": "Gap", "format": "+.1f" }] } },
     {

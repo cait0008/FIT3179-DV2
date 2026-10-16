@@ -29,7 +29,7 @@
       "description": "outline of the state(s) in view, behind the circles",
       "data": { "url": "Charts/Raw_Data/Shape_Files/STE_2021_AUST_GDA2020.json", "format": { "type": "topojson", "feature": "STE_2021_AUST_GDA2020" } },
       "transform": [{ "filter": "datum.geometry && datum.properties.STE_CODE21 !== '9' && (cartoState === 'all' || datum.properties.STE_CODE21 === cartoState)" }],
-      "mark": { "type": "geoshape", "fill": "#F4EFF6", "stroke": "#C9BBD0" },
+      "mark": { "type": "geoshape", "fill": "#ECECEE", "stroke": "#CFCFD4" },
       "encoding": { "x": null, "y": null }
     },
     {
