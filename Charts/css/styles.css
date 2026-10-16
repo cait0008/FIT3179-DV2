@@ -24,7 +24,7 @@ h3 { font-size: 1.75rem; margin-top: 32px; }
 .page { max-width: 1200px; margin: 0 auto; padding: 48px 16px; }
 .title-row { align-items: center; }
 h1 { font-family: 'Audiowide', sans-serif; font-weight: 400; font-size: 3.5rem; text-align: center; margin: 0;
-     color: var(--pink); text-shadow: 0 0 2px #FFFFFF, 0 0 12px rgba(255, 255, 255, 0.9); } /* white glow keeps the lighter pink readable */
+     color: #CC1F7E; text-shadow: 0 0 2px #FFFFFF, 0 0 12px rgba(255, 255, 255, 0.9); } /* white glow keeps the lighter pink readable */
 .title-date { display: block; text-align: right; font-size: 0.8125rem; color: var(--muted); }
 
 .section { background: var(--card); border-top: 5px solid var(--magenta); border-radius: 8px; padding: 32px; margin-top: 32px;
